@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom gap-3" style="border-color: var(--ws-border-quiet) !important;">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Quality Assurance Command Hub</h1>
+                        <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> PASSING 96.4%</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Automated test coverage, active defect severity matrix, and release readiness gates.</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="/qa/test-cases" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-list-check"></i> Test Suites</a>
+                    <a href="/qa/bugs" class="ws-btn ws-btn-primary ws-btn-sm"><i class="bi bi-bug"></i> Defect Tracker</a>
+                </div>
+            </div>
+
+            <!-- Equal-Height Metric Row -->
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Executed Test Cases</div>
+                        <div class="ws-metric-value ws-text-ink">312</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);"><i class="bi bi-check2-all"></i> 301 passed (96.4%)</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Open Defects</div>
+                        <div class="ws-metric-value ws-text-ink">7</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-warning);"><i class="bi bi-exclamation-circle"></i> 1 critical blocker</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Code Coverage</div>
+                        <div class="ws-metric-value ws-text-blue">89.2%</div>
+                        <div class="ws-metric-trend ws-text-cyan"><i class="bi bi-shield-check"></i> Exceeds 85% threshold</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Mean Resolution Time</div>
+                        <div class="ws-metric-value ws-text-ink">4.2h</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);"><i class="bi bi-arrow-down-right"></i> -18% vs last sprint</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Breakdown & Release Gate -->
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="ws-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="ws-text-ink fs-6 fw-semibold m-0">Active Regression Runs</h4>
+                            <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="WareSoftAPI.showToast('Triggered full regression suite on Staging', 'info')">
+                                <i class="bi bi-play-fill"></i> Run Suite
+                            </button>
+                        </div>
+                        <div class="ws-table-container">
+                            <table class="ws-table">
+                                <thead>
+                                    <tr>
+                                        <th>Suite Name</th>
+                                        <th>Module</th>
+                                        <th>Pass Rate</th>
+                                        <th>Duration</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ws-text-ink fw-semibold">Payment Webhook Idempotency E2E</td>
+                                        <td>NX-101 Gateway</td>
+                                        <td class="font-monospace ws-text-ink">48 / 48 (100%)</td>
+                                        <td class="font-monospace ws-text-muted">42s</td>
+                                        <td><span class="ws-pill ws-pill-success">PASSED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ws-text-ink fw-semibold">RBAC & Session Auth Matrix</td>
+                                        <td>DevNexus Core</td>
+                                        <td class="font-monospace ws-text-ink">64 / 64 (100%)</td>
+                                        <td class="font-monospace ws-text-muted">28s</td>
+                                        <td><span class="ws-pill ws-pill-success">PASSED</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ws-text-ink fw-semibold">IoT MQTT High-Load Ingest</td>
+                                        <td>NX-104 Logix</td>
+                                        <td class="font-monospace ws-text-ink">112 / 118 (94.9%)</td>
+                                        <td class="font-monospace ws-text-muted">2m 14s</td>
+                                        <td><span class="ws-pill ws-pill-warning">WARNING</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="ws-card p-4">
+                        <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Production Release Gate</h4>
+                        <div class="d-flex flex-column gap-3 small">
+                            <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center">
+                                <span class="ws-text-secondary">OWASP Security Scan</span>
+                                <span class="ws-pill ws-pill-success">0 HIGH</span>
+                            </div>
+                            <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center">
+                                <span class="ws-text-secondary">Unit & Integration</span>
+                                <span class="ws-pill ws-pill-success">96.4% OK</span>
+                            </div>
+                            <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center">
+                                <span class="ws-text-secondary">Blocker Bug Count</span>
+                                <span class="ws-pill ws-pill-danger">1 OPEN</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-top" style="border-color: var(--ws-border-quiet) !important;">
+                            <a href="/qa/bugs" class="ws-btn ws-btn-primary ws-btn-sm w-100">Resolve Blocker Defects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom gap-3" style="border-color: var(--ws-border-quiet) !important;">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Test Suites & Verification Matrix</h1>
+                        <span class="ws-pill ws-pill-telemetry">312 CASES</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Automated unit, integration, and browser E2E test specifications.</p>
+                </div>
+                <a href="/qa" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-arrow-left"></i> QA Hub</a>
+            </div>
+
+            <div class="ws-table-container">
+                <table class="ws-table">
+                    <thead>
+                        <tr>
+                            <th>Case ID</th>
+                            <th>Test Specification</th>
+                            <th>Type</th>
+                            <th>Last Run</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-monospace ws-text-cyan fw-semibold">TC-101</td>
+                            <td>
+                                <div class="ws-text-ink fw-semibold">Verify JWT Session Expiry & Redirect to /login</div>
+                                <div class="ws-text-muted" style="font-size: 11px;">Module: Auth & Middleware</div>
+                            </td>
+                            <td><span class="ws-meta-tag">E2E Playwright</span></td>
+                            <td class="font-monospace ws-text-muted small">12m ago</td>
+                            <td><span class="ws-pill ws-pill-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-monospace ws-text-cyan fw-semibold">TC-104</td>
+                            <td>
+                                <div class="ws-text-ink fw-semibold">Validate POST /api/requirements Schema & Status 201</div>
+                                <div class="ws-text-muted" style="font-size: 11px;">Module: Commercial Intake</div>
+                            </td>
+                            <td><span class="ws-meta-tag">Pytest API</span></td>
+                            <td class="font-monospace ws-text-muted small">15m ago</td>
+                            <td><span class="ws-pill ws-pill-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-monospace ws-text-cyan fw-semibold">TC-112</td>
+                            <td>
+                                <div class="ws-text-ink fw-semibold">Kanban Card Drag-Drop Transition Across 5 Columns</div>
+                                <div class="ws-text-muted" style="font-size: 11px;">Module: Sprint Delivery</div>
+                            </td>
+                            <td><span class="ws-meta-tag">E2E Playwright</span></td>
+                            <td class="font-monospace ws-text-muted small">20m ago</td>
+                            <td><span class="ws-pill ws-pill-success">PASS</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
