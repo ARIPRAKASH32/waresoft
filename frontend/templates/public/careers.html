@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container py-5">
+    {% include 'components/breadcrumbs.html' %}
+
+    <div class="mb-5" style="max-width: 680px;">
+        <span class="ws-pill ws-pill-telemetry mb-3">
+            <span class="status-dot status-dot-live"></span>
+            CAREERS @ WARESOFT
+        </span>
+        <h1 class="text-white fw-semibold mb-2">Build mission-critical systems with high-density engineering teams.</h1>
+        <p class="text-secondary small">
+            We value craftsman-level attention to detail, readable code, deterministic testing, and deep respect for user privacy and security.
+        </p>
+    </div>
+
+    <!-- Engineering Culture Highlights -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="ws-card">
+                <i class="bi bi-laptop fs-4 text-info mb-3 d-block"></i>
+                <h5 class="text-white fs-6 fw-medium mb-1">Autonomous Remote Work</h5>
+                <p class="text-secondary small m-0">Async-first collaboration with minimal meetings and deep uninterrupted coding blocks.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ws-card">
+                <i class="bi bi-cpu fs-4 text-primary mb-3 d-block"></i>
+                <h5 class="text-white fs-6 fw-medium mb-1">Modern High-Performance Stack</h5>
+                <p class="text-secondary small m-0">Python, Flask, Three.js, Docker, PostgreSQL, Redis, and high-standard CI/CD automation.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="ws-card">
+                <i class="bi bi-heart-pulse fs-4 text-success mb-3 d-block"></i>
+                <h5 class="text-white fs-6 fw-medium mb-1">Top-Tier Compensation & Health</h5>
+                <p class="text-secondary small m-0">Competitive base salaries, equity participation, home-office stipends, and full medical coverage.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open Roles List -->
+    <h3 class="text-white fs-5 fw-medium mb-4">Open Engineering Positions</h3>
+    <div class="d-flex flex-column gap-3">
+        <div class="ws-card p-4 ws-card-interactive d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="text-white fw-medium">Senior Frontend Engineer & Design Technologist</span>
+                    <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 font-monospace" style="font-size: 10px;">REMOTE / FULL-TIME</span>
+                </div>
+                <div class="text-muted small">Proficiency in semantic HTML5, CSS design tokens, modern ES6+ JS, and Three.js visualization.</div>
+            </div>
+            <a href="/contact" class="ws-btn ws-btn-secondary ws-btn-sm text-nowrap">Apply for Role</a>
+        </div>
+
+        <div class="ws-card p-4 ws-card-interactive d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="text-white fw-medium">Distributed Systems & Backend Architect</span>
+                    <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-25 font-monospace" style="font-size: 10px;">HYBRID / FULL-TIME</span>
+                </div>
+                <div class="text-muted small">Expertise in Python, Flask, Redis distributed locking, PostgreSQL optimization, and REST API design.</div>
+            </div>
+            <a href="/contact" class="ws-btn ws-btn-secondary ws-btn-sm text-nowrap">Apply for Role</a>
+        </div>
+
+        <div class="ws-card p-4 ws-card-interactive d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="text-white fw-medium">QA Automation & Reliability Lead</span>
+                    <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 font-monospace" style="font-size: 10px;">REMOTE / FULL-TIME</span>
+                </div>
+                <div class="text-muted small">Cypress, Playwright, load testing with k6, and GitHub Actions CI matrix orchestration.</div>
+            </div>
+            <a href="/contact" class="ws-btn ws-btn-secondary ws-btn-sm text-nowrap">Apply for Role</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

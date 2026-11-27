@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container py-5">
+    {% include 'components/breadcrumbs.html' %}
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
+        <div>
+            <span class="ws-pill ws-pill-telemetry mb-3">
+                <span class="status-dot status-dot-live"></span>
+                PRODUCTION DELIVERIES
+            </span>
+            <h1 class="text-white fw-semibold mb-2">Engineered systems running in production worldwide.</h1>
+            <p class="text-secondary small m-0" style="max-width: 580px;">
+                Explore real case studies managed and delivered end-to-end through the DevNexus platform.
+            </p>
+        </div>
+        <div class="d-flex gap-2">
+            <button class="ws-btn ws-btn-secondary ws-btn-sm active">All</button>
+            <button class="ws-btn ws-btn-secondary ws-btn-sm">Fintech</button>
+            <button class="ws-btn ws-btn-secondary ws-btn-sm">Logistics</button>
+            <button class="ws-btn ws-btn-secondary ws-btn-sm">Health</button>
+        </div>
+    </div>
+
+    <!-- Case Studies Grid -->
+    <div class="row g-4 mb-5">
+        <!-- Project 1 -->
+        <div class="col-lg-6">
+            <div class="ws-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 font-monospace">FINTECH // ESCROW</span>
+                        <span class="text-muted small font-monospace">DELIVERY: 6 WEEKS</span>
+                    </div>
+                    <h3 class="text-white fs-5 fw-medium mb-2">Cross-Border High-Throughput Payment Core</h3>
+                    <p class="text-secondary small mb-3">
+                        Architected a fault-tolerant payment orchestration router capable of handling 4,500 transactions/sec across APAC and EMEA. Fully integrated with Stripe, Adyen, and automated ledger reconciliation.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="ws-pill ws-pill-muted">Python Flask</span>
+                        <span class="ws-pill ws-pill-muted">PostgreSQL</span>
+                        <span class="ws-pill ws-pill-muted">Redis Queue</span>
+                        <span class="ws-pill ws-pill-muted">Docker</span>
+                    </div>
+                </div>
+                <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                    <span class="text-success small fw-medium"><i class="bi bi-shield-check me-1"></i>99.995% Uptime</span>
+                    <a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect Architecture <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-lg-6">
+            <div class="ws-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-25 font-monospace">LOGISTICS // IOT</span>
+                        <span class="text-muted small font-monospace">DELIVERY: 8 WEEKS</span>
+                    </div>
+                    <h3 class="text-white fs-5 fw-medium mb-2">Fleet Telemetry & Cold-Chain Monitoring Hub</h3>
+                    <p class="text-secondary small mb-3">
+                        Real-time tracking of 12,000 refrigerated transit vehicles. Ingests temperature, GPS, and fuel telemetry with sub-second WebSocket alerts for temperature anomalies.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="ws-pill ws-pill-muted">MQTT Telemetry</span>
+                        <span class="ws-pill ws-pill-muted">TimeScaleDB</span>
+                        <span class="ws-pill ws-pill-muted">Bootstrap 5</span>
+                        <span class="ws-pill ws-pill-muted">Three.js</span>
+                    </div>
+                </div>
+                <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                    <span class="text-info small fw-medium"><i class="bi bi-broadcast me-1"></i>12M Events / Day</span>
+                    <a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect Architecture <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-lg-6">
+            <div class="ws-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 font-monospace">HEALTHCARE // HIPAA</span>
+                        <span class="text-muted small font-monospace">DELIVERY: 10 WEEKS</span>
+                    </div>
+                    <h3 class="text-white fs-5 fw-medium mb-2">Telehealth Clinical Consult & Records Portal</h3>
+                    <p class="text-secondary small mb-3">
+                        End-to-end encrypted clinical consultation platform. Connects medical practitioners with outpatient files, lab integrations, and video consultations adhering strictly to HIPAA and GDPR.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="ws-pill ws-pill-muted">WebRTC</span>
+                        <span class="ws-pill ws-pill-muted">AES-256</span>
+                        <span class="ws-pill ws-pill-muted">FastAPI</span>
+                        <span class="ws-pill ws-pill-muted">Jinja2 SSR</span>
+                    </div>
+                </div>
+                <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                    <span class="text-success small fw-medium"><i class="bi bi-lock me-1"></i>Zero Compliance Violations</span>
+                    <a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect Architecture <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="col-lg-6">
+            <div class="ws-card h-100 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-warning bg-opacity-25 text-warning border border-warning border-opacity-25 font-monospace">TRAVELTECH // SAAS</span>
+                        <span class="text-muted small font-monospace">DELIVERY: 5 WEEKS</span>
+                    </div>
+                    <h3 class="text-white fs-5 fw-medium mb-2">TravelBase - Corporate Itinerary & Booking Engine</h3>
+                    <p class="text-secondary small mb-3">
+                        Seamless enterprise trip dispatch and expense ledger. Powers automated flight, hotel, and car reservations with corporate policy compliance checks.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="ws-pill ws-pill-muted">Amadeus GDS</span>
+                        <span class="ws-pill ws-pill-muted">Flask Backend</span>
+                        <span class="ws-pill ws-pill-muted">Bootstrap 5</span>
+                        <span class="ws-pill ws-pill-muted">Stripe</span>
+                    </div>
+                </div>
+                <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                    <span class="text-warning small fw-medium"><i class="bi bi-airplane me-1"></i>30k Monthly Bookings</span>
+                    <a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect Architecture <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
