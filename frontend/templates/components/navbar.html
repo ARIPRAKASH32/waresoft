@@ -1,6 +1,8 @@
+{% set is_public = request.path in ['/', '/about', '/services', '/portfolio', '/contact', '/careers', '/auth', '/login', '/register', '/forgot-password'] %}
+
 <header class="ws-header">
     <div class="ws-header-inner content-container">
-        <!-- Brand Logo & Quiet Telemetry -->
+        <!-- Brand Logo -->
         <div class="ws-brand-cluster">
             <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-5"></i>
@@ -10,32 +12,68 @@
                     <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="WareSoft Logo" width="26" height="26" style="display: block;">
                 </span>
                 <span class="ws-brand-text">{{ app_name }}</span>
-                <span class="ws-brand-badge">DevNexus</span>
+                {% if not is_public %}
+                <span class="ws-text-muted small fw-normal d-none d-sm-inline">/ Console</span>
+                {% endif %}
             </a>
-
-            <div class="d-none d-xl-flex align-items-center ms-2">
-                <span class="ws-pill ws-pill-telemetry">
-                    <span class="status-dot status-dot-live"></span>
-                    {{ system_status.env }} // rev:{{ system_status.commit }}
-                </span>
-            </div>
         </div>
 
-        <!-- Minimal Topbar Navigation (Juspay Rhythm) -->
+        {% if is_public %}
+        <!-- Public Context: Quiet Centered Navigation Links -->
         <nav class="ws-header-nav d-none d-lg-flex">
             <a href="/" class="ws-nav-link {% if request.path == '/' %}active{% endif %}">Platform</a>
             <a href="/#solutions" class="ws-nav-link">Solutions</a>
-            <a href="/projects" class="ws-nav-link {% if '/projects' in request.path %}active{% endif %}">Workspaces</a>
+            <a href="/projects" class="ws-nav-link">Workspaces</a>
+            <a href="/#developers" class="ws-nav-link">Developers</a>
             <a href="/#contact" class="ws-nav-link">Contact</a>
         </nav>
 
-        <!-- Right Quick Actions & User Profile -->
-        <div class="ws-header-actions">
-            <a href="/client?tab=submit" class="ws-btn ws-btn-outline ws-btn-sm d-none d-md-inline-flex">Submit RFP</a>
-            <a href="/projects" class="ws-btn ws-btn-primary ws-btn-sm d-none d-sm-inline-flex">
+        <!-- Public Context: Quiet Text Sign In + 1 Primary Button -->
+        <div class="ws-header-actions gap-3">
+            <a href="/auth" class="ws-nav-link d-none d-sm-inline-block">Sign In</a>
+            <a href="/projects" class="ws-btn ws-btn-navy ws-btn-sm">
                 Open Console <i class="bi bi-arrow-right"></i>
             </a>
+        </div>
 
+        {% else %}
+        <!-- Dashboard Context: Command Search Bar -->
+        <div class="jp-cmd-wrap d-none d-md-block">
+            <div class="jp-cmd-search">
+                <i class="bi bi-search ws-text-muted small"></i>
+                <input type="text" id="workspaceCmdInput" placeholder="Jump to workspace, Kanban, RFPs, or billing..." autocomplete="off">
+                <span class="jp-cmd-keycap">&#8984;K</span>
+            </div>
+            <div id="workspaceCmdResults" class="jp-cmd-results d-none">
+                <a href="/projects" class="jp-cmd-item" data-terms="projects directory workspaces">
+                    <span><i class="bi bi-grid-1x2 me-2 ws-text-blue"></i>Projects Directory</span>
+                    <span class="ws-text-muted font-monospace">/projects</span>
+                </a>
+                <a href="/projects/101/kanban" class="jp-cmd-item" data-terms="kanban sprint board tasks">
+                    <span><i class="bi bi-kanban me-2 ws-text-cyan"></i>Sprint Kanban Board</span>
+                    <span class="ws-text-muted font-monospace">NX-101</span>
+                </a>
+                <a href="/client?tab=submit" class="jp-cmd-item" data-terms="rfp submit requirement client quote">
+                    <span><i class="bi bi-plus-circle me-2 ws-text-blue"></i>Submit New RFP</span>
+                    <span class="ws-text-muted font-monospace">/client</span>
+                </a>
+                <a href="/admin?tab=analytics" class="jp-cmd-item" data-terms="admin analytics velocity charts">
+                    <span><i class="bi bi-graph-up me-2 ws-text-cyan"></i>Velocity Analytics</span>
+                    <span class="ws-text-muted font-monospace">/admin</span>
+                </a>
+                <a href="/developer?tab=github" class="jp-cmd-item" data-terms="developer github pr qa bugs">
+                    <span><i class="bi bi-github me-2 ws-text-ink"></i>GitHub PRs &amp; QA</span>
+                    <span class="ws-text-muted font-monospace">/developer</span>
+                </a>
+                <a href="/operations?tab=deployments" class="jp-cmd-item" data-terms="deploy staging prod sla billing invoices">
+                    <span><i class="bi bi-cloud-arrow-up me-2 ws-text-blue"></i>Cloud Ops &amp; Billing</span>
+                    <span class="ws-text-muted font-monospace">/operations</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Dashboard Context: Alerts & Profile Dropdown -->
+        <div class="ws-header-actions">
             <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications">
                 <i class="bi bi-bell"></i>
                 <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-white rounded-circle"></span>
@@ -55,29 +93,29 @@
                         <div class="small fw-semibold ws-text-ink">{{ current_user.name }}</div>
                         <div class="ws-text-muted" style="font-size: 11px;">{{ current_user.email }}</div>
                     </li>
-                    <li><a class="dropdown-item" href="/account"><i class="bi bi-person me-2"></i>Account & Alerts</a></li>
-                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2"></i>Command & Analytics</a></li>
-                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client & Commercial</a></li>
-                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2"></i>Engineering & QA</a></li>
-                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2"></i>Cloud Ops & Billing</a></li>
+                    <li><a class="dropdown-item" href="/account"><i class="bi bi-person me-2"></i>Account &amp; Alerts</a></li>
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2"></i>Command &amp; Analytics</a></li>
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client &amp; Commercial</a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2"></i>Engineering &amp; QA</a></li>
+                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2"></i>Cloud Ops &amp; Billing</a></li>
                     <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
                     <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2"></i>Switch Account</a></li>
                     <li><button class="dropdown-item text-danger" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</button></li>
                 </ul>
             </div>
         </div>
+        {% endif %}
     </div>
 </header>
 
 <!-- Mobile Quick Nav Drawer -->
 <div id="mobilePublicNav" class="d-none d-lg-none bg-white border-bottom px-4 py-3" style="border-color: var(--ws-border-quiet) !important;">
     <div class="d-flex flex-column gap-2 small fw-medium">
-        <a href="/" class="py-1 ws-text-ink text-decoration-none">Platform Showcase</a>
-        <a href="/admin" class="py-1 ws-text-secondary text-decoration-none">Command & Analytics</a>
-        <a href="/client" class="py-1 ws-text-secondary text-decoration-none">Client & Commercial</a>
-        <a href="/projects" class="py-1 ws-text-secondary text-decoration-none">Projects & Kanban</a>
-        <a href="/developer" class="py-1 ws-text-secondary text-decoration-none">Engineering & QA</a>
-        <a href="/operations" class="py-1 ws-text-secondary text-decoration-none">Cloud Ops & Billing</a>
-        <a href="/account" class="py-1 ws-text-secondary text-decoration-none">Account & Alerts</a>
+        <a href="/" class="py-1 ws-text-ink text-decoration-none">Platform</a>
+        <a href="/#solutions" class="py-1 ws-text-secondary text-decoration-none">Solutions</a>
+        <a href="/projects" class="py-1 ws-text-secondary text-decoration-none">Workspaces Console</a>
+        <a href="/#developers" class="py-1 ws-text-secondary text-decoration-none">Developers</a>
+        <a href="/#contact" class="py-1 ws-text-secondary text-decoration-none">Contact</a>
+        <a href="/auth" class="py-1 ws-text-blue text-decoration-none">Sign In</a>
     </div>
 </div>

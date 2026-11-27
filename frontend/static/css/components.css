@@ -668,13 +668,13 @@
 
 /* ─── Header & Calm Topbar Navigation ─── */
 .ws-header {
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--ws-border-quiet);
     position: sticky;
     top: 0;
     z-index: 1030;
-    height: 64px;
+    height: 68px;
     display: flex;
     align-items: center;
 }
@@ -683,9 +683,89 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--ws-space-4);
+    gap: var(--ws-space-6);
     width: 100%;
     min-width: 0;
+}
+
+/* ─── Dashboard Command Search Bar ─── */
+.jp-cmd-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 440px;
+}
+
+.jp-cmd-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--ws-bg-surface-2);
+    border: 1px solid var(--ws-border-quiet);
+    border-radius: var(--ws-radius-md);
+    padding: 0 10px 0 12px;
+    height: 36px;
+    transition: var(--ws-transition-base);
+}
+
+.jp-cmd-search:focus-within {
+    background-color: var(--ws-bg-surface-1);
+    border-color: var(--ws-brand-blue);
+    box-shadow: 0 0 0 3px var(--ws-brand-blue-soft);
+}
+
+.jp-cmd-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ws-text-primary);
+    font-size: var(--ws-text-xs);
+    width: 100%;
+}
+
+.jp-cmd-search input::placeholder {
+    color: var(--ws-text-muted);
+}
+
+.jp-cmd-keycap {
+    font-family: var(--ws-font-mono);
+    font-size: 10px;
+    color: var(--ws-text-muted);
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid var(--ws-border-subtle);
+    border-radius: 4px;
+    padding: 1px 5px;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.jp-cmd-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid var(--ws-border-quiet);
+    border-radius: var(--ws-radius-md);
+    box-shadow: var(--ws-shadow-lg);
+    padding: 6px;
+    z-index: 1050;
+}
+
+.jp-cmd-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: var(--ws-radius-xs);
+    font-size: var(--ws-text-xs);
+    color: var(--ws-text-primary);
+    text-decoration: none;
+    transition: background-color var(--ws-duration-fast);
+}
+
+.jp-cmd-item:hover {
+    background-color: var(--ws-bg-surface-2);
+    color: var(--ws-brand-blue-ink);
 }
 
 .ws-brand-cluster {
