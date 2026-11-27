@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold text-white m-0">Project NX-{{ "%03d"|format(project_id) }}: Team Allocation</h1>
+                        <span class="ws-pill ws-pill-telemetry">BANDWIDTH MATRIX</span>
+                    </div>
+                    <p class="text-secondary small m-0">Weekly engineer hours, sprint capacity utilization, and skill proficiencies.</p>
+                </div>
+                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="WareSoftAPI.showToast('Engineer allocation drawer initialized', 'info')">
+                    <i class="bi bi-person-plus"></i> Assign Engineer
+                </button>
+            </div>
+
+            <!-- Team Capacity Table -->
+            <div class="ws-table-container">
+                <table class="ws-table">
+                    <thead>
+                        <tr>
+                            <th>Team Member</th>
+                            <th>Role & Specialization</th>
+                            <th>Allocated Sprint Hours</th>
+                            <th>Capacity Utilization</th>
+                            <th>Skill Proficiencies</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="ws-user-avatar">AP</span>
+                                    <div>
+                                        <div class="text-white fw-medium">Ari Prakash</div>
+                                        <div class="text-muted" style="font-size: 11px;">ariprakash32@gmail.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-primary bg-opacity-25 text-primary">Lead Frontend</span></td>
+                            <td class="font-monospace text-white">36 hrs / 40 hrs</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
+                                        <div class="progress-bar bg-primary" style="width: 90%;"></div>
+                                    </div>
+                                    <span class="small font-monospace text-info">90%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">HTML5</span>
+                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Bootstrap 5</span>
+                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Three.js</span>
+                                </div>
+                            </td>
+                            <td><span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> ACTIVE</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="ws-user-avatar" style="color: var(--ws-brand-blue);">DT</span>
+                                    <div>
+                                        <div class="text-white fw-medium">Datcha</div>
+                                        <div class="text-muted" style="font-size: 11px;">datcha@waresoft.dev</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-info bg-opacity-25 text-info">Backend Architect</span></td>
+                            <td class="font-monospace text-white">38 hrs / 40 hrs</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
+                                        <div class="progress-bar bg-info" style="width: 95%;"></div>
+                                    </div>
+                                    <span class="small font-monospace text-info">95%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Python</span>
+                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Flask</span>
+                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">PostgreSQL</span>
+                                </div>
+                            </td>
+                            <td><span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> ACTIVE</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
