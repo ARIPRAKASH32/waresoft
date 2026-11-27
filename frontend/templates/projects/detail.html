@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Project Header with Quick Tabs -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold text-white m-0">Project NX-{{ "%03d"|format(project_id) }}: Payment Router Core</h1>
+                        <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> ACTIVE</span>
+                    </div>
+                    <p class="text-secondary small m-0">FinTech Global Inc. • Contract: $45,000 • Repository: waresoft/payment-router</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="/projects/{{ project_id }}/kanban" class="ws-btn ws-btn-primary ws-btn-sm">
+                        <i class="bi bi-kanban"></i> Sprint Kanban
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nav Tabs -->
+            <div class="d-flex gap-3 mb-4 border-bottom border-secondary border-opacity-10 pb-2">
+                <a href="/projects/{{ project_id }}" class="text-white small fw-medium text-decoration-none border-bottom border-primary pb-2">Overview</a>
+                <a href="/projects/{{ project_id }}/kanban" class="text-secondary small text-decoration-none pb-2 hover-white">Kanban Board</a>
+                <a href="/projects/{{ project_id }}/milestones" class="text-secondary small text-decoration-none pb-2 hover-white">Milestones</a>
+                <a href="/projects/{{ project_id }}/tasks" class="text-secondary small text-decoration-none pb-2 hover-white">Task Backlog</a>
+                <a href="/projects/{{ project_id }}/team" class="text-secondary small text-decoration-none pb-2 hover-white">Team Allocation</a>
+            </div>
+
+            <!-- Two-Column Overview -->
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="ws-card p-4 mb-4">
+                        <h4 class="text-white fs-6 fw-medium mb-2">Project Execution Status</h4>
+                        <p class="text-secondary small mb-4">
+                            High-concurrency payment gateway routing transactions through redundant acquiring banks. Fully containerized with automated CI/CD and telemetry alarms.
+                        </p>
+                        
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded">
+                                    <div class="text-muted small">Current Sprint</div>
+                                    <div class="text-white fw-medium">Sprint 4: Settlement & Webhook Core</div>
+                                    <div class="text-info small font-monospace mt-1">14 Story Points remaining</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded">
+                                    <div class="text-muted small">Release Schedule</div>
+                                    <div class="text-white fw-medium">Staging v2.4 Release</div>
+                                    <div class="text-success small font-monospace mt-1">Dec 05, 2026 Target</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="ws-card p-4">
+                        <h4 class="text-white fs-6 fw-medium mb-3">Assigned Engineers</h4>
+                        <div class="d-flex flex-column gap-3 small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="ws-user-avatar">AP</span>
+                                <div>
+                                    <div class="text-white fw-medium">Ari Prakash</div>
+                                    <div class="text-muted" style="font-size: 11px;">Lead Frontend Developer</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="ws-user-avatar" style="color: var(--ws-brand-blue);">DT</span>
+                                <div>
+                                    <div class="text-white fw-medium">Datcha</div>
+                                    <div class="text-muted" style="font-size: 11px;">Lead Systems Architect</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
