@@ -30,7 +30,9 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 resp = self.client.get(route)
                 self.assertEqual(resp.status_code, 200)
                 html = resp.get_data(as_text=True)
-                self.assertIn('Plus+Jakarta+Sans', html)
+                self.assertIn('Manrope', html)
+                self.assertNotIn('Plus+Jakarta+Sans', html)
+                self.assertIn('logo.svg', html)
                 self.assertIn('data-bs-theme="light"', html)
                 self.assertIn(marker, html_lib.unescape(html))
 
@@ -51,6 +53,13 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
             with self.subTest(route=route):
                 resp = self.client.get(route)
                 self.assertEqual(resp.status_code, 200, f'Legacy route {route} failed')
+
+    def test_static_images_and_logo_available(self):
+        for asset in ['logo.svg', 'platform-architecture.jpg', 'sprint-workflow.jpg', 'cloud-vault.jpg']:
+            with self.subTest(asset=asset):
+                resp = self.client.get(f'/static/images/{asset}')
+                self.assertEqual(resp.status_code, 200)
+                resp.close()
 
     def test_api_endpoints(self):
         self.assertEqual(self.client.post('/api/auth/login', json={'email': 'ari@waresoft.dev'}).status_code, 200)
