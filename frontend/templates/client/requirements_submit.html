@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold text-white m-0">Submit Project Requirement (RFP)</h1>
+                        <span class="ws-pill ws-pill-telemetry">STEP-BY-STEP INTAKE</span>
+                    </div>
+                    <p class="text-secondary small m-0">Define specifications, architecture goals, target timelines, and budget expectations.</p>
+                </div>
+                <a href="/requirements" class="ws-btn ws-btn-secondary ws-btn-sm">
+                    <i class="bi bi-arrow-left"></i> View All RFPs
+                </a>
+            </div>
+
+            <!-- Wizard Card -->
+            <div class="ws-card p-4 p-md-5" style="max-width: 920px;">
+                <!-- Step Indicator -->
+                <div class="d-flex justify-content-between align-items-center mb-5 border-bottom border-secondary border-opacity-10 pb-4">
+                    <div class="d-flex align-items-center gap-2" id="stepIndicator1">
+                        <span class="badge bg-primary text-white rounded-circle p-2" style="width: 28px; height: 28px;">1</span>
+                        <span class="text-white small fw-medium">Project Metadata</span>
+                    </div>
+                    <div class="flex-grow-1 mx-3 border-top border-secondary border-opacity-25 d-none d-md-block"></div>
+                    <div class="d-flex align-items-center gap-2" id="stepIndicator2">
+                        <span class="badge bg-secondary bg-opacity-25 text-muted rounded-circle p-2" style="width: 28px; height: 28px;">2</span>
+                        <span class="text-secondary small">Technical Scope</span>
+                    </div>
+                    <div class="flex-grow-1 mx-3 border-top border-secondary border-opacity-25 d-none d-md-block"></div>
+                    <div class="d-flex align-items-center gap-2" id="stepIndicator3">
+                        <span class="badge bg-secondary bg-opacity-25 text-muted rounded-circle p-2" style="width: 28px; height: 28px;">3</span>
+                        <span class="text-secondary small">Budget & Dispatch</span>
+                    </div>
+                </div>
+
+                <form id="rfpWizardForm" onsubmit="handleRfpSubmit(event)">
+                    <!-- Step 1 Pane -->
+                    <div id="stepPane1">
+                        <h4 class="text-white fs-6 fw-medium mb-3">1. General Information & Domain</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label class="ws-label" for="rfpTitle">Project Title / Core Initiative</label>
+                                <input type="text" class="ws-input" id="rfpTitle" placeholder="e.g. Distributed Analytics Warehouse Migration" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ws-label" for="rfpCategory">Domain Category</label>
+                                <select class="ws-select" id="rfpCategory">
+                                    <option value="fintech">FinTech & Payment Systems</option>
+                                    <option value="logistics">Logistics & Supply Chain</option>
+                                    <option value="healthcare">Healthcare & MedTech</option>
+                                    <option value="saas" selected>Enterprise SaaS Portal</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ws-label" for="rfpPriority">Execution Priority</label>
+                                <select class="ws-select" id="rfpPriority">
+                                    <option value="critical">Critical / Hot Inception</option>
+                                    <option value="high" selected>High Priority (Quarter Delivery)</option>
+                                    <option value="medium">Standard Roadmap</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="ws-btn ws-btn-primary ws-btn-sm" onclick="goToStep(2)">Proceed to Technical Scope <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 Pane -->
+                    <div id="stepPane2" class="d-none">
+                        <h4 class="text-white fs-6 fw-medium mb-3">2. Technical Specifications & Architecture</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label class="ws-label" for="rfpOverview">Detailed Technical Scope</label>
+                                <textarea class="ws-textarea" id="rfpOverview" rows="4" placeholder="Detail the key user journeys, backend API expectations, authentication requirements, and integrations..." required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ws-label" for="rfpTechStack">Preferred Technology Stack</label>
+                                <input type="text" class="ws-input" id="rfpTechStack" placeholder="e.g. Python Flask, PostgreSQL, Bootstrap 5">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ws-label" for="rfpCompliance">Security & Compliance Mandate</label>
+                                <select class="ws-select" id="rfpCompliance">
+                                    <option value="none">Standard Enterprise Security</option>
+                                    <option value="soc2" selected>SOC2 Type II Enforced</option>
+                                    <option value="hipaa">HIPAA Regulatory Compliance</option>
+                                    <option value="pci">PCI-DSS Level 1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="ws-btn ws-btn-secondary ws-btn-sm" onclick="goToStep(1)"><i class="bi bi-arrow-left"></i> Back</button>
+                            <button type="button" class="ws-btn ws-btn-primary ws-btn-sm" onclick="goToStep(3)">Proceed to Budget & Files <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 Pane -->
+                    <div id="stepPane3" class="d-none">
+                        <h4 class="text-white fs-6 fw-medium mb-3">3. Timeline, Budget & Architecture Files</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="ws-label" for="rfpBudget">Target Budget Allocation (USD)</label>
+                                <select class="ws-select" id="rfpBudget">
+                                    <option value="25k-50k">$25,000 – $50,000</option>
+                                    <option value="50k-100k" selected>$50,000 – $100,000</option>
+                                    <option value="100k-250k">$100,000 – $250,000</option>
+                                    <option value="custom">Custom Enterprise Scope</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ws-label" for="rfpDeadline">Target Production Release</label>
+                                <input type="date" class="ws-input" id="rfpDeadline" value="2027-02-15">
+                            </div>
+                            <div class="col-12">
+                                <label class="ws-label">Upload Architecture Documents / Wireframes</label>
+                                <div class="p-4 border border-secondary border-opacity-25 rounded text-center bg-dark bg-opacity-25">
+                                    <i class="bi bi-cloud-arrow-up fs-3 text-info d-block mb-2"></i>
+                                    <div class="text-white small fw-medium">Drag and drop PDF, Figma, or Word specs here</div>
+                                    <div class="text-muted small">Max 25MB per file • AES-256 encrypted at rest</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="ws-btn ws-btn-secondary ws-btn-sm" onclick="goToStep(2)"><i class="bi bi-arrow-left"></i> Back</button>
+                            <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm" id="submitRfpBtn">
+                                <i class="bi bi-send-check"></i> Submit Requirement (RFP)
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function goToStep(step) {
+        document.getElementById('stepPane1').classList.add('d-none');
+        document.getElementById('stepPane2').classList.add('d-none');
+        document.getElementById('stepPane3').classList.add('d-none');
+        document.getElementById('stepPane' + step).classList.remove('d-none');
+    }
+
+    async function handleRfpSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitRfpBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Dispatching...';
+
+        const payload = {
+            title: document.getElementById('rfpTitle').value,
+            category: document.getElementById('rfpCategory').value,
+            priority: document.getElementById('rfpPriority').value,
+            overview: document.getElementById('rfpOverview').value,
+            budget: document.getElementById('rfpBudget').value
+        };
+
+        try {
+            const res = await WareSoftAPI.fetch('/api/requirements', {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            });
+            WareSoftAPI.showToast(res.message || 'Requirement registered.', 'success');
+            setTimeout(() => {
+                window.location.href = '/requirements';
+            }, 800);
+        } catch (err) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-send-check"></i> Submit Requirement (RFP)';
+        }
+    }
+</script>
+{% endblock %}
