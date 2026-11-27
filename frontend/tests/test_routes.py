@@ -17,7 +17,7 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
     def test_eight_primary_workspaces(self):
         workspaces = [
             ('/', 'Software delivery, engineered for enterprise scale.'),
-            ('/auth', 'DevNexus Identity Portal'),
+            ('/auth', 'WareSoft Identity Portal'),
             ('/admin', 'Command & Analytics Center'),
             ('/client', 'Client & Commercial Workspace'),
             ('/projects', 'Projects & Delivery Studio'),
@@ -35,13 +35,18 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 self.assertIn('logo.svg', html)
                 self.assertIn('data-bs-theme="dark"', html)
                 self.assertIn('ws-header-pill', html)
-                self.assertIn('href="/login"', html)
-                self.assertIn('href="/register"', html)
+                self.assertNotIn('>Login<', html)
                 self.assertIn(marker, html_lib.unescape(html))
                 if route in ('/', '/auth'):
                     self.assertIn('Contact us', html)
                     self.assertNotIn('workspaceCmdInput', html)
+                    if route == '/':
+                        self.assertIn('href="/auth"', html)
+                    else:
+                        self.assertIn('Forgot password?', html)
+                        self.assertIn('Sign up', html)
                 else:
+                    self.assertIn('href="/auth"', html)
                     self.assertIn('workspaceCmdInput', html)
 
     def test_legacy_routes_and_tab_parameters(self):

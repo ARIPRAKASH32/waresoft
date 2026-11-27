@@ -6,7 +6,7 @@
                     <span class="ws-brand-icon">
                         <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="WareSoft Logo" width="24" height="24" style="display: block;">
                     </span>
-                    <span class="fw-semibold ws-text-ink fs-6">{{ app_name }} DevNexus</span>
+                    <span class="fw-semibold ws-text-ink fs-6">{{ app_name }}</span>
                 </div>
                 <p class="ws-text-secondary small mb-3" style="max-width: 340px;">
                     Unified software delivery operating system. Orchestrating requirements, sprints, automated QA, deployments, and milestone escrow in one calm interface.
@@ -49,7 +49,7 @@
 
         <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between py-4 ws-text-muted small">
             <div>&copy; 2026 WareSoft Engineering Inc.</div>
-            <div class="font-monospace" style="font-size: 11px;">DevNexus {{ system_status.version }} &bull; Calm Blend UI</div>
+            <div class="font-monospace" style="font-size: 11px;">{{ app_name }} {{ system_status.version }} &bull; Calm Blend UI</div>
         </div>
     </div>
 </footer>
