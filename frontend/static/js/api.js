@@ -11,10 +11,10 @@ const WareSoftAPI = (function() {
 
         const toastId = 'toast-' + Date.now();
         const iconMap = {
-            success: 'bi-check-circle-fill text-success',
-            warning: 'bi-exclamation-triangle-fill text-warning',
-            danger: 'bi-x-circle-fill text-danger',
-            info: 'bi-info-circle-fill text-info'
+            success: 'bi-check-circle-fill ws-text-cyan',
+            warning: 'bi-exclamation-triangle-fill ws-text-blue',
+            danger: 'bi-x-circle-fill ws-text-ink',
+            info: 'bi-info-circle-fill ws-text-blue'
         };
 
         const toastEl = document.createElement('div');

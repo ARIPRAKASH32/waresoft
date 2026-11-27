@@ -53,7 +53,7 @@ window.initDevNexus3D = function(containerId) {
         { name: 'Auth',      x: -3.8, y: 1.9,  z: 1.1,  color: 0x06B6D4, size: 0.52 },
         { name: 'Projects',  x: 3.9,  y: 1.8,  z: -0.9, color: 0x3B82F6, size: 0.58 },
         { name: 'Kanban',    x: 3.1,  y: -2.2, z: 1.4,  color: 0x06B6D4, size: 0.50 },
-        { name: 'QA & CI',   x: -3.3, y: -1.9, z: -1.0, color: 0x059669, size: 0.46 },
+        { name: 'QA & CI',   x: -3.3, y: -1.9, z: -1.0, color: 0x06B6D4, size: 0.46 },
         { name: 'Telemetry', x: 0.1,  y: 3.3,  z: 0.4,  color: 0x3B82F6, size: 0.44 },
         { name: 'Billing',   x: -0.2, y: -3.2, z: -0.4, color: 0x0B1020, size: 0.44 }
     ];
