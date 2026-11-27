@@ -50,10 +50,10 @@
     --ws-text-muted:      #64748B;
     --ws-text-inverse:    #FFFFFF;
 
-    /* ─── Font Families ─── */
-    --ws-font-display:    'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
-    --ws-font-sans:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --ws-font-mono:       'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+    /* ─── Font Families (Single Cohesive Family: Manrope + System Mono) ─── */
+    --ws-font-display:    'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ws-font-sans:       'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ws-font-mono:       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
     /* ─── Font Scale ─── */
     --ws-text-2xs:        11px;

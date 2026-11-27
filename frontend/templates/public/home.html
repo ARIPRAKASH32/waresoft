@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <!-- Right: Juspay-Style Product Console Bezel + 3D Topology -->
+                <!-- Right: Juspay-Style Bezel with Studio 3D Render + Live WebGL Toggle -->
                 <div class="col-lg-6">
                     <div class="jp-showcase-bezel">
                         <div class="jp-bezel-bar">
@@ -48,9 +48,21 @@
                                 <span class="status-dot status-dot-live"></span>
                                 <span>TOPOLOGY // SERVICE FABRIC</span>
                             </div>
-                            <span class="ws-pill ws-pill-navy" style="font-size: 10px;">WebGL 3D</span>
+                            <div class="jp-pill-nav p-1">
+                                <button type="button" class="jp-pill-tab active py-1 px-2" id="btnHeroRender" onclick="toggleHeroMode('render', this)">3D Studio</button>
+                                <button type="button" class="jp-pill-tab py-1 px-2" id="btnHeroWebgl" onclick="toggleHeroMode('webgl', this)">Live WebGL</button>
+                            </div>
                         </div>
-                        <div id="hero-3d-visualizer" style="width: 100%; height: 330px; cursor: grab; background-color: #FFFFFF;"></div>
+
+                        <div id="hero-render-pane" style="background-color: #F4F7FB;">
+                            <img src="{{ url_for('static', filename='images/platform-architecture.jpg') }}"
+                                 alt="WareSoft Service Architecture 3D Isometric Hardware Nodes"
+                                 class="w-100 d-block"
+                                 style="height: 330px; object-fit: cover;">
+                        </div>
+
+                        <div id="hero-3d-visualizer" class="d-none" style="width: 100%; height: 330px; cursor: grab; background-color: #FFFFFF;"></div>
+
                         <div class="jp-bezel-bar border-top border-bottom-0 ws-text-muted small font-monospace" style="font-size: 11px;">
                             <span>7 Orchestrated Services</span>
                             <span>14ms Edge Latency</span>
@@ -85,7 +97,7 @@
         </div>
     </section>
 
-    <!-- Interactive Product Suite Switcher (Juspay Signature Section) -->
+    <!-- Interactive Product Suite Switcher -->
     <section id="solutions" class="py-5 border-bottom" style="background-color: var(--ws-bg-canvas); border-color: var(--ws-border-quiet) !important;">
         <div class="content-container py-lg-3">
             <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4 mb-4">
@@ -95,23 +107,22 @@
                     <p class="ws-text-secondary small m-0">Select a lifecycle capability below to preview how teams orchestrate software from RFP to release.</p>
                 </div>
 
-                <!-- Pill Switcher -->
                 <div class="jp-pill-nav">
-                    <button class="jp-pill-tab active" onclick="switchShowcaseTab('intake', this)">01 Intake & Proposals</button>
+                    <button class="jp-pill-tab active" onclick="switchShowcaseTab('intake', this)">01 Intake &amp; Proposals</button>
                     <button class="jp-pill-tab" onclick="switchShowcaseTab('delivery', this)">02 Sprint Kanban</button>
-                    <button class="jp-pill-tab" onclick="switchShowcaseTab('quality', this)">03 QA & Deployments</button>
-                    <button class="jp-pill-tab" onclick="switchShowcaseTab('escrow', this)">04 Escrow & SLA</button>
+                    <button class="jp-pill-tab" onclick="switchShowcaseTab('quality', this)">03 QA &amp; Deployments</button>
+                    <button class="jp-pill-tab" onclick="switchShowcaseTab('escrow', this)">04 Escrow &amp; SLA</button>
                 </div>
             </div>
 
             <!-- Interactive Showcase Card -->
-            <div class="jp-showcase-bezel p-4 p-md-5">
+            <div class="jp-showcase-bezel p-4 p-md-5 mb-5">
                 <div id="showcase-intake" class="showcase-pane row align-items-center g-4">
                     <div class="col-lg-6">
-                        <span class="ws-pill ws-pill-telemetry mb-3">CLIENT & COMMERCIAL</span>
-                        <h3 class="ws-text-ink fw-semibold mb-3">Structured RFP Intake & Instant Line-Item Proposals</h3>
+                        <span class="ws-pill ws-pill-telemetry mb-3">CLIENT &amp; COMMERCIAL</span>
+                        <h3 class="ws-text-ink fw-semibold mb-3">Structured RFP Intake &amp; Instant Line-Item Proposals</h3>
                         <p class="ws-text-secondary small mb-4" style="line-height: 1.65;">
-                            Clients submit technical specifications through a guided 3-step wizard, collaborate in real-time clarification threads, and execute digital cryptographic sign-off on milestone proposals.
+                            Clients submit technical specifications through a guided intake form, collaborate in clarification threads, and execute digital sign-off on milestone proposals.
                         </p>
                         <a href="/client" class="ws-btn ws-btn-primary ws-btn-sm">Open Client Workspace <i class="bi bi-arrow-right"></i></a>
                     </div>
@@ -122,15 +133,15 @@
                                 <span class="ws-pill ws-pill-success">$45,000 ESCROW</span>
                             </div>
                             <div class="d-flex justify-content-between small py-2 ws-text-secondary">
-                                <span>Phase 1: Architecture & Schemas</span>
+                                <span>Phase 1: Architecture &amp; Schemas</span>
                                 <span class="font-monospace ws-text-ink">$10,000</span>
                             </div>
                             <div class="d-flex justify-content-between small py-2 ws-text-secondary">
-                                <span>Phase 2: Gateway & Webhooks</span>
+                                <span>Phase 2: Gateway &amp; Webhooks</span>
                                 <span class="font-monospace ws-text-ink">$22,000</span>
                             </div>
                             <div class="d-flex justify-content-between small py-2 ws-text-secondary">
-                                <span>Phase 3: Automated QA & Deploy</span>
+                                <span>Phase 3: Automated QA &amp; Deploy</span>
                                 <span class="font-monospace ws-text-ink">$13,000</span>
                             </div>
                         </div>
@@ -140,34 +151,26 @@
                 <div id="showcase-delivery" class="showcase-pane row align-items-center g-4 d-none">
                     <div class="col-lg-6">
                         <span class="ws-pill ws-pill-navy mb-3">DELIVERY STUDIO</span>
-                        <h3 class="ws-text-ink fw-semibold mb-3">Drag-and-Drop Sprint Kanban & Milestone Tracking</h3>
+                        <h3 class="ws-text-ink fw-semibold mb-3">Drag-and-Drop Sprint Kanban &amp; Milestone Tracking</h3>
                         <p class="ws-text-secondary small mb-4" style="line-height: 1.65;">
-                            Switch seamlessly between Projects Directory, 5-lane Sprint Kanban, Gantt Milestones, Task Backlog, and Team Bandwidth without leaving one unified workspace.
+                            Switch seamlessly between Projects Directory, Sprint Kanban, Milestones, Task Backlog, and Team Bandwidth inside one unified workspace.
                         </p>
                         <a href="/projects?tab=kanban" class="ws-btn ws-btn-primary ws-btn-sm">Open Sprint Kanban <i class="bi bi-arrow-right"></i></a>
                     </div>
                     <div class="col-lg-6">
-                        <div class="ws-surface-subtle p-4">
-                            <div class="d-flex justify-content-between small mb-2">
-                                <span class="ws-text-ink fw-semibold">Sprint 4 Progress</span>
-                                <span class="font-monospace ws-text-blue fw-semibold">82%</span>
-                            </div>
-                            <div class="progress mb-3" style="height: 6px; background-color: var(--ws-border-quiet);">
-                                <div class="progress-bar" style="width: 82%; background-color: var(--ws-brand-blue);"></div>
-                            </div>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <span class="ws-meta-tag">T-198 Design Tokens</span>
-                                <span class="ws-meta-tag">T-201 3D Fabric</span>
-                                <span class="ws-meta-tag">T-195 RBAC API</span>
-                            </div>
+                        <div class="rounded overflow-hidden border" style="border-color: var(--ws-border-quiet) !important;">
+                            <img src="{{ url_for('static', filename='images/sprint-workflow.jpg') }}"
+                                 alt="Deterministic Sprint Scheduling Hardware Rails"
+                                 class="w-100 d-block"
+                                 style="height: 220px; object-fit: cover;">
                         </div>
                     </div>
                 </div>
 
                 <div id="showcase-quality" class="showcase-pane row align-items-center g-4 d-none">
                     <div class="col-lg-6">
-                        <span class="ws-pill ws-pill-success mb-3">ENGINEERING & QA</span>
-                        <h3 class="ws-text-ink fw-semibold mb-3">GitHub PR Sync, Defect Matrix & Blue/Green Releases</h3>
+                        <span class="ws-pill ws-pill-success mb-3">ENGINEERING &amp; QA</span>
+                        <h3 class="ws-text-ink fw-semibold mb-3">GitHub PR Sync, Defect Matrix &amp; Blue/Green Releases</h3>
                         <p class="ws-text-secondary small mb-4" style="line-height: 1.65;">
                             Track every pull request, run regression suites before staging promotion, and trigger zero-downtime cloud rollouts directly from the engineering cockpit.
                         </p>
@@ -181,7 +184,7 @@
                             </div>
                             <div class="d-flex justify-content-between py-1">
                                 <span class="ws-text-secondary">Edge Cluster</span>
-                                <span class="ws-text-cyan">PROD v2.4.1 (Healthy)</span>
+                                <span class="ws-text-cyan">PROD v2.4.2 (Healthy)</span>
                             </div>
                             <div class="d-flex justify-content-between py-1">
                                 <span class="ws-text-secondary">OWASP Audit</span>
@@ -193,20 +196,53 @@
 
                 <div id="showcase-escrow" class="showcase-pane row align-items-center g-4 d-none">
                     <div class="col-lg-6">
-                        <span class="ws-pill ws-pill-telemetry mb-3">CLOUD OPS & BILLING</span>
-                        <h3 class="ws-text-ink fw-semibold mb-3">Automated SLA Monitoring & Milestone Escrow Invoices</h3>
+                        <span class="ws-pill ws-pill-telemetry mb-3">CLOUD OPS &amp; BILLING</span>
+                        <h3 class="ws-text-ink fw-semibold mb-3">Automated SLA Monitoring &amp; Milestone Escrow Invoices</h3>
                         <p class="ws-text-secondary small mb-4" style="line-height: 1.65;">
                             Monitor post-launch production SLAs, inspect diagnostic telemetry traces, and settle milestone-verified invoices with full audit logs.
                         </p>
-                        <a href="/operations" class="ws-btn ws-btn-primary ws-btn-sm">Open Cloud Ops & Billing <i class="bi bi-arrow-right"></i></a>
+                        <a href="/operations" class="ws-btn ws-btn-primary ws-btn-sm">Open Cloud Ops &amp; Billing <i class="bi bi-arrow-right"></i></a>
                     </div>
                     <div class="col-lg-6">
-                        <div class="ws-surface-subtle p-4">
-                            <div class="d-flex justify-content-between small mb-2">
-                                <span class="ws-text-ink fw-semibold">INV-2048 // Milestone 2</span>
-                                <span class="ws-pill ws-pill-warning">DUE DEC 10</span>
-                            </div>
-                            <div class="ws-text-muted small">Escrow protected &bull; Released upon staging E2E verification.</div>
+                        <div class="rounded overflow-hidden border" style="border-color: var(--ws-border-quiet) !important;">
+                            <img src="{{ url_for('static', filename='images/cloud-vault.jpg') }}"
+                                 alt="Anodized Cloud Infrastructure & Security Vault"
+                                 class="w-100 d-block"
+                                 style="height: 220px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-Column Visual Architecture Showcase Cards -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="ws-card p-0 overflow-hidden h-100 ws-card-interactive">
+                        <img src="{{ url_for('static', filename='images/platform-architecture.jpg') }}" alt="Service Mesh Architecture" class="w-100 d-block" style="height: 180px; object-fit: cover;">
+                        <div class="p-4">
+                            <div class="font-monospace ws-text-cyan small mb-1">01 // ARCHITECTURE</div>
+                            <h5 class="ws-text-ink fs-6 fw-semibold mb-2">Distributed Service Fabric</h5>
+                            <p class="ws-text-secondary small m-0">Modular microservices connected by low-latency event streams and verified API contracts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ws-card p-0 overflow-hidden h-100 ws-card-interactive">
+                        <img src="{{ url_for('static', filename='images/sprint-workflow.jpg') }}" alt="Sprint Delivery Rails" class="w-100 d-block" style="height: 180px; object-fit: cover;">
+                        <div class="p-4">
+                            <div class="font-monospace ws-text-blue small mb-1">02 // EXECUTION</div>
+                            <h5 class="ws-text-ink fs-6 fw-semibold mb-2">Deterministic Sprint Rails</h5>
+                            <p class="ws-text-secondary small m-0">Precision task alignment across Kanban lanes, milestone gates, and peer-reviewed PRs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ws-card p-0 overflow-hidden h-100 ws-card-interactive">
+                        <img src="{{ url_for('static', filename='images/cloud-vault.jpg') }}" alt="Security Vault & Escrow" class="w-100 d-block" style="height: 180px; object-fit: cover;">
+                        <div class="p-4">
+                            <div class="font-monospace ws-text-ink small mb-1">03 // COMPLIANCE</div>
+                            <h5 class="ws-text-ink fs-6 fw-semibold mb-2">Cloud Vault &amp; Escrow</h5>
+                            <p class="ws-text-secondary small m-0">SOC2 Type II encrypted telemetry, automated backups, and milestone-backed invoicing.</p>
                         </div>
                     </div>
                 </div>
@@ -214,7 +250,7 @@
         </div>
     </section>
 
-    <!-- Selected Deliveries & Calm Contact Section -->
+    <!-- Calm Contact Section -->
     <section id="contact" class="py-5" style="background-color: var(--ws-bg-surface-1);">
         <div class="content-container py-lg-3">
             <div class="row g-5 align-items-center">
@@ -263,16 +299,31 @@
 
 {% block scripts %}
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        if (typeof initDevNexus3D === 'function') {
-            initDevNexus3D('hero-3d-visualizer');
+    let webglInitialized = false;
+
+    function toggleHeroMode(mode, btn) {
+        const renderPane = document.getElementById('hero-render-pane');
+        const webglPane = document.getElementById('hero-3d-visualizer');
+        document.getElementById('btnHeroRender').classList.toggle('active', mode === 'render');
+        document.getElementById('btnHeroWebgl').classList.toggle('active', mode === 'webgl');
+
+        if (mode === 'webgl') {
+            renderPane.classList.add('d-none');
+            webglPane.classList.remove('d-none');
+            if (!webglInitialized && typeof initDevNexus3D === 'function') {
+                initDevNexus3D('hero-3d-visualizer');
+                webglInitialized = true;
+            }
+        } else {
+            webglPane.classList.add('d-none');
+            renderPane.classList.remove('d-none');
         }
-    });
+    }
 
     function switchShowcaseTab(key, btn) {
         document.querySelectorAll('.showcase-pane').forEach(p => p.classList.add('d-none'));
         document.getElementById('showcase-' + key).classList.remove('d-none');
-        document.querySelectorAll('.jp-pill-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#solutions .jp-pill-tab').forEach(b => b.classList.remove('active'));
         if (btn) btn.classList.add('active');
     }
 
