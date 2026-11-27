@@ -2,77 +2,117 @@
 
 {% block content %}
 <div class="public-home">
-    <!-- Calm Juspay-Inspired Editorial Hero -->
+    <!-- 1. Juspay-Style Centered Editorial Hero + Wide Product Bezel -->
     <section class="py-5 border-bottom" style="background-color: var(--ws-bg-surface-1); border-color: var(--ws-border-quiet) !important;">
-        <div class="content-container py-lg-4">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <div class="d-inline-flex align-items-center gap-2 mb-3">
-                        <span class="ws-pill ws-pill-telemetry">
-                            <span class="status-dot status-dot-live"></span>
-                            WARESOFT DEVNEXUS V2.4
-                        </span>
+        <div class="content-container pt-lg-4 pb-lg-2">
+            <div class="text-center mx-auto mb-5" style="max-width: 760px;">
+                <div class="d-inline-flex align-items-center gap-2 mb-3">
+                    <span class="ws-pill ws-pill-telemetry">
+                        <span class="status-dot status-dot-live"></span>
+                        WARESOFT DEVNEXUS V2.4
+                    </span>
+                </div>
+
+                <h1 class="display-4 fw-semibold ws-text-ink mb-3" style="letter-spacing: -0.03em; line-height: 1.1;">
+                    Software delivery, engineered for enterprise scale.
+                </h1>
+
+                <p class="ws-text-secondary lead fs-6 mx-auto mb-4" style="line-height: 1.65; max-width: 580px;">
+                    Unify client requirements, dynamic quotations, sprint kanban, automated QA, and blue/green cloud deployments in one calm operating system.
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+                    <a href="/projects" class="ws-btn ws-btn-navy ws-btn-lg">
+                        Launch Console <i class="bi bi-arrow-right"></i>
+                    </a>
+                    <a href="/client?tab=submit" class="ws-btn ws-btn-outline ws-btn-lg">
+                        Submit Project RFP
+                    </a>
+                </div>
+            </div>
+
+            <!-- Wide Product Showcase Bezel -->
+            <div class="jp-showcase-bezel mx-auto mb-5" style="max-width: 1080px;">
+                <div class="jp-bezel-bar">
+                    <div class="d-flex align-items-center gap-2 font-monospace small ws-text-secondary">
+                        <span class="status-dot status-dot-live"></span>
+                        <span>DEVNEXUS // UNIFIED DELIVERY CONSOLE</span>
                     </div>
-
-                    <h1 class="display-5 fw-semibold ws-text-ink mb-3" style="letter-spacing: -0.03em; line-height: 1.12;">
-                        The operating system for software delivery.
-                    </h1>
-
-                    <p class="ws-text-secondary lead fs-6 mb-4" style="line-height: 1.65; max-width: 500px;">
-                        One calm workspace uniting client requirements, proposal sign-offs, sprint kanban, automated QA, and cloud deployments—engineered for zero delivery friction.
-                    </p>
-
-                    <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
-                        <a href="/projects" class="ws-btn ws-btn-navy ws-btn-lg">
-                            Launch Console <i class="bi bi-arrow-right"></i>
-                        </a>
-                        <a href="/client?tab=submit" class="ws-btn ws-btn-outline ws-btn-lg">
-                            Submit Project RFP
-                        </a>
-                    </div>
-
-                    <div class="pt-3 border-top d-flex flex-wrap gap-4 ws-text-muted small font-monospace" style="border-color: var(--ws-border-quiet) !important;">
-                        <span>SOC2 Type II</span>
-                        <span>&bull;</span>
-                        <span>99.98% Uptime SLA</span>
-                        <span>&bull;</span>
-                        <span>8 Unified Workspaces</span>
+                    <div class="jp-pill-nav p-1">
+                        <button type="button" class="jp-pill-tab active py-1 px-2" id="btnHeroRender" onclick="toggleHeroMode('render')">3D Studio</button>
+                        <button type="button" class="jp-pill-tab py-1 px-2" id="btnHeroWebgl" onclick="toggleHeroMode('webgl')">Live WebGL</button>
                     </div>
                 </div>
 
-                <!-- Right: Juspay-Style Bezel with Studio 3D Render + Live WebGL Toggle -->
-                <div class="col-lg-6">
-                    <div class="jp-showcase-bezel">
-                        <div class="jp-bezel-bar">
-                            <div class="d-flex align-items-center gap-2 font-monospace small ws-text-secondary">
-                                <span class="status-dot status-dot-live"></span>
-                                <span>TOPOLOGY // SERVICE FABRIC</span>
-                            </div>
-                            <div class="jp-pill-nav p-1">
-                                <button type="button" class="jp-pill-tab active py-1 px-2" id="btnHeroRender" onclick="toggleHeroMode('render', this)">3D Studio</button>
-                                <button type="button" class="jp-pill-tab py-1 px-2" id="btnHeroWebgl" onclick="toggleHeroMode('webgl', this)">Live WebGL</button>
-                            </div>
-                        </div>
-
-                        <div id="hero-render-pane" style="background-color: #F4F7FB;">
+                <div class="row g-0 align-items-stretch">
+                    <!-- Left: 3D Architecture Visual / Interactive WebGL -->
+                    <div class="col-lg-7 border-end" style="border-color: var(--ws-border-quiet) !important; background-color: #F4F7FB;">
+                        <div id="hero-render-pane" class="h-100">
                             <img src="{{ url_for('static', filename='images/platform-architecture.jpg') }}"
                                  alt="WareSoft Service Architecture 3D Isometric Hardware Nodes"
-                                 class="w-100 d-block"
-                                 style="height: 330px; object-fit: cover;">
+                                 class="w-100 h-100 d-block"
+                                 style="min-height: 320px; max-height: 360px; object-fit: cover;">
+                        </div>
+                        <div id="hero-3d-visualizer" class="d-none" style="width: 100%; height: 360px; cursor: grab; background-color: #FFFFFF;"></div>
+                    </div>
+
+                    <!-- Right: Live Console Telemetry Snapshot -->
+                    <div class="col-lg-5 p-4 d-flex flex-column justify-content-between bg-white">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="ws-text-muted small font-monospace">ACTIVE CLUSTER</span>
+                                <span class="ws-pill ws-pill-success">99.98% SLA</span>
+                            </div>
+                            <h5 class="ws-text-ink fw-semibold mb-3">NX-101: Payment Router Core</h5>
+
+                            <div class="p-3 ws-surface-subtle mb-3">
+                                <div class="d-flex justify-content-between small mb-2">
+                                    <span class="ws-text-secondary">Sprint 4 Adherence</span>
+                                    <span class="font-monospace ws-text-blue fw-semibold">82%</span>
+                                </div>
+                                <div class="progress" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                    <div class="progress-bar" style="width: 82%; background-color: var(--ws-brand-blue);"></div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column gap-2 small">
+                                <div class="d-flex justify-content-between py-2 border-bottom" style="border-color: var(--ws-border-quiet) !important;">
+                                    <span class="ws-text-muted">Production Release</span>
+                                    <span class="font-monospace ws-text-ink">{{ system_status.version }} ({{ system_status.commit }})</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-2 border-bottom" style="border-color: var(--ws-border-quiet) !important;">
+                                    <span class="ws-text-muted">Automated QA Gate</span>
+                                    <span class="font-monospace" style="color: var(--ws-signal-success);">301 / 312 Passed</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-2">
+                                    <span class="ws-text-muted">Milestone Escrow</span>
+                                    <span class="font-monospace ws-text-cyan fw-semibold">$45,000 Verified</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="hero-3d-visualizer" class="d-none" style="width: 100%; height: 330px; cursor: grab; background-color: #FFFFFF;"></div>
-
-                        <div class="jp-bezel-bar border-top border-bottom-0 ws-text-muted small font-monospace" style="font-size: 11px;">
-                            <span>7 Orchestrated Services</span>
-                            <span>14ms Edge Latency</span>
+                        <div class="pt-3 mt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                            <span class="ws-text-muted small font-monospace">14ms Edge Latency</span>
+                            <a href="/projects?tab=kanban" class="small fw-semibold">Inspect Kanban &rarr;</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Calm Hairline-Separated Global Scale Stat Strip -->
-            <div class="jp-stat-strip mt-5">
+            <!-- 2. Enterprise Trust Logo Strip (Juspay Style) -->
+            <div class="text-center pt-2 pb-4">
+                <div class="ws-text-muted small font-monospace mb-2" style="font-size: 11px;">TRUSTED BY HIGH-THROUGHPUT ENGINEERING TEAMS</div>
+                <div class="jp-logo-strip">
+                    <span class="jp-logo-item"><i class="bi bi-bank2"></i> FINTECH GLOBAL</span>
+                    <span class="jp-logo-item"><i class="bi bi-truck"></i> LOGIX WORLDWIDE</span>
+                    <span class="jp-logo-item"><i class="bi bi-heart-pulse"></i> AEGIS HEALTH</span>
+                    <span class="jp-logo-item"><i class="bi bi-airplane"></i> TRAVELBASE</span>
+                    <span class="jp-logo-item"><i class="bi bi-hdd-network"></i> NEXUS CLOUD</span>
+                </div>
+            </div>
+
+            <!-- 3. Hairline-Separated Global Scale Metrics -->
+            <div class="jp-stat-strip mt-2">
                 <div class="jp-stat-cell">
                     <div class="ws-metric-label">Production Uptime SLA</div>
                     <div class="ws-metric-value ws-text-ink">99.98%</div>
@@ -97,14 +137,14 @@
         </div>
     </section>
 
-    <!-- Interactive Product Suite Switcher -->
+    <!-- 4. Modular Product Suite Switcher & Architecture Cards -->
     <section id="solutions" class="py-5 border-bottom" style="background-color: var(--ws-bg-canvas); border-color: var(--ws-border-quiet) !important;">
         <div class="content-container py-lg-3">
             <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4 mb-4">
-                <div style="max-width: 580px;">
-                    <span class="ws-pill ws-pill-navy mb-2">UNIFIED SUITE</span>
-                    <h2 class="ws-text-ink fw-semibold mb-2">Every stage of delivery, one calm interface.</h2>
-                    <p class="ws-text-secondary small m-0">Select a lifecycle capability below to preview how teams orchestrate software from RFP to release.</p>
+                <div style="max-width: 560px;">
+                    <span class="ws-pill ws-pill-navy mb-2">MODULAR SUITE</span>
+                    <h2 class="ws-text-ink fw-semibold mb-2">Every stage of delivery, built as one ecosystem.</h2>
+                    <p class="ws-text-secondary small m-0">Select a capability to inspect how clients, engineers, QA, and cloud ops work in sync.</p>
                 </div>
 
                 <div class="jp-pill-nav">
@@ -115,7 +155,6 @@
                 </div>
             </div>
 
-            <!-- Interactive Showcase Card -->
             <div class="jp-showcase-bezel p-4 p-md-5 mb-5">
                 <div id="showcase-intake" class="showcase-pane row align-items-center g-4">
                     <div class="col-lg-6">
@@ -184,7 +223,7 @@
                             </div>
                             <div class="d-flex justify-content-between py-1">
                                 <span class="ws-text-secondary">Edge Cluster</span>
-                                <span class="ws-text-cyan">PROD v2.4.2 (Healthy)</span>
+                                <span class="ws-text-cyan">PROD {{ system_status.version }} (Healthy)</span>
                             </div>
                             <div class="d-flex justify-content-between py-1">
                                 <span class="ws-text-secondary">OWASP Audit</span>
@@ -250,8 +289,58 @@
         </div>
     </section>
 
-    <!-- Calm Contact Section -->
-    <section id="contact" class="py-5" style="background-color: var(--ws-bg-surface-1);">
+    <!-- 5. Juspay Developer Studio & Live API Contract Explorer -->
+    <section id="developers" class="py-5 border-bottom" style="background-color: var(--ws-bg-surface-1); border-color: var(--ws-border-quiet) !important;">
+        <div class="content-container py-lg-3">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5">
+                    <span class="ws-pill ws-pill-telemetry mb-2">DEVELOPER STUDIO</span>
+                    <h2 class="ws-text-ink fw-semibold mb-3">Built for developers. Integrated with DevNexus APIs.</h2>
+                    <p class="ws-text-secondary small mb-4" style="line-height: 1.65;">
+                        Every frontend workspace communicates cleanly through JSON REST contracts with role-based middleware, Fetch error boundaries, and deterministic schema validation.
+                    </p>
+                    <div class="d-flex flex-column gap-2 small ws-text-secondary mb-4">
+                        <div><i class="bi bi-check2-circle me-2" style="color: var(--ws-brand-blue);"></i>Zero hardcoded mock state on API routes</div>
+                        <div><i class="bi bi-check2-circle me-2" style="color: var(--ws-brand-cyan);"></i>GPG-signed commits &amp; GitHub PR diff tracking</div>
+                        <div><i class="bi bi-check2-circle me-2" style="color: var(--ws-signal-success);"></i>100% route &amp; contract test coverage</div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="/developer" class="ws-btn ws-btn-primary ws-btn-sm">Engineering Cockpit</a>
+                        <a href="/developer/github" class="ws-btn ws-btn-secondary ws-btn-sm">GitHub Sync</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="jp-code-explorer">
+                        <div class="jp-code-header">
+                            <div class="d-flex gap-1 flex-wrap">
+                                <button type="button" class="jp-code-tab active" onclick="selectApiContract('requirements', this)">GET /api/requirements</button>
+                                <button type="button" class="jp-code-tab" onclick="selectApiContract('kanban', this)">GET /api/kanban/tasks</button>
+                                <button type="button" class="jp-code-tab" onclick="selectApiContract('deploy', this)">POST /api/deployment/trigger</button>
+                            </div>
+                            <button type="button" class="ws-btn ws-btn-cyan ws-btn-sm" onclick="testLiveEndpoint()">
+                                <i class="bi bi-play-fill"></i> Test Live API
+                            </button>
+                        </div>
+                        <pre class="jp-code-body" id="apiExplorerOutput">{
+  "endpoint": "/api/requirements",
+  "method": "GET",
+  "description": "Retrieve active RFP pipeline and client scope allocations",
+  "sample_response": {
+    "requirements": [
+      { "id": 1041, "title": "Cloud Native Payment Gateway", "status": "Under Review" },
+      { "id": 1040, "title": "Warehouse IoT Telemetry Hub", "status": "Approved" }
+    ]
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Calm Consultation & Brief Section -->
+    <section id="contact" class="py-5" style="background-color: var(--ws-bg-canvas);">
         <div class="content-container py-lg-3">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5">
@@ -300,8 +389,47 @@
 {% block scripts %}
 <script>
     let webglInitialized = false;
+    let currentEndpoint = 'requirements';
 
-    function toggleHeroMode(mode, btn) {
+    const apiSnippets = {
+        requirements: {
+            url: '/api/requirements',
+            method: 'GET',
+            preview: `{\n  "endpoint": "/api/requirements",\n  "method": "GET",\n  "description": "Retrieve active RFP pipeline and client scope allocations",\n  "sample_response": {\n    "requirements": [\n      { "id": 1041, "title": "Cloud Native Payment Gateway", "status": "Under Review" },\n      { "id": 1040, "title": "Warehouse IoT Telemetry Hub", "status": "Approved" }\n    ]\n  }\n}`
+        },
+        kanban: {
+            url: '/api/kanban/tasks',
+            method: 'GET',
+            preview: `{\n  "endpoint": "/api/kanban/tasks",\n  "method": "GET",\n  "description": "Fetch live sprint columns and task assignments",\n  "sample_response": {\n    "columns": ["backlog", "in_progress", "code_review", "completed"]\n  }\n}`
+        },
+        deploy: {
+            url: '/api/deployment/trigger',
+            method: 'POST',
+            body: { environment: 'staging' },
+            preview: `{\n  "endpoint": "/api/deployment/trigger",\n  "method": "POST",\n  "payload": { "environment": "staging" },\n  "description": "Promote verified release SHA to target cluster"\n}`
+        }
+    };
+
+    function selectApiContract(key, btn) {
+        currentEndpoint = key;
+        document.querySelectorAll('.jp-code-tab').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        document.getElementById('apiExplorerOutput').textContent = apiSnippets[key].preview;
+    }
+
+    async function testLiveEndpoint() {
+        const spec = apiSnippets[currentEndpoint];
+        const out = document.getElementById('apiExplorerOutput');
+        out.textContent = `// Fetching ${spec.method} ${spec.url}...`;
+        const opts = spec.method === 'POST'
+            ? { method: 'POST', body: JSON.stringify(spec.body) }
+            : { method: 'GET' };
+        const data = await WareSoftAPI.fetch(spec.url, opts);
+        out.textContent = JSON.stringify(data, null, 2);
+        WareSoftAPI.showToast(`Live ${spec.method} ${spec.url} returned 200 OK`, 'success');
+    }
+
+    function toggleHeroMode(mode) {
         const renderPane = document.getElementById('hero-render-pane');
         const webglPane = document.getElementById('hero-3d-visualizer');
         document.getElementById('btnHeroRender').classList.toggle('active', mode === 'render');
