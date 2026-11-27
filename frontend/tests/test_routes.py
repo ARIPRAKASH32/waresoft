@@ -30,13 +30,13 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 resp = self.client.get(route)
                 self.assertEqual(resp.status_code, 200)
                 html = resp.get_data(as_text=True)
-                self.assertIn('Manrope', html)
+                self.assertIn('DM+Sans', html)
                 self.assertNotIn('Plus+Jakarta+Sans', html)
                 self.assertIn('logo.svg', html)
                 self.assertIn('data-bs-theme="dark"', html)
+                self.assertIn('ws-header-pill', html)
                 self.assertIn(marker, html_lib.unescape(html))
                 if route in ('/', '/auth'):
-                    self.assertIn('ws-header-pill', html)
                     self.assertIn('Contact us', html)
                     self.assertNotIn('workspaceCmdInput', html)
                 else:

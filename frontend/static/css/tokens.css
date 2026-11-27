@@ -1,57 +1,58 @@
 /**
- * WareSoft DevNexus Design System Tokens (Full Dark Navy #0B1020 + #3B82F6 + #06B6D4)
- * Strict 4px Scale | Cohesive Dark Navy Surface Ramp | Unslop Compliant
+ * WareSoft DevNexus Design System Tokens (Floating Obsidian Pill + Cobalt/Cyan)
+ * Strict 4px Scale | Surface Ramp Matched to Floating Pill Header (#0B1020 -> #121828 -> #22293B)
  */
 
 :root {
-    /* ─── Color Ramp: Full Dark Navy Surfaces ─── */
-    --ws-bg-canvas:       #0B1020; /* Core dark navy canvas */
-    --ws-bg-surface-1:    #0F172A; /* Primary cards, sidebar, floating pill */
-    --ws-bg-surface-2:    #162038; /* Secondary panels, table headers, kanban lanes */
-    --ws-bg-surface-3:    #1E293B; /* Hover step & active control surface */
-    --ws-bg-elevated:     #162038; /* Dropdowns & popovers */
-    --ws-bg-input:        #0B1020; /* Input fields inside cards */
+    /* ─── Color Ramp: Obsidian Midnight Surfaces ─── */
+    --ws-bg-canvas:       #0B1020; /* Outer deep midnight canvas */
+    --ws-bg-surface-1:    #121828; /* Floating pill header, sidebar, cards */
+    --ws-bg-surface-2:    #22293B; /* Nested header pills, table headers, kanban lanes */
+    --ws-bg-surface-3:    #2B354E; /* Hover step & active control surface */
+    --ws-bg-elevated:     #161E31; /* Dropdowns & popovers */
+    --ws-bg-input:        #0D1326; /* Input fields inside cards */
     --ws-bg-navy:         #0B1020;
 
-    /* ─── Brand Accents (#0B1020, #3B82F6, #06B6D4) ─── */
+    /* ─── Brand Accents (#3B82F6 Cobalt + #06B6D4 Cyan) ─── */
     --ws-brand-navy:      #0B1020;
     --ws-brand-blue:      #3B82F6;
-    --ws-brand-blue-hover:#2563EB;
-    --ws-brand-blue-ink:  #60A5FA; /* Accessible blue ink on #0B1020/#0F172A */
-    --ws-brand-blue-soft: rgba(59, 130, 246, 0.14);
+    --ws-brand-blue-strong:#2563EB;
+    --ws-brand-blue-hover:#3B82F6;
+    --ws-brand-blue-ink:  #60A5FA; /* Accessible blue ink on dark */
+    --ws-brand-blue-soft: rgba(59, 130, 246, 0.16);
 
     --ws-brand-cyan:      #06B6D4;
-    --ws-brand-cyan-ink:  #22D3EE; /* Accessible cyan ink on #0B1020/#0F172A */
-    --ws-brand-cyan-soft: rgba(6, 182, 212, 0.14);
+    --ws-brand-cyan-ink:  #22D3EE; /* Accessible cyan ink on dark */
+    --ws-brand-cyan-soft: rgba(6, 182, 212, 0.15);
 
-    /* ─── Semantic Roles Mapped Strictly to Brand Palette ─── */
-    --ws-signal-success:      #22D3EE; /* Bright Cyan on dark */
-    --ws-signal-success-soft: rgba(6, 182, 212, 0.14);
+    /* ─── Semantic Roles Mapped Strictly to Cobalt & Cyan ─── */
+    --ws-signal-success:      #22D3EE; /* Electric Cyan on dark */
+    --ws-signal-success-soft: rgba(6, 182, 212, 0.15);
 
-    --ws-signal-warning:      #60A5FA; /* Bright Blue on dark */
-    --ws-signal-warning-soft: rgba(59, 130, 246, 0.14);
+    --ws-signal-warning:      #60A5FA; /* Cobalt Blue on dark */
+    --ws-signal-warning-soft: rgba(59, 130, 246, 0.15);
 
     --ws-signal-danger:       #F8FAFC; /* Crisp High-Contrast Off-White for critical tags */
     --ws-signal-danger-soft:  rgba(255, 255, 255, 0.10);
 
     --ws-signal-info:         #3B82F6;
-    --ws-signal-info-soft:    rgba(59, 130, 246, 0.14);
+    --ws-signal-info-soft:    rgba(59, 130, 246, 0.15);
 
     /* ─── Quiet Hairlines & Borders on Dark ─── */
     --ws-border-quiet:    rgba(255, 255, 255, 0.08);
-    --ws-border-subtle:   rgba(255, 255, 255, 0.14);
-    --ws-border-focus:    rgba(59, 130, 246, 0.50);
+    --ws-border-subtle:   rgba(255, 255, 255, 0.13);
+    --ws-border-focus:    rgba(59, 130, 246, 0.55);
     --ws-border-cyan:     rgba(6, 182, 212, 0.35);
 
-    /* ─── Typography: 3 Calm Text Roles (WCAG AA on #0B1020) ─── */
+    /* ─── Typography: 3 Calm Text Roles ─── */
     --ws-text-primary:    #F8FAFC;
     --ws-text-secondary:  #94A3B8;
     --ws-text-muted:      #78869B;
     --ws-text-inverse:    #0B1020;
 
-    /* ─── Single Cohesive Font Family: Manrope + System Mono ─── */
-    --ws-font-display:    'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-    --ws-font-sans:       'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* ─── Single Cohesive Font Family: DM Sans + System Mono ─── */
+    --ws-font-display:    'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ws-font-sans:       'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --ws-font-mono:       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
     /* ─── Font Scale ─── */

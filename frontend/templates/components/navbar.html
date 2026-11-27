@@ -29,11 +29,11 @@
                 <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Products <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
-                <ul class="dropdown-menu ws-dropdown-menu">
-                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2 ws-text-blue"></i>Client &amp; Commercial</a></li>
-                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-kanban me-2 ws-text-cyan"></i>Projects &amp; Sprint Kanban</a></li>
-                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-terminal me-2 ws-text-ink"></i>Engineering &amp; QA</a></li>
-                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2 ws-text-blue"></i>Cloud Ops &amp; Escrow</a></li>
+                <ul class="dropdown-menu ws-dropdown-menu mt-2">
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building"></i><span>Client &amp; Commercial</span></a></li>
+                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-kanban"></i><span>Projects &amp; Sprint Kanban</span></a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-terminal"></i><span>Engineering &amp; QA</span></a></li>
+                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check"></i><span>Cloud Ops &amp; Escrow</span></a></li>
                 </ul>
             </div>
 
@@ -41,10 +41,10 @@
                 <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Resources <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
-                <ul class="dropdown-menu ws-dropdown-menu">
-                    <li><a class="dropdown-item" href="/#solutions"><i class="bi bi-layers me-2 ws-text-blue"></i>Architecture Overview</a></li>
-                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces me-2 ws-text-cyan"></i>DevNexus API Explorer</a></li>
-                    <li><a class="dropdown-item" href="/operations?tab=releases"><i class="bi bi-tag me-2 ws-text-ink"></i>Release Changelogs</a></li>
+                <ul class="dropdown-menu ws-dropdown-menu mt-2">
+                    <li><a class="dropdown-item" href="/#solutions"><i class="bi bi-layers"></i><span>Architecture Overview</span></a></li>
+                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces"></i><span>DevNexus API Explorer</span></a></li>
+                    <li><a class="dropdown-item" href="/operations?tab=releases"><i class="bi bi-tag"></i><span>Release Changelogs</span></a></li>
                 </ul>
             </div>
 
@@ -54,10 +54,10 @@
                 <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Company <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
-                <ul class="dropdown-menu ws-dropdown-menu">
-                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-check me-2 ws-text-blue"></i>Executive Command</a></li>
-                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-grid-1x2 me-2 ws-text-cyan"></i>Workspaces Console</a></li>
-                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2 ws-text-ink"></i>Sign In / Portal</a></li>
+                <ul class="dropdown-menu ws-dropdown-menu mt-2">
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-check"></i><span>Executive Command</span></a></li>
+                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-grid-1x2"></i><span>Workspaces Console</span></a></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right"></i><span>Sign In / Portal</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -70,12 +70,12 @@
                     <span id="activeRegionLabel">India</span>
                     <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end ws-dropdown-menu">
-                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('India', 'ap-south-1')"><i class="bi bi-geo-alt me-2 ws-text-blue"></i>India (ap-south-1)</button></li>
-                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('Global', 'us-east-1')"><i class="bi bi-globe me-2 ws-text-cyan"></i>Global (us-east-1)</button></li>
+                <ul class="dropdown-menu dropdown-menu-end ws-dropdown-menu mt-2">
+                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('India', 'ap-south-1')"><i class="bi bi-geo-alt"></i><span>India (ap-south-1)</span></button></li>
+                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('Global', 'us-east-1')"><i class="bi bi-globe"></i><span>Global (us-east-1)</span></button></li>
                     <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
-                    <li><a class="dropdown-item fw-semibold" href="/projects"><i class="bi bi-kanban me-2 ws-text-blue"></i>Open Console</a></li>
-                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-person me-2 ws-text-ink"></i>Sign In</a></li>
+                    <li><a class="dropdown-item fw-semibold" href="/projects"><i class="bi bi-kanban"></i><span>Open Console</span></a></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-person"></i><span>Sign In</span></a></li>
                 </ul>
             </div>
 
@@ -87,9 +87,9 @@
 </header>
 
 {% else %}
-<!-- Dashboard Console Header (#0B1020) with Cmd+K Command Search Bar -->
-<header class="ws-header">
-    <div class="ws-header-inner content-container">
+<!-- Dashboard Floating Pill Header (Matched Across All Console Pages) -->
+<header class="ws-header-floating-wrap">
+    <div class="ws-header-pill ws-header-pill-console">
         <div class="ws-brand-cluster">
             <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-5"></i>
@@ -104,8 +104,7 @@
                         <circle cx="17.8" cy="18.5" r="1.4" fill="#3B82F6"/>
                     </svg>
                 </span>
-                <span class="ws-brand-text">{{ app_name }}</span>
-                <span class="small fw-normal d-none d-sm-inline" style="color: #94A3B8;">/ Console</span>
+                <span class="ws-brand-text" style="letter-spacing: -0.02em;">{{ app_name }}</span>
             </a>
         </div>
 
@@ -117,33 +116,33 @@
             </div>
             <div id="workspaceCmdResults" class="jp-cmd-results d-none">
                 <a href="/projects" class="jp-cmd-item" data-terms="projects directory workspaces">
-                    <span><i class="bi bi-grid-1x2 me-2 ws-text-blue"></i>Projects Directory</span>
+                    <span><i class="bi bi-grid-1x2 me-2 ws-text-muted"></i>Projects Directory</span>
                     <span class="ws-text-muted font-monospace">/projects</span>
                 </a>
                 <a href="/projects/101/kanban" class="jp-cmd-item" data-terms="kanban sprint board tasks">
-                    <span><i class="bi bi-kanban me-2 ws-text-cyan"></i>Sprint Kanban Board</span>
+                    <span><i class="bi bi-kanban me-2 ws-text-muted"></i>Sprint Kanban Board</span>
                     <span class="ws-text-muted font-monospace">NX-101</span>
                 </a>
                 <a href="/client?tab=submit" class="jp-cmd-item" data-terms="rfp submit requirement client quote">
-                    <span><i class="bi bi-plus-circle me-2 ws-text-blue"></i>Submit New RFP</span>
+                    <span><i class="bi bi-plus-circle me-2 ws-text-muted"></i>Submit New RFP</span>
                     <span class="ws-text-muted font-monospace">/client</span>
                 </a>
                 <a href="/admin?tab=analytics" class="jp-cmd-item" data-terms="admin analytics velocity charts">
-                    <span><i class="bi bi-graph-up me-2 ws-text-cyan"></i>Velocity Analytics</span>
+                    <span><i class="bi bi-graph-up me-2 ws-text-muted"></i>Velocity Analytics</span>
                     <span class="ws-text-muted font-monospace">/admin</span>
                 </a>
                 <a href="/developer?tab=github" class="jp-cmd-item" data-terms="developer github pr qa bugs">
-                    <span><i class="bi bi-github me-2 ws-text-ink"></i>GitHub PRs &amp; QA</span>
+                    <span><i class="bi bi-github me-2 ws-text-muted"></i>GitHub PRs &amp; QA</span>
                     <span class="ws-text-muted font-monospace">/developer</span>
                 </a>
                 <a href="/operations?tab=deployments" class="jp-cmd-item" data-terms="deploy staging prod sla billing invoices">
-                    <span><i class="bi bi-cloud-arrow-up me-2 ws-text-blue"></i>Cloud Ops &amp; Billing</span>
+                    <span><i class="bi bi-cloud-arrow-up me-2 ws-text-muted"></i>Cloud Ops &amp; Billing</span>
                     <span class="ws-text-muted font-monospace">/operations</span>
                 </a>
             </div>
         </div>
 
-        <div class="ws-header-actions">
+        <div class="ws-header-actions gap-3">
             <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications" aria-label="Notifications">
                 <i class="bi bi-bell"></i>
                 <span class="ws-notify-dot"></span>
@@ -184,6 +183,10 @@
                     <li><button class="dropdown-item" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right"></i><span>Sign Out</span></button></li>
                 </ul>
             </div>
+
+            <a href="/" class="ws-contact-cta d-none d-lg-inline-flex">
+                Showcase <i class="bi bi-caret-right-fill" style="font-size: 10px;"></i>
+            </a>
         </div>
     </div>
 </header>
