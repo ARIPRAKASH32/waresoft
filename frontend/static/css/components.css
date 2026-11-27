@@ -487,54 +487,93 @@
     white-space: nowrap;
 }
 
-/* ─── Telemetry Pills & Badges ─── */
+/* ─── Quiet Eyebrow Kickers, Live Indicators & Obsidian Status Capsules ─── */
+.ws-eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ws-brand-blue-ink);
+    letter-spacing: 0.01em;
+}
+
+.ws-status-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ws-text-secondary);
+    white-space: nowrap;
+}
+
 .ws-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 3px 8px;
-    border-radius: var(--ws-radius-xs);
-    font-family: var(--ws-font-mono);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-family: var(--ws-font-sans);
     font-size: 11px;
     font-weight: 500;
-    line-height: 1.35;
-    border: 1px solid transparent;
+    line-height: 1.4;
+    background-color: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: var(--ws-text-secondary);
     white-space: nowrap;
 }
 
-.ws-pill-telemetry {
-    background-color: var(--ws-brand-cyan-soft);
-    border-color: rgba(6, 182, 212, 0.28);
-    color: var(--ws-brand-cyan-ink);
-}
-
-.ws-pill-navy {
-    background-color: var(--ws-bg-surface-2);
-    border-color: rgba(59, 130, 246, 0.35);
-    color: var(--ws-text-primary);
-}
-
+.ws-pill-telemetry,
 .ws-pill-success {
-    background-color: var(--ws-signal-success-soft);
-    border-color: rgba(6, 182, 212, 0.28);
-    color: var(--ws-brand-cyan-ink);
+    background-color: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 255, 255, 0.09);
+    color: #E2E8F0;
 }
 
+.ws-pill-telemetry::before,
+.ws-pill-success::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--ws-brand-cyan);
+    flex-shrink: 0;
+}
+
+.ws-pill-navy,
 .ws-pill-warning {
-    background-color: var(--ws-signal-warning-soft);
-    border-color: rgba(59, 130, 246, 0.28);
-    color: var(--ws-brand-blue-ink);
+    background-color: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 255, 255, 0.09);
+    color: #E2E8F0;
+}
+
+.ws-pill-navy::before,
+.ws-pill-warning::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--ws-brand-blue-ink);
+    flex-shrink: 0;
 }
 
 .ws-pill-danger {
-    background-color: var(--ws-signal-danger-soft);
-    border-color: rgba(255, 255, 255, 0.22);
-    color: var(--ws-signal-danger);
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #F8FAFC;
+}
+
+.ws-pill-danger::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #F8FAFC;
+    flex-shrink: 0;
 }
 
 .ws-pill-muted {
-    background-color: var(--ws-bg-surface-2);
-    border-color: var(--ws-border-quiet);
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.07);
     color: var(--ws-text-secondary);
 }
 
@@ -548,6 +587,7 @@
 
 .status-dot-live {
     background-color: var(--ws-brand-cyan);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.16);
 }
 
 /* ─── Equal-Height Metric Boxes ─── */

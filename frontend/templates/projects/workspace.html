@@ -11,9 +11,9 @@
             <!-- Header -->
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
                 <div>
-                    <div class="d-flex align-items-center gap-2 mb-1">
+                    <div class="d-flex align-items-center gap-3 mb-1">
                         <h1 class="fs-4 fw-semibold ws-text-ink m-0">Projects &amp; Delivery Studio</h1>
-                        <span class="ws-pill ws-pill-navy font-monospace"><span class="rounded-circle d-inline-block" style="width: 6px; height: 6px; background-color: var(--ws-brand-cyan);"></span>NX-{{ "%03d"|format(project_id|default(101)) }} Active</span>
+                        <span class="ws-status-inline font-monospace" style="font-size: 11px;"><span class="status-dot status-dot-live"></span> NX-{{ "%03d"|format(project_id|default(101)) }} Active</span>
                     </div>
                     <p class="ws-text-secondary small m-0">Switch cleanly between active workspaces, Sprint Kanban, milestones, backlog, and team capacity.</p>
                 </div>
@@ -153,20 +153,20 @@
                     <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'backlog')">
                         <div class="kanban-lane-header">
                             <span class="fw-semibold ws-text-ink small">Backlog</span>
-                            <span class="ws-pill ws-pill-muted">2</span>
+                            <span class="font-monospace small ws-text-muted">2</span>
                         </div>
                         <div class="kanban-cards-wrapper" id="lane-backlog">
                             <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-204')" id="card-T-204">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="font-monospace ws-text-cyan small fw-semibold">T-204</span>
-                                    <span class="ws-pill ws-pill-danger" style="font-size: 10px;">HIGH</span>
+                                    <span class="ws-pill ws-pill-danger">High</span>
                                 </div>
                                 <div class="kanban-card-title">Webhook Retry Exponential Backoff</div>
                             </div>
                             <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-209')" id="card-T-209">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="font-monospace ws-text-cyan small fw-semibold">T-209</span>
-                                    <span class="ws-pill ws-pill-muted" style="font-size: 10px;">MED</span>
+                                    <span class="ws-pill ws-pill-muted">Medium</span>
                                 </div>
                                 <div class="kanban-card-title">Optimize Jinja2 SSR Cache Headers</div>
                             </div>
@@ -176,20 +176,20 @@
                     <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'in_progress')">
                         <div class="kanban-lane-header">
                             <span class="fw-semibold ws-text-ink small">In Progress</span>
-                            <span class="ws-pill ws-pill-telemetry">2</span>
+                            <span class="font-monospace small ws-text-muted">2</span>
                         </div>
                         <div class="kanban-cards-wrapper" id="lane-in_progress">
                             <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-198')" id="card-T-198">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="font-monospace ws-text-cyan small fw-semibold">T-198</span>
-                                    <span class="ws-pill ws-pill-navy" style="font-size: 10px;">CRITICAL</span>
+                                    <span class="ws-pill ws-pill-navy">Critical</span>
                                 </div>
                                 <div class="kanban-card-title">Blend Design Tokens &amp; Workspace Tabs</div>
                             </div>
                             <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-201')" id="card-T-201">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="font-monospace ws-text-cyan small fw-semibold">T-201</span>
-                                    <span class="ws-pill ws-pill-danger" style="font-size: 10px;">HIGH</span>
+                                    <span class="ws-pill ws-pill-danger">High</span>
                                 </div>
                                 <div class="kanban-card-title">Three.js Service Fabric Visualizer</div>
                             </div>
@@ -199,13 +199,13 @@
                     <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'code_review')">
                         <div class="kanban-lane-header">
                             <span class="fw-semibold ws-text-ink small">Code Review</span>
-                            <span class="ws-pill ws-pill-warning">1</span>
+                            <span class="font-monospace small ws-text-muted">1</span>
                         </div>
                         <div class="kanban-cards-wrapper" id="lane-code_review">
                             <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-195')" id="card-T-195">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="font-monospace ws-text-cyan small fw-semibold">T-195</span>
-                                    <span class="ws-pill ws-pill-warning" style="font-size: 10px;">REVIEW</span>
+                                    <span class="ws-pill ws-pill-warning">Review</span>
                                 </div>
                                 <div class="kanban-card-title">Admin RBAC Middleware</div>
                             </div>
@@ -215,13 +215,13 @@
                     <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'completed')">
                         <div class="kanban-lane-header">
                             <span class="fw-semibold ws-text-ink small">Completed</span>
-                            <span class="ws-pill ws-pill-success">1</span>
+                            <span class="font-monospace small ws-text-muted">1</span>
                         </div>
                         <div class="kanban-cards-wrapper" id="lane-completed">
                             <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-185')" id="card-T-185">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="font-monospace small fw-semibold" style="color: var(--ws-signal-success);">T-185</span>
-                                    <span class="ws-pill ws-pill-success" style="font-size: 10px;">DONE</span>
+                                    <span class="ws-pill ws-pill-success">Done</span>
                                 </div>
                                 <div class="kanban-card-title">Architecture Blueprint &amp; Schema</div>
                             </div>
@@ -236,7 +236,7 @@
                     <div class="ws-card p-4">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="ws-text-ink fw-semibold">Milestone 1: Architecture Blueprint &amp; Schema</div>
-                            <span class="ws-pill ws-pill-success">COMPLETED ($10,000 RELEASED)</span>
+                            <span class="ws-status-inline"><span class="status-dot status-dot-live"></span> Completed ($10,000 released)</span>
                         </div>
                         <div class="progress my-2" style="height: 6px; background-color: var(--ws-border-quiet);">
                             <div class="progress-bar" style="width: 100%; background-color: var(--ws-signal-success);"></div>
@@ -245,7 +245,7 @@
                     <div class="ws-card p-4">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="ws-text-ink fw-semibold">Milestone 2: Webhook Engine &amp; Bank Connectors</div>
-                            <span class="ws-pill ws-pill-telemetry">78% IN PROGRESS ($22,000 ESCROW)</span>
+                            <span class="ws-pill ws-pill-telemetry">78% in progress &middot; $22,000 escrow</span>
                         </div>
                         <div class="progress my-2" style="height: 6px; background-color: var(--ws-border-quiet);">
                             <div class="progress-bar" style="width: 78%; background-color: var(--ws-brand-blue);"></div>
@@ -273,17 +273,17 @@
                                 <td class="font-monospace ws-text-cyan fw-semibold">T-198</td>
                                 <td class="ws-text-ink fw-medium">Blend Design Tokens &amp; Workspace Tabs</td>
                                 <td>Ari Prakash</td>
-                                <td><span class="ws-pill ws-pill-navy">CRITICAL</span></td>
+                                <td><span class="ws-pill ws-pill-navy">Critical</span></td>
                                 <td class="font-monospace">8</td>
-                                <td><span class="ws-pill ws-pill-telemetry">IN PROGRESS</span></td>
+                                <td><span class="ws-pill ws-pill-telemetry">In Progress</span></td>
                             </tr>
                             <tr>
                                 <td class="font-monospace ws-text-cyan fw-semibold">T-195</td>
                                 <td class="ws-text-ink fw-medium">Admin RBAC Middleware</td>
                                 <td>Datcha</td>
-                                <td><span class="ws-pill ws-pill-warning">HIGH</span></td>
+                                <td><span class="ws-pill ws-pill-warning">High</span></td>
                                 <td class="font-monospace">5</td>
-                                <td><span class="ws-pill ws-pill-warning">REVIEW</span></td>
+                                <td><span class="ws-pill ws-pill-warning">Review</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -305,13 +305,13 @@
                         <tbody>
                             <tr>
                                 <td class="ws-text-ink fw-semibold">Ari Prakash</td>
-                                <td><span class="ws-pill ws-pill-navy">Lead Frontend</span></td>
+                                <td class="ws-text-secondary">Lead Frontend</td>
                                 <td class="font-monospace">36 / 40 hrs</td>
                                 <td class="font-monospace ws-text-blue fw-semibold">90%</td>
                             </tr>
                             <tr>
                                 <td class="ws-text-ink fw-semibold">Datcha</td>
-                                <td><span class="ws-pill ws-pill-telemetry">Backend Architect</span></td>
+                                <td class="ws-text-secondary">Backend Architect</td>
                                 <td class="font-monospace">38 / 40 hrs</td>
                                 <td class="font-monospace ws-text-cyan fw-semibold">95%</td>
                             </tr>
