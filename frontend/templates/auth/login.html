@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container py-5 d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 160px);">
+    <div class="ws-card p-4 p-md-5" style="width: 100%; max-width: 440px;">
+        <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center justify-content-center mb-3">
+                <span class="ws-brand-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#3B82F6" stroke-width="2"/>
+                        <path d="M2 17L12 22L22 17" stroke="#06B6D4" stroke-width="2"/>
+                        <path d="M2 12L12 17L22 12" stroke="#3B82F6" stroke-width="2"/>
+                    </svg>
+                </span>
+            </div>
+            <h2 class="text-white fs-4 fw-semibold mb-1">Access DevNexus Console</h2>
+            <p class="text-secondary small">Authenticate to your engineering workspace</p>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+            <div class="ws-form-group">
+                <label class="ws-label" for="loginEmail">Email Address</label>
+                <div class="input-group">
+                    <input type="email" class="ws-input" id="loginEmail" placeholder="name@company.com" required value="ariprakash32@gmail.com">
+                </div>
+            </div>
+
+            <div class="ws-form-group">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label class="ws-label mb-0" for="loginPassword">Master Password</label>
+                    <a href="/forgot-password" class="small text-info text-decoration-none" style="font-size: 11px;">Forgot password?</a>
+                </div>
+                <input type="password" class="ws-input" id="loginPassword" placeholder="••••••••••••" required value="password123">
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div class="form-check">
+                    <input class="form-check-input bg-dark border-secondary" type="checkbox" id="rememberMe" checked>
+                    <label class="form-check-label text-secondary small" for="rememberMe" style="font-size: 12px;">Remember session (30d)</label>
+                </div>
+                <span class="ws-pill ws-pill-telemetry" style="font-size: 10px;">256-BIT TLS</span>
+            </div>
+
+            <button type="submit" class="ws-btn ws-btn-primary w-100" id="loginSubmitBtn">
+                <i class="bi bi-box-arrow-in-right"></i> Sign In to Platform
+            </button>
+        </form>
+
+        <div class="text-center mt-4 pt-3 border-top border-secondary border-opacity-10">
+            <span class="text-secondary small">Need a corporate account?</span>
+            <a href="/register" class="small text-info text-decoration-none ms-1">Register organization</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    async function handleLoginSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('loginSubmitBtn');
+        const email = document.getElementById('loginEmail').value;
+        const pass = document.getElementById('loginPassword').value;
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating...';
+
+        try {
+            await WareSoftAPI.login(email, pass);
+        } catch (err) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-box-arrow-in-right"></i> Sign In to Platform';
+        }
+    }
+</script>
+{% endblock %}
