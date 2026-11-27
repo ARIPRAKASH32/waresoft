@@ -688,6 +688,98 @@
     min-width: 0;
 }
 
+/* ─── Juspay-Style Floating Pill Navbar (Public Context) ─── */
+.ws-header-floating-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    padding: 16px 24px 8px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.ws-header-pill {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 60px;
+    padding: 0 24px;
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid var(--ws-border-quiet);
+    border-radius: 999px;
+    box-shadow: 0 6px 24px -4px rgba(11, 16, 32, 0.06), 0 1px 3px rgba(11, 16, 32, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ws-space-5);
+}
+
+.ws-pill-nav-link {
+    background: transparent;
+    border: none;
+    color: var(--ws-text-primary);
+    font-size: var(--ws-text-sm);
+    font-weight: 500;
+    padding: 6px 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color var(--ws-duration-fast) var(--ws-ease-out);
+}
+
+.ws-pill-nav-link:hover {
+    color: var(--ws-brand-blue);
+}
+
+.ws-region-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background-color: var(--ws-bg-surface-2);
+    border: 1px solid var(--ws-border-quiet);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: var(--ws-text-xs);
+    font-weight: 500;
+    color: var(--ws-text-primary);
+    cursor: pointer;
+    transition: var(--ws-transition-base);
+    white-space: nowrap;
+}
+
+.ws-region-pill:hover {
+    background-color: var(--ws-bg-surface-3);
+    border-color: var(--ws-border-subtle);
+}
+
+.ws-contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--ws-brand-blue);
+    font-size: var(--ws-text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--ws-duration-fast) var(--ws-ease-out);
+}
+
+.ws-contact-cta:hover {
+    color: var(--ws-brand-blue-hover);
+}
+
+@media (max-width: 991.98px) {
+    .ws-header-floating-wrap {
+        padding: 12px 16px 6px;
+    }
+    .ws-header-pill {
+        padding: 0 16px;
+        height: 54px;
+    }
+}
+
 /* ─── Dashboard Command Search Bar ─── */
 .jp-cmd-wrap {
     position: relative;

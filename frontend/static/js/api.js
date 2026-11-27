@@ -168,3 +168,9 @@ const WareSoftAPI = (function() {
 })();
 
 window.WareSoftAPI = WareSoftAPI;
+
+window.selectClusterRegion = function(label, zone) {
+    const el = document.getElementById('activeRegionLabel');
+    if (el) el.textContent = label;
+    WareSoftAPI.showToast(`Switched active cluster edge to ${label} (${zone})`, 'info');
+};
