@@ -1,6 +1,5 @@
 /**
- * WareSoft DevNexus Base Stylesheet (All-Light Shell)
- * Strict reset, typography hierarchy, 4px grid rhythm, layout shells
+ * WareSoft DevNexus Base Stylesheet (Calm Juspay Editorial Rhythm)
  */
 
 *, *::before, *::after {
@@ -20,7 +19,7 @@ body.waresoft-body {
     color: var(--ws-text-primary);
     font-family: var(--ws-font-sans);
     font-size: var(--ws-text-base);
-    line-height: 1.5;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
@@ -29,17 +28,16 @@ body.waresoft-body {
     overflow-x: hidden;
 }
 
-/* ─── Tabular Numerics ─── */
 .tabular-nums, .badge, .metric-value, .stat-value, .ws-metric-value, .table td, .ws-table td {
     font-variant-numeric: tabular-nums;
 }
 
-/* ─── Typography Defaults ─── */
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ws-font-display);
     color: var(--ws-text-primary);
     font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
     margin-bottom: var(--ws-space-3);
 }
 
@@ -71,13 +69,11 @@ code, kbd, samp, pre {
     color: var(--ws-brand-cyan-ink);
 }
 
-/* ─── Selection ─── */
 ::selection {
-    background-color: rgba(59, 130, 246, 0.20);
+    background-color: rgba(59, 130, 246, 0.16);
     color: var(--ws-brand-navy);
 }
 
-/* ─── Precision Scrollbars ─── */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -92,11 +88,6 @@ code, kbd, samp, pre {
     border-radius: var(--ws-radius-xs);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--ws-text-muted);
-}
-
-/* ─── Layout Shells ─── */
 .app-viewport {
     display: flex;
     flex-direction: column;
@@ -110,7 +101,7 @@ code, kbd, samp, pre {
 
 .content-container {
     width: 100%;
-    max-width: 1360px;
+    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
     padding-left: var(--ws-space-6);
@@ -123,7 +114,7 @@ code, kbd, samp, pre {
 }
 
 .dashboard-sidebar {
-    width: 260px;
+    width: 248px;
     flex-shrink: 0;
     background-color: var(--ws-bg-surface-1);
     border-right: 1px solid var(--ws-border-quiet);
@@ -135,10 +126,9 @@ code, kbd, samp, pre {
     flex: 1;
     min-width: 0;
     background-color: var(--ws-bg-canvas);
-    padding: var(--ws-space-6);
+    padding: var(--ws-space-8);
 }
 
-/* ─── Responsive Media Breakpoints ─── */
 @media (max-width: 991.98px) {
     .content-container {
         padding-left: var(--ws-space-4);

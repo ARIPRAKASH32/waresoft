@@ -1,6 +1,6 @@
 <header class="ws-header">
     <div class="ws-header-inner content-container">
-        <!-- Brand Logo & Platform Title -->
+        <!-- Brand Logo & Quiet Telemetry -->
         <div class="ws-brand-cluster">
             <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-5"></i>
@@ -17,7 +17,6 @@
                 <span class="ws-brand-badge">DevNexus</span>
             </a>
 
-            <!-- Live Signature Telemetry (visible on >=1200px to avoid medium-desktop crowding) -->
             <div class="d-none d-xl-flex align-items-center ms-2">
                 <span class="ws-pill ws-pill-telemetry">
                     <span class="status-dot status-dot-live"></span>
@@ -26,30 +25,26 @@
             </div>
         </div>
 
-        <!-- Navigation Links (Public Context) -->
+        <!-- Minimal Topbar Navigation (Juspay Rhythm) -->
         <nav class="ws-header-nav d-none d-lg-flex">
-            <a href="/" class="ws-nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
-            <a href="/about" class="ws-nav-link {% if request.path == '/about' %}active{% endif %}">About</a>
-            <a href="/services" class="ws-nav-link {% if request.path == '/services' %}active{% endif %}">Services</a>
-            <a href="/portfolio" class="ws-nav-link {% if request.path == '/portfolio' %}active{% endif %}">Portfolio</a>
-            <a href="/contact" class="ws-nav-link {% if request.path == '/contact' %}active{% endif %}">Contact</a>
-            <a href="/careers" class="ws-nav-link {% if request.path == '/careers' %}active{% endif %}">Careers</a>
+            <a href="/" class="ws-nav-link {% if request.path == '/' %}active{% endif %}">Platform</a>
+            <a href="/#solutions" class="ws-nav-link">Solutions</a>
+            <a href="/projects" class="ws-nav-link {% if '/projects' in request.path %}active{% endif %}">Workspaces</a>
+            <a href="/#contact" class="ws-nav-link">Contact</a>
         </nav>
 
-        <!-- Right Quick Actions & User Roster -->
+        <!-- Right Quick Actions & User Profile -->
         <div class="ws-header-actions">
-            <!-- Global Workspace Switcher / Portal Link -->
+            <a href="/client?tab=submit" class="ws-btn ws-btn-outline ws-btn-sm d-none d-md-inline-flex">Submit RFP</a>
             <a href="/projects" class="ws-btn ws-btn-primary ws-btn-sm d-none d-sm-inline-flex">
-                <i class="bi bi-kanban"></i> Workspaces
+                Open Console <i class="bi bi-arrow-right"></i>
             </a>
 
-            <!-- Notification Trigger -->
-            <a href="/notifications" class="ws-icon-btn position-relative" title="Notifications">
+            <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications">
                 <i class="bi bi-bell"></i>
                 <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-white rounded-circle"></span>
             </a>
 
-            <!-- User Avatar & Dropdown -->
             <div class="dropdown">
                 <button class="ws-user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="ws-user-avatar">{{ current_user.avatar }}</span>
@@ -64,26 +59,29 @@
                         <div class="small fw-semibold ws-text-ink">{{ current_user.name }}</div>
                         <div class="ws-text-muted" style="font-size: 11px;">{{ current_user.email }}</div>
                     </li>
-                    <li><a class="dropdown-item" href="/profile"><i class="bi bi-person me-2"></i>My Profile</a></li>
-                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2"></i>Admin Center</a></li>
-                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client Portal</a></li>
-                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2"></i>Developer Hub</a></li>
+                    <li><a class="dropdown-item" href="/account"><i class="bi bi-person me-2"></i>Account & Alerts</a></li>
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2"></i>Command & Analytics</a></li>
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client & Commercial</a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2"></i>Engineering & QA</a></li>
+                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2"></i>Cloud Ops & Billing</a></li>
                     <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2"></i>Switch Account</a></li>
                     <li><button class="dropdown-item text-danger" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</button></li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
-<!-- Mobile Public Quick Drawer (for screens < lg) -->
+
+<!-- Mobile Quick Nav Drawer -->
 <div id="mobilePublicNav" class="d-none d-lg-none bg-white border-bottom px-4 py-3" style="border-color: var(--ws-border-quiet) !important;">
     <div class="d-flex flex-column gap-2 small fw-medium">
-        <a href="/" class="py-1 ws-text-ink text-decoration-none">Home</a>
-        <a href="/about" class="py-1 ws-text-secondary text-decoration-none">About</a>
-        <a href="/services" class="py-1 ws-text-secondary text-decoration-none">Services</a>
-        <a href="/portfolio" class="py-1 ws-text-secondary text-decoration-none">Portfolio</a>
-        <a href="/contact" class="py-1 ws-text-secondary text-decoration-none">Contact</a>
-        <a href="/careers" class="py-1 ws-text-secondary text-decoration-none">Careers</a>
-        <a href="/projects" class="ws-btn ws-btn-primary ws-btn-sm mt-2">Workspaces Console</a>
+        <a href="/" class="py-1 ws-text-ink text-decoration-none">Platform Showcase</a>
+        <a href="/admin" class="py-1 ws-text-secondary text-decoration-none">Command & Analytics</a>
+        <a href="/client" class="py-1 ws-text-secondary text-decoration-none">Client & Commercial</a>
+        <a href="/projects" class="py-1 ws-text-secondary text-decoration-none">Projects & Kanban</a>
+        <a href="/developer" class="py-1 ws-text-secondary text-decoration-none">Engineering & QA</a>
+        <a href="/operations" class="py-1 ws-text-secondary text-decoration-none">Cloud Ops & Billing</a>
+        <a href="/account" class="py-1 ws-text-secondary text-decoration-none">Account & Alerts</a>
     </div>
 </div>

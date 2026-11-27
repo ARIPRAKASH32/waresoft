@@ -1,115 +1,56 @@
 <aside class="dashboard-sidebar" id="appSidebar">
     <div class="p-3 border-bottom d-flex align-items-center justify-content-between" style="border-color: var(--ws-border-quiet) !important;">
         <div class="d-flex align-items-center gap-2 min-w-0">
-            <span class="ws-pill ws-pill-navy" style="font-size: 10px;">WS // CONSOLE</span>
-            <span class="small ws-text-secondary text-truncate" style="max-width: 110px;">{{ current_user.active_project }}</span>
+            <span class="ws-pill ws-pill-navy" style="font-size: 10px;">DEVNEXUS</span>
+            <span class="small ws-text-secondary text-truncate" style="max-width: 118px;">{{ current_user.active_project }}</span>
         </div>
         <button class="btn btn-sm btn-link text-muted d-lg-none p-0" id="sidebarCloseBtn">
             <i class="bi bi-x-lg"></i>
         </button>
     </div>
 
-    <div class="sidebar-scrollable flex-grow-1 overflow-y-auto p-2">
-        <!-- Group: Command Center -->
-        <div class="sidebar-group-title">Command center</div>
-        <a href="/admin" class="sidebar-item {% if request.path == '/admin' %}active{% endif %}">
+    <div class="sidebar-scrollable flex-grow-1 overflow-y-auto p-3">
+        <!-- Minimalist Unified Workspaces (7 calm links total) -->
+        <div class="sidebar-group-title pt-0">Workspaces</div>
+        <a href="/admin" class="sidebar-item {% if '/admin' in request.path %}active{% endif %}">
             <i class="bi bi-shield-check"></i>
-            <span>Admin Center</span>
+            <span>Command & Analytics</span>
         </a>
-        <a href="/client" class="sidebar-item {% if request.path == '/client' %}active{% endif %}">
+        <a href="/client" class="sidebar-item {% if '/client' in request.path or '/requirements' in request.path or '/quotations' in request.path %}active{% endif %}">
             <i class="bi bi-building"></i>
-            <span>Client Workspace</span>
+            <span>Client & Commercial</span>
         </a>
-        <a href="/developer" class="sidebar-item {% if request.path == '/developer' %}active{% endif %}">
-            <i class="bi bi-terminal"></i>
-            <span>Developer Space</span>
-        </a>
-
-        <!-- Group: Requirements & Bidding -->
-        <div class="sidebar-group-title">Commercial lifecycle</div>
-        <a href="/requirements" class="sidebar-item {% if '/requirements' in request.path and 'submit' not in request.path %}active{% endif %}">
-            <i class="bi bi-file-earmark-text"></i>
-            <span>Requirements</span>
-        </a>
-        <a href="/requirements/submit" class="sidebar-item {% if '/requirements/submit' in request.path %}active{% endif %}">
-            <i class="bi bi-plus-circle"></i>
-            <span>Submit RFP</span>
-        </a>
-        <a href="/quotations" class="sidebar-item {% if '/quotations' in request.path %}active{% endif %}">
-            <i class="bi bi-calculator"></i>
-            <span>Quotations & Scope</span>
-        </a>
-
-        <!-- Group: Project Delivery -->
-        <div class="sidebar-group-title">Project delivery</div>
-        <a href="/projects" class="sidebar-item {% if request.path == '/projects' %}active{% endif %}">
-            <i class="bi bi-grid-1x2"></i>
-            <span>Projects Directory</span>
-        </a>
-        <a href="/projects/101/milestones" class="sidebar-item {% if 'milestones' in request.path %}active{% endif %}">
-            <i class="bi bi-flag"></i>
-            <span>Milestones & Timeline</span>
-        </a>
-        <a href="/projects/101/kanban" class="sidebar-item {% if 'kanban' in request.path %}active{% endif %}">
+        <a href="/projects" class="sidebar-item {% if '/projects' in request.path %}active{% endif %}">
             <i class="bi bi-kanban"></i>
-            <span>Sprint Kanban</span>
+            <span>Projects & Kanban</span>
         </a>
-        <a href="/projects/101/tasks" class="sidebar-item {% if 'tasks' in request.path %}active{% endif %}">
-            <i class="bi bi-check2-square"></i>
-            <span>Task Backlog</span>
+        <a href="/developer" class="sidebar-item {% if '/developer' in request.path or '/qa' in request.path %}active{% endif %}">
+            <i class="bi bi-terminal"></i>
+            <span>Engineering & QA</span>
         </a>
-        <a href="/projects/101/team" class="sidebar-item {% if 'team' in request.path %}active{% endif %}">
-            <i class="bi bi-people"></i>
-            <span>Team Allocation</span>
-        </a>
-
-        <!-- Group: Engineering & CI/CD -->
-        <div class="sidebar-group-title">Engineering & QA</div>
-        <a href="/developer/github" class="sidebar-item {% if 'github' in request.path %}active{% endif %}">
-            <i class="bi bi-github"></i>
-            <span>GitHub Sync & PRs</span>
-        </a>
-        <a href="/qa" class="sidebar-item {% if request.path == '/qa' %}active{% endif %}">
-            <i class="bi bi-bug"></i>
-            <span>QA Command Hub</span>
-        </a>
-        <a href="/qa/bugs" class="sidebar-item {% if 'qa/bugs' in request.path %}active{% endif %}">
-            <i class="bi bi-exclamation-octagon"></i>
-            <span>Defect Tracker</span>
-        </a>
-        <a href="/deployment" class="sidebar-item {% if request.path == '/deployment' %}active{% endif %}">
-            <i class="bi bi-cloud-arrow-up"></i>
-            <span>CI/CD Deployments</span>
+        <a href="/operations" class="sidebar-item {% if '/operations' in request.path or '/deployment' in request.path or '/maintenance' in request.path or '/billing' in request.path %}active{% endif %}">
+            <i class="bi bi-cloud-check"></i>
+            <span>Cloud Ops & Billing</span>
         </a>
 
-        <!-- Group: Maintenance & Financials -->
-        <div class="sidebar-group-title">Operations & finance</div>
-        <a href="/maintenance" class="sidebar-item {% if '/maintenance' in request.path %}active{% endif %}">
-            <i class="bi bi-tools"></i>
-            <span>SLA Support Tickets</span>
+        <div class="sidebar-group-title">Preferences</div>
+        <a href="/account" class="sidebar-item {% if '/account' in request.path or '/profile' in request.path or '/notifications' in request.path %}active{% endif %}">
+            <i class="bi bi-person-gear"></i>
+            <span>Account & Alerts</span>
         </a>
-        <a href="/billing" class="sidebar-item {% if '/billing' in request.path %}active{% endif %}">
-            <i class="bi bi-receipt"></i>
-            <span>Invoices & Billing</span>
-        </a>
-        <a href="/admin/analytics" class="sidebar-item {% if 'analytics' in request.path %}active{% endif %}">
-            <i class="bi bi-graph-up"></i>
-            <span>Platform Velocity</span>
+        <a href="/" class="sidebar-item">
+            <i class="bi bi-arrow-left"></i>
+            <span>Public Showcase</span>
         </a>
     </div>
 
-    <!-- Sidebar Footer Telemetry -->
     <div class="p-3 border-top ws-surface-subtle rounded-0 border-start-0 border-end-0 border-bottom-0">
         <div class="d-flex align-items-center justify-content-between ws-text-secondary" style="font-size: 11px;">
-            <span class="fw-medium">Cluster Health</span>
-            <span class="fw-semibold" style="color: var(--ws-signal-success);"><i class="bi bi-circle-fill" style="font-size: 7px;"></i> 100% OK</span>
+            <span class="fw-medium">Cluster SLA</span>
+            <span class="fw-semibold" style="color: var(--ws-signal-success);"><i class="bi bi-circle-fill" style="font-size: 7px;"></i> 99.98% OK</span>
         </div>
-        <div class="progress mt-2" style="height: 5px; background-color: var(--ws-border-quiet);">
-            <div class="progress-bar" style="width: 82%; background-color: var(--ws-brand-cyan);"></div>
-        </div>
-        <div class="mt-2 d-flex justify-content-between font-monospace ws-text-muted" style="font-size: 10px;">
-            <span>CPU 42%</span>
-            <span>MEM 68%</span>
+        <div class="progress mt-2" style="height: 4px; background-color: var(--ws-border-quiet);">
+            <div class="progress-bar" style="width: 82%; background-color: var(--ws-brand-blue);"></div>
         </div>
     </div>
 </aside>

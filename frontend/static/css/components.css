@@ -1,9 +1,8 @@
 /**
- * WareSoft DevNexus Components Library (All-Light Editorial + Skill India Digital Layout)
- * Buttons, Cards, Filter Sidebars, Directory Cards, Data Tables, Form Controls, Kanban
+ * WareSoft DevNexus Components Library (Calm Juspay Blend Aesthetic)
+ * Airy spacing, quiet hairline divisions, unified tab bars, subtle motion
  */
 
-/* ─── Ink & Surface Semantic Helpers ─── */
 .ws-text-ink { color: var(--ws-text-primary) !important; }
 .ws-text-secondary { color: var(--ws-text-secondary) !important; }
 .ws-text-muted { color: var(--ws-text-muted) !important; }
@@ -14,6 +13,144 @@
     background-color: var(--ws-bg-surface-2);
     border: 1px solid var(--ws-border-quiet);
     border-radius: var(--ws-radius-md);
+}
+
+/* ─── Juspay-Style Unified Workspace Tab Bar ─── */
+.jp-tab-strip {
+    display: flex;
+    align-items: center;
+    gap: var(--ws-space-2);
+    border-bottom: 1px solid var(--ws-border-quiet);
+    padding-bottom: 0;
+    margin-bottom: var(--ws-space-6);
+    overflow-x: auto;
+}
+
+.jp-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ws-text-secondary);
+    font-family: var(--ws-font-sans);
+    font-size: var(--ws-text-sm);
+    font-weight: 500;
+    padding: var(--ws-space-3) var(--ws-space-4);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--ws-transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jp-tab-btn:hover {
+    color: var(--ws-brand-navy);
+}
+
+.jp-tab-btn.active {
+    color: var(--ws-brand-blue-ink);
+    border-bottom-color: var(--ws-brand-blue);
+    font-weight: 600;
+}
+
+/* ─── Juspay-Style Hairline Stat Strip (Calm, Unboxed Metrics) ─── */
+.jp-stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid var(--ws-border-quiet);
+    border-radius: var(--ws-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--ws-shadow-sm);
+}
+
+.jp-stat-cell {
+    padding: var(--ws-space-6);
+    border-right: 1px solid var(--ws-border-quiet);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.jp-stat-cell:last-child {
+    border-right: none;
+}
+
+@media (max-width: 991.98px) {
+    .jp-stat-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .jp-stat-cell:nth-child(2n) {
+        border-right: none;
+    }
+    .jp-stat-cell:nth-child(-n+2) {
+        border-bottom: 1px solid var(--ws-border-quiet);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .jp-stat-strip {
+        grid-template-columns: 1fr;
+    }
+    .jp-stat-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--ws-border-quiet);
+    }
+    .jp-stat-cell:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ─── Juspay Showcase Frame & Console Bezel ─── */
+.jp-showcase-bezel {
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid var(--ws-border-quiet);
+    border-radius: var(--ws-radius-xl);
+    box-shadow: var(--ws-shadow-lg);
+    overflow: hidden;
+}
+
+.jp-bezel-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background-color: var(--ws-bg-surface-2);
+    border-bottom: 1px solid var(--ws-border-quiet);
+}
+
+.jp-pill-nav {
+    display: inline-flex;
+    background-color: var(--ws-bg-surface-2);
+    padding: 4px;
+    border-radius: var(--ws-radius-md);
+    border: 1px solid var(--ws-border-quiet);
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.jp-pill-tab {
+    background: transparent;
+    border: none;
+    border-radius: var(--ws-radius-sm);
+    padding: 7px 14px;
+    font-size: var(--ws-text-xs);
+    font-weight: 500;
+    color: var(--ws-text-secondary);
+    cursor: pointer;
+    transition: var(--ws-transition-base);
+    white-space: nowrap;
+}
+
+.jp-pill-tab:hover {
+    color: var(--ws-brand-navy);
+}
+
+.jp-pill-tab.active {
+    background-color: var(--ws-bg-surface-1);
+    color: var(--ws-brand-navy);
+    font-weight: 600;
+    box-shadow: var(--ws-shadow-sm);
 }
 
 /* ─── Buttons ─── */
@@ -73,7 +210,7 @@
 }
 
 .ws-btn-secondary:hover, .ws-btn-secondary.active {
-    background-color: var(--ws-bg-surface-3);
+    background-color: var(--ws-bg-surface-2);
     border-color: var(--ws-brand-blue);
     color: var(--ws-brand-navy);
 }
@@ -142,20 +279,7 @@
     border-bottom: 1px solid var(--ws-border-quiet);
 }
 
-.ws-card-title {
-    font-size: var(--ws-text-md);
-    font-weight: 600;
-    color: var(--ws-text-primary);
-    margin: 0;
-}
-
-/* ─── Skill India Digital Style: Directory Split Filter & Opportunity Cards ─── */
-.ws-directory-banner {
-    background-color: var(--ws-bg-surface-1);
-    border-bottom: 1px solid var(--ws-border-quiet);
-    padding: var(--ws-space-6) 0;
-}
-
+/* ─── Directory Split Filter & Opportunity Cards ─── */
 .ws-search-bar {
     display: flex;
     align-items: center;
@@ -180,11 +304,7 @@
     color: var(--ws-text-primary);
     font-size: var(--ws-text-sm);
     width: 100%;
-    padding: var(--ws-space-2) var(--ws-space-2);
-}
-
-.ws-search-bar input::placeholder {
-    color: var(--ws-text-muted);
+    padding: var(--ws-space-2);
 }
 
 .ws-filter-chip {
@@ -221,7 +341,7 @@
 }
 
 .ws-filter-panel {
-    width: 268px;
+    width: 248px;
     flex-shrink: 0;
     background-color: var(--ws-bg-surface-1);
     border: 1px solid var(--ws-border-quiet);
@@ -229,7 +349,7 @@
     padding: var(--ws-space-5);
     box-shadow: var(--ws-shadow-sm);
     position: sticky;
-    top: 80px;
+    top: 84px;
 }
 
 .ws-filter-group {
@@ -265,7 +385,7 @@
 }
 
 .ws-opp-card:hover {
-    border-color: var(--ws-brand-blue);
+    border-color: var(--ws-border-subtle);
     box-shadow: var(--ws-shadow-md);
     transform: translateY(-2px);
 }
@@ -310,7 +430,7 @@
 
 .ws-pill-telemetry {
     background-color: var(--ws-brand-cyan-soft);
-    border-color: rgba(6, 182, 212, 0.30);
+    border-color: rgba(6, 182, 212, 0.28);
     color: var(--ws-brand-cyan-ink);
 }
 
@@ -322,19 +442,19 @@
 
 .ws-pill-success {
     background-color: var(--ws-signal-success-soft);
-    border-color: rgba(5, 150, 105, 0.25);
+    border-color: rgba(5, 150, 105, 0.22);
     color: var(--ws-signal-success);
 }
 
 .ws-pill-warning {
     background-color: var(--ws-signal-warning-soft);
-    border-color: rgba(217, 119, 6, 0.25);
+    border-color: rgba(217, 119, 6, 0.22);
     color: var(--ws-signal-warning);
 }
 
 .ws-pill-danger {
     background-color: var(--ws-signal-danger-soft);
-    border-color: rgba(220, 38, 38, 0.25);
+    border-color: rgba(220, 38, 38, 0.22);
     color: var(--ws-signal-danger);
 }
 
@@ -356,7 +476,7 @@
     background-color: var(--ws-signal-success);
 }
 
-/* ─── Equal-Height Metric & Stat Blocks ─── */
+/* ─── Equal-Height Metric Boxes ─── */
 .ws-metric-box {
     background-color: var(--ws-bg-surface-1);
     border: 1px solid var(--ws-border-quiet);
@@ -377,10 +497,10 @@
 }
 
 .ws-metric-value {
+    font-family: var(--ws-font-display);
     font-size: var(--ws-text-2xl);
     font-weight: 600;
     color: var(--ws-text-primary);
-    font-family: var(--ws-font-sans);
     line-height: 1.15;
     margin-bottom: var(--ws-space-2);
 }
@@ -393,7 +513,7 @@
     gap: var(--ws-space-1);
 }
 
-/* ─── High-Density Data Tables ─── */
+/* ─── Data Tables ─── */
 .ws-table-container {
     width: 100%;
     overflow-x: auto;
@@ -426,10 +546,6 @@
     vertical-align: middle;
 }
 
-.ws-table tbody tr {
-    transition: background-color var(--ws-duration-fast) var(--ws-ease-out);
-}
-
 .ws-table tbody tr:hover {
     background-color: var(--ws-bg-surface-2);
 }
@@ -438,10 +554,8 @@
     border-bottom: none;
 }
 
-/* ─── Precision Form Controls ─── */
-.ws-form-group {
-    margin-bottom: var(--ws-space-4);
-}
+/* ─── Form Controls ─── */
+.ws-form-group { margin-bottom: var(--ws-space-4); }
 
 .ws-label {
     display: block;
@@ -466,51 +580,17 @@
                 box-shadow var(--ws-duration-fast) var(--ws-ease-out);
 }
 
-.ws-textarea {
-    height: auto;
-    min-height: 96px;
-    resize: vertical;
-}
+.ws-textarea { height: auto; min-height: 96px; resize: vertical; }
 
 .ws-input:focus, .ws-select:focus, .ws-textarea:focus {
     border-color: var(--ws-brand-blue);
     box-shadow: 0 0 0 3px var(--ws-brand-blue-soft);
 }
 
-.ws-input::placeholder, .ws-textarea::placeholder {
-    color: var(--ws-text-muted);
-}
-
-/* ─── Breadcrumb Navigation ─── */
-.ws-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: var(--ws-space-2);
-    font-size: var(--ws-text-xs);
-    color: var(--ws-text-muted);
-    margin-bottom: var(--ws-space-4);
-}
-
-.ws-breadcrumb-sep {
-    color: var(--ws-border-subtle);
-}
-
-.ws-breadcrumb a {
-    color: var(--ws-text-secondary);
-}
-
-.ws-breadcrumb a:hover {
-    color: var(--ws-brand-blue);
-}
-
-.ws-breadcrumb-current {
-    color: var(--ws-text-primary);
-    font-weight: 500;
-}
-
-/* ─── Header & Topbar Navigation (All-Light Shell) ─── */
+/* ─── Header & Calm Topbar Navigation ─── */
 .ws-header {
-    background-color: var(--ws-bg-surface-1);
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--ws-border-quiet);
     position: sticky;
     top: 0;
@@ -518,7 +598,6 @@
     height: 64px;
     display: flex;
     align-items: center;
-    box-shadow: 0 1px 2px rgba(11, 16, 32, 0.03);
 }
 
 .ws-header-inner {
@@ -545,6 +624,7 @@
 }
 
 .ws-brand-text {
+    font-family: var(--ws-font-display);
     font-size: var(--ws-text-lg);
     font-weight: 600;
     color: var(--ws-brand-navy);
@@ -557,7 +637,7 @@
     font-family: var(--ws-font-mono);
     color: var(--ws-brand-cyan-ink);
     background-color: var(--ws-brand-cyan-soft);
-    border: 1px solid rgba(6, 182, 212, 0.30);
+    border: 1px solid rgba(6, 182, 212, 0.28);
     padding: 2px 6px;
     border-radius: var(--ws-radius-xs);
     white-space: nowrap;
@@ -566,7 +646,7 @@
 .ws-header-nav {
     display: flex;
     align-items: center;
-    gap: var(--ws-space-4);
+    gap: var(--ws-space-6);
     min-width: 0;
 }
 
@@ -628,7 +708,6 @@
     padding: 4px 10px 4px 6px;
     cursor: pointer;
     transition: var(--ws-transition-base);
-    max-width: 210px;
 }
 
 .ws-user-btn:hover {
@@ -684,12 +763,11 @@
     cursor: pointer;
 }
 
-/* ─── Sidebar Navigation (Clean Light Shell) ─── */
+/* ─── Minimalist 7-Item Sidebar ─── */
 .sidebar-group-title {
     font-size: 11px;
     font-weight: 600;
     color: var(--ws-text-muted);
-    letter-spacing: 0.02em;
     padding: var(--ws-space-4) var(--ws-space-3) var(--ws-space-1);
 }
 
@@ -697,7 +775,7 @@
     display: flex;
     align-items: center;
     gap: var(--ws-space-3);
-    padding: 8px var(--ws-space-3);
+    padding: 9px var(--ws-space-3);
     border-radius: var(--ws-radius-sm);
     color: var(--ws-text-secondary);
     font-size: var(--ws-text-sm);
@@ -713,7 +791,6 @@
     width: 18px;
     text-align: center;
     color: var(--ws-text-muted);
-    transition: color var(--ws-duration-fast);
 }
 
 .sidebar-item:hover {
@@ -743,19 +820,14 @@
     margin-top: auto;
 }
 
-.hover-ink:hover {
-    color: var(--ws-brand-navy) !important;
-}
+.hover-ink:hover { color: var(--ws-brand-navy) !important; }
 
-/* ─── Kanban Board & Lane Architecture (Light Surface) ─── */
-.kanban-board-container {
-    display: flex;
-    overflow-x: auto;
-}
+/* ─── Kanban Board ─── */
+.kanban-board-container { display: flex; overflow-x: auto; }
 
 .kanban-lane {
-    width: 280px;
-    min-width: 280px;
+    width: 268px;
+    min-width: 268px;
     background-color: var(--ws-bg-surface-2);
     border: 1px solid var(--ws-border-quiet);
     border-radius: var(--ws-radius-lg);
@@ -792,10 +864,6 @@
     user-select: none;
 }
 
-.kanban-card:active {
-    cursor: grabbing;
-}
-
 .kanban-card:hover {
     border-color: var(--ws-brand-blue);
     box-shadow: var(--ws-shadow-md);
@@ -810,12 +878,6 @@
 }
 
 @media (max-width: 991.98px) {
-    .ws-split-layout {
-        flex-direction: column;
-    }
-
-    .ws-filter-panel {
-        width: 100%;
-        position: static;
-    }
+    .ws-split-layout { flex-direction: column; }
+    .ws-filter-panel { width: 100%; position: static; }
 }
