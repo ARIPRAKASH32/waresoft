@@ -33,8 +33,8 @@
                                 <span class="ws-user-avatar" style="width: 64px; height: 64px; font-size: 20px;">{{ current_user.avatar }}</span>
                             </div>
                             <h3 class="ws-text-ink fs-6 fw-semibold mb-1">{{ current_user.name }}</h3>
-                            <div class="ws-text-muted small mb-3">{{ current_user.email }}</div>
-                            <span class="ws-pill ws-pill-navy">{{ current_user.role }}</span>
+                            <div class="ws-text-muted small mb-1">{{ current_user.email }}</div>
+                            <div class="small fw-medium ws-text-secondary">{{ current_user.role }}</div>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -56,7 +56,7 @@
                                         <div class="ws-text-ink small fw-semibold">Hardware / TOTP Authenticator</div>
                                         <div class="ws-text-muted small">2FA verification active on login</div>
                                     </div>
-                                    <span class="ws-pill ws-pill-success">ENFORCED</span>
+                                    <span class="ws-status-inline"><span class="status-dot status-dot-live"></span> Enforced</span>
                                 </div>
                                 <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">Save Preferences</button>
                             </form>
@@ -68,7 +68,7 @@
             <!-- TAB 2: Notifications -->
             <div id="acct-notifications" class="acct-pane {% if active_tab != 'notifications' %}d-none{% endif %}">
                 <div class="d-flex justify-content-between align-items-center mb-3" style="max-width: 780px;">
-                    <span class="ws-pill ws-pill-telemetry" id="unreadCount">2 UNREAD</span>
+                    <span class="small ws-text-secondary fw-medium" id="unreadCount">2 unread notifications</span>
                     <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="markRead()">Mark All Read</button>
                 </div>
                 <div class="d-flex flex-column gap-3" style="max-width: 780px;">
@@ -106,8 +106,8 @@
         WareSoftAPI.showToast('Account preferences updated.', 'success');
     }
     function markRead() {
-        document.getElementById('unreadCount').textContent = '0 UNREAD';
-        document.getElementById('unreadCount').className = 'ws-pill ws-pill-muted';
+        document.getElementById('unreadCount').textContent = '0 unread notifications';
+        document.getElementById('unreadCount').className = 'small ws-text-muted';
         WareSoftAPI.showToast('All notifications cleared.', 'success');
     }
 </script>
