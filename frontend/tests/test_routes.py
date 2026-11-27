@@ -35,6 +35,8 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 self.assertIn('logo.svg', html)
                 self.assertIn('data-bs-theme="dark"', html)
                 self.assertIn('ws-header-pill', html)
+                self.assertIn('href="/login"', html)
+                self.assertIn('href="/register"', html)
                 self.assertIn(marker, html_lib.unescape(html))
                 if route in ('/', '/auth'):
                     self.assertIn('Contact us', html)
