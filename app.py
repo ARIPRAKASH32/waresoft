@@ -14,13 +14,13 @@ app.secret_key = os.environ.get('SECRET_KEY', 'waresoft-devnexus-secret-key-2026
 def inject_global_data():
     return {
         'app_name': 'WareSoft',
-        'platform_codename': 'DevNexus',
+        'platform_codename': 'WareSoft',
         'current_user': session.get('user', {
             'name': 'Ari Prakash',
             'email': 'ariprakash32@gmail.com',
             'role': 'Frontend Lead',
             'avatar': 'AP',
-            'active_project': 'DevNexus Core'
+            'active_project': 'WareSoft Core'
         }),
         'system_status': {
             'env': 'PROD',
@@ -226,7 +226,7 @@ def api_login():
             'email': email,
             'role': 'Engineering Lead',
             'avatar': email[0:2].upper(),
-            'active_project': 'DevNexus Core'
+            'active_project': 'WareSoft Core'
         }
         return jsonify({'success': True, 'redirect': '/projects'})
     return jsonify({'success': False, 'message': 'Invalid credentials provided'}), 400

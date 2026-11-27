@@ -1,4 +1,5 @@
 {% set is_public = request.path in ['/', '/about', '/services', '/portfolio', '/contact', '/careers', '/auth', '/login', '/register', '/forgot-password'] %}
+{% set is_auth_page = request.path in ['/auth', '/login', '/register', '/forgot-password'] %}
 
 {% if is_public %}
 <!-- Juspay-Style Dark Navy (#0B1020) Floating Pill Header -->
@@ -43,7 +44,7 @@
                 </button>
                 <ul class="dropdown-menu ws-dropdown-menu mt-2">
                     <li><a class="dropdown-item" href="/#solutions"><i class="bi bi-layers"></i><span>Architecture Overview</span></a></li>
-                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces"></i><span>DevNexus API Explorer</span></a></li>
+                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces"></i><span>WareSoft API Explorer</span></a></li>
                     <li><a class="dropdown-item" href="/operations?tab=releases"><i class="bi bi-tag"></i><span>Release Changelogs</span></a></li>
                 </ul>
             </div>
@@ -78,8 +79,9 @@
                 </ul>
             </div>
 
-            <a href="/login" class="ws-btn ws-btn-secondary ws-btn-sm">Login</a>
-            <a href="/register" class="ws-btn ws-btn-primary ws-btn-sm">Sign Up</a>
+            {% if not is_auth_page %}
+            <a href="/auth" class="ws-btn ws-btn-primary ws-btn-sm">Sign In</a>
+            {% endif %}
 
             <a href="/#contact" class="ws-contact-cta d-none d-lg-inline-flex">
                 Contact us <i class="bi bi-caret-right-fill" style="font-size: 10px;"></i>
@@ -145,8 +147,7 @@
         </div>
 
         <div class="ws-header-actions gap-2 gap-sm-3">
-            <a href="/login" class="ws-btn ws-btn-secondary ws-btn-sm">Login</a>
-            <a href="/register" class="ws-btn ws-btn-primary ws-btn-sm">Sign Up</a>
+            <a href="/auth" class="ws-btn ws-btn-secondary ws-btn-sm">Sign In</a>
 
             <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications" aria-label="Notifications">
                 <i class="bi bi-bell"></i>
@@ -201,9 +202,10 @@
         <a href="/developer" class="py-1 ws-text-secondary text-decoration-none">Engineering &amp; QA</a>
         <a href="/operations" class="py-1 ws-text-secondary text-decoration-none">Cloud Ops &amp; Billing</a>
         <a href="/#developers" class="py-1 ws-text-secondary text-decoration-none">Integrations</a>
+        {% if not is_auth_page %}
         <div class="d-flex gap-2 pt-2">
-            <a href="/login" class="ws-btn ws-btn-secondary ws-btn-sm flex-grow-1">Login</a>
-            <a href="/register" class="ws-btn ws-btn-primary ws-btn-sm flex-grow-1">Sign Up</a>
+            <a href="/auth" class="ws-btn ws-btn-primary ws-btn-sm flex-grow-1">Sign In</a>
         </div>
+        {% endif %}
     </div>
 </div>

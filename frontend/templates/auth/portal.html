@@ -2,19 +2,17 @@
 
 {% block content %}
 <div class="content-container py-5 d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 160px);">
-    <div class="ws-card p-4 p-md-5" style="width: 100%; max-width: 480px;">
+    <div class="ws-card p-4 p-md-5" style="width: 100%; max-width: 460px;">
         <div class="text-center mb-4">
-            <h2 class="ws-text-ink fs-4 fw-semibold mb-1">DevNexus Identity Portal</h2>
-            <p class="ws-text-secondary small mb-3">Authenticate or provision access across WareSoft workspaces</p>
-
-            <div class="jp-pill-nav w-100 justify-content-center">
-                <button type="button" class="jp-pill-tab {% if active_tab|default('login') == 'login' %}active{% endif %}" onclick="switchAuthTab('login', this)">Sign In</button>
-                <button type="button" class="jp-pill-tab {% if active_tab == 'register' %}active{% endif %}" onclick="switchAuthTab('register', this)">Register</button>
-                <button type="button" class="jp-pill-tab {% if active_tab == 'forgot' %}active{% endif %}" onclick="switchAuthTab('forgot', this)">Recovery</button>
-            </div>
+            <h2 id="portalHeading" class="ws-text-ink fs-4 fw-semibold mb-1">
+                {% if active_tab == 'register' %}Create WareSoft Account{% elif active_tab == 'forgot' %}Forgot Password{% else %}WareSoft Identity Portal{% endif %}
+            </h2>
+            <p id="portalSubheading" class="ws-text-secondary small m-0">
+                {% if active_tab == 'register' %}Create your workspace credentials across WareSoft{% elif active_tab == 'forgot' %}Enter your verified email to receive a reset link{% else %}Sign in to access WareSoft workspaces{% endif %}
+            </p>
         </div>
 
-        <!-- Sign In Form -->
+        <!-- Sign In Form (contains Forgot Password & Sign Up links) -->
         <form id="auth-login" class="auth-pane {% if active_tab|default('login') != 'login' %}d-none{% endif %}" onsubmit="handleLoginSubmit(event)">
             <div class="ws-form-group">
                 <label class="ws-label" for="loginEmail">Work Email</label>
@@ -25,16 +23,21 @@
                 <input type="password" class="ws-input" id="loginPassword" placeholder="••••••••••••" required value="password123">
             </div>
             <div class="d-flex justify-content-between align-items-center mb-4 small">
-                <label class="form-check">
+                <label class="form-check m-0">
                     <input class="form-check-input" type="checkbox" checked>
                     <span class="form-check-label ws-text-secondary">Keep session 30d</span>
                 </label>
-                <span class="ws-text-muted small"><i class="bi bi-shield-lock me-1"></i>256-bit TLS</span>
+                <button type="button" class="btn btn-link p-0 small fw-medium text-decoration-none ws-text-blue" onclick="switchAuthTab('forgot')">Forgot password?</button>
             </div>
-            <button type="submit" class="ws-btn ws-btn-navy w-100" id="loginSubmitBtn">Sign In to Console</button>
+            <button type="submit" class="ws-btn ws-btn-primary w-100" id="loginSubmitBtn">Sign In to Console</button>
+
+            <div class="text-center mt-4 pt-3 border-top small ws-text-secondary" style="border-color: var(--ws-border-quiet) !important;">
+                New to WareSoft?
+                <button type="button" class="btn btn-link p-0 ms-1 small fw-semibold text-decoration-none ws-text-blue" onclick="switchAuthTab('register')">Sign up</button>
+            </div>
         </form>
 
-        <!-- Register Form -->
+        <!-- Sign Up Form -->
         <form id="auth-register" class="auth-pane {% if active_tab != 'register' %}d-none{% endif %}" onsubmit="handleRegisterSubmit(event)">
             <div class="row g-3 mb-3">
                 <div class="col-6">
@@ -63,16 +66,26 @@
                     <input type="password" class="ws-input" placeholder="Min. 8 chars" required minlength="8">
                 </div>
             </div>
-            <button type="submit" class="ws-btn ws-btn-primary w-100" id="regSubmitBtn">Provision Account</button>
+            <button type="submit" class="ws-btn ws-btn-primary w-100" id="regSubmitBtn">Sign Up</button>
+
+            <div class="text-center mt-4 pt-3 border-top small ws-text-secondary" style="border-color: var(--ws-border-quiet) !important;">
+                Already have an account?
+                <button type="button" class="btn btn-link p-0 ms-1 small fw-semibold text-decoration-none ws-text-blue" onclick="switchAuthTab('login')">Sign in</button>
+            </div>
         </form>
 
-        <!-- Recovery Form -->
+        <!-- Forgot Password Form -->
         <form id="auth-forgot" class="auth-pane {% if active_tab != 'forgot' %}d-none{% endif %}" onsubmit="handleForgotSubmit(event)">
-            <div class="ws-form-group">
+            <div class="ws-form-group mb-4">
                 <label class="ws-label">Verified Email Address</label>
                 <input type="email" class="ws-input" placeholder="name@company.com" required>
             </div>
-            <button type="submit" class="ws-btn ws-btn-primary w-100" id="resetSubmitBtn">Dispatch Recovery Link</button>
+            <button type="submit" class="ws-btn ws-btn-primary w-100" id="resetSubmitBtn">Send Reset Link</button>
+
+            <div class="text-center mt-4 pt-3 border-top small ws-text-secondary" style="border-color: var(--ws-border-quiet) !important;">
+                Remembered your password?
+                <button type="button" class="btn btn-link p-0 ms-1 small fw-semibold text-decoration-none ws-text-blue" onclick="switchAuthTab('login')">Back to Sign In</button>
+            </div>
         </form>
     </div>
 </div>
@@ -80,11 +93,19 @@
 
 {% block scripts %}
 <script>
-    function switchAuthTab(tab, btn) {
+    const portalMeta = {
+        login: ['WareSoft Identity Portal', 'Sign in to access WareSoft workspaces'],
+        register: ['Create WareSoft Account', 'Create your workspace credentials across WareSoft'],
+        forgot: ['Forgot Password', 'Enter your verified email to receive a reset link']
+    };
+
+    function switchAuthTab(tab) {
         document.querySelectorAll('.auth-pane').forEach(p => p.classList.add('d-none'));
-        document.getElementById('auth-' + tab).classList.remove('d-none');
-        document.querySelectorAll('.jp-pill-tab').forEach(b => b.classList.remove('active'));
-        if (btn) btn.classList.add('active');
+        const pane = document.getElementById('auth-' + tab);
+        if (pane) pane.classList.remove('d-none');
+        const meta = portalMeta[tab] || portalMeta.login;
+        document.getElementById('portalHeading').textContent = meta[0];
+        document.getElementById('portalSubheading').textContent = meta[1];
     }
 
     async function handleLoginSubmit(e) {
@@ -102,13 +123,13 @@
 
     function handleRegisterSubmit(e) {
         e.preventDefault();
-        WareSoftAPI.showToast('Account provisioned. Switching to Sign In...', 'success');
-        switchAuthTab('login', document.querySelector('.jp-pill-tab'));
+        WareSoftAPI.showToast('Account created. Switching to Sign In...', 'success');
+        switchAuthTab('login');
     }
 
     function handleForgotSubmit(e) {
         e.preventDefault();
-        WareSoftAPI.showToast('Recovery instructions dispatched.', 'success');
+        WareSoftAPI.showToast('Password reset link sent.', 'success');
     }
 </script>
 {% endblock %}
