@@ -35,6 +35,11 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 self.assertIn('logo.svg', html)
                 self.assertIn('data-bs-theme="light"', html)
                 self.assertIn(marker, html_lib.unescape(html))
+                if route in ('/', '/auth'):
+                    self.assertIn('Open Console', html)
+                    self.assertNotIn('workspaceCmdInput', html)
+                else:
+                    self.assertIn('workspaceCmdInput', html)
 
     def test_legacy_routes_and_tab_parameters(self):
         legacy_routes = [

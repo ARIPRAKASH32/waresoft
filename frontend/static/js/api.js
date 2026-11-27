@@ -128,6 +128,35 @@ const WareSoftAPI = (function() {
                 sidebar.classList.add('d-none');
             });
         }
+
+        // Dashboard Command Search (Cmd+K / Filterable Quick Jump)
+        const cmdInput = document.getElementById('workspaceCmdInput');
+        const cmdResults = document.getElementById('workspaceCmdResults');
+        if (cmdInput && cmdResults) {
+            cmdInput.addEventListener('focus', () => cmdResults.classList.remove('d-none'));
+            cmdInput.addEventListener('input', () => {
+                const q = cmdInput.value.trim().toLowerCase();
+                cmdResults.classList.remove('d-none');
+                cmdResults.querySelectorAll('.jp-cmd-item').forEach(item => {
+                    const match = !q || item.innerText.toLowerCase().includes(q) || (item.dataset.terms || '').includes(q);
+                    item.classList.toggle('d-none', !match);
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.jp-cmd-wrap')) {
+                    cmdResults.classList.add('d-none');
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                    e.preventDefault();
+                    cmdInput.focus();
+                } else if (e.key === 'Escape') {
+                    cmdResults.classList.add('d-none');
+                    cmdInput.blur();
+                }
+            });
+        }
     });
 
     return {
