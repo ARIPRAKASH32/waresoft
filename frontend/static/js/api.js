@@ -18,14 +18,16 @@ const WareSoftAPI = (function() {
         };
 
         const toastEl = document.createElement('div');
-        toastEl.className = 'toast align-items-center bg-white text-dark border shadow-sm show';
+        toastEl.className = 'toast align-items-center border shadow-sm show';
         toastEl.id = toastId;
         toastEl.setAttribute('role', 'alert');
         toastEl.setAttribute('aria-live', 'assertive');
         toastEl.setAttribute('aria-atomic', 'true');
         toastEl.style.minWidth = '280px';
+        toastEl.style.backgroundColor = 'var(--ws-bg-surface-1)';
+        toastEl.style.color = 'var(--ws-text-primary)';
         toastEl.style.borderRadius = 'var(--ws-radius-md)';
-        toastEl.style.borderColor = 'var(--ws-border-quiet)';
+        toastEl.style.borderColor = 'var(--ws-border-subtle)';
 
         toastEl.innerHTML = `
             <div class="d-flex">
@@ -33,7 +35,7 @@ const WareSoftAPI = (function() {
                     <i class="bi ${iconMap[type] || iconMap.info} fs-6"></i>
                     <span class="fw-medium">${message}</span>
                 </div>
-                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         `;
 

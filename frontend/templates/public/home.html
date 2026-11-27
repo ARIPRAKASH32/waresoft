@@ -46,18 +46,18 @@
 
                 <div class="row g-0 align-items-stretch">
                     <!-- Left: 3D Architecture Visual / Interactive WebGL -->
-                    <div class="col-lg-7 border-end" style="border-color: var(--ws-border-quiet) !important; background-color: #F4F7FB;">
+                    <div class="col-lg-7 border-end" style="border-color: var(--ws-border-quiet) !important; background-color: var(--ws-bg-canvas);">
                         <div id="hero-render-pane" class="h-100">
                             <img src="{{ url_for('static', filename='images/platform-architecture.jpg') }}"
                                  alt="WareSoft Service Architecture 3D Isometric Hardware Nodes"
                                  class="w-100 h-100 d-block"
                                  style="min-height: 320px; max-height: 360px; object-fit: cover;">
                         </div>
-                        <div id="hero-3d-visualizer" class="d-none" style="width: 100%; height: 360px; cursor: grab; background-color: #FFFFFF;"></div>
+                        <div id="hero-3d-visualizer" class="d-none" style="width: 100%; height: 360px; cursor: grab; background-color: var(--ws-bg-canvas);"></div>
                     </div>
 
                     <!-- Right: Live Console Telemetry Snapshot -->
-                    <div class="col-lg-5 p-4 d-flex flex-column justify-content-between bg-white">
+                    <div class="col-lg-5 p-4 d-flex flex-column justify-content-between" style="background-color: var(--ws-bg-surface-1);">
                         <div>
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="ws-text-muted small font-monospace">ACTIVE CLUSTER</span>

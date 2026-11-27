@@ -33,7 +33,7 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 self.assertIn('Manrope', html)
                 self.assertNotIn('Plus+Jakarta+Sans', html)
                 self.assertIn('logo.svg', html)
-                self.assertIn('data-bs-theme="light"', html)
+                self.assertIn('data-bs-theme="dark"', html)
                 self.assertIn(marker, html_lib.unescape(html))
                 if route in ('/', '/auth'):
                     self.assertIn('ws-header-pill', html)

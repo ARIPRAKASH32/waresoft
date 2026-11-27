@@ -70,8 +70,8 @@ code, kbd, samp, pre {
 }
 
 ::selection {
-    background-color: rgba(59, 130, 246, 0.16);
-    color: var(--ws-brand-navy);
+    background-color: rgba(59, 130, 246, 0.28);
+    color: var(--ws-text-primary);
 }
 
 ::-webkit-scrollbar {
