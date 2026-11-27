@@ -1,0 +1,156 @@
+/**
+ * WareSoft DevNexus Base Stylesheet
+ * Strict reset, typography hierarchy, 4px grid rhythm, layout shells
+ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body.waresoft-body {
+    background-color: var(--ws-bg-canvas);
+    color: var(--ws-text-primary);
+    font-family: var(--ws-font-sans);
+    font-size: var(--ws-text-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ─── Tabular Numerics ─── */
+.tabular-nums, .badge, .metric-value, .stat-value, .table td {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Typography Defaults ─── */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--ws-text-primary);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: var(--ws-space-3);
+}
+
+h1 { font-size: var(--ws-text-3xl); }
+h2 { font-size: var(--ws-text-2xl); }
+h3 { font-size: var(--ws-text-xl); }
+h4 { font-size: var(--ws-text-lg); }
+h5 { font-size: var(--ws-text-md); }
+h6 { font-size: var(--ws-text-base); }
+
+p {
+    color: var(--ws-text-secondary);
+    margin-bottom: var(--ws-space-3);
+}
+
+a {
+    color: var(--ws-brand-blue);
+    text-decoration: none;
+    transition: color var(--ws-duration-fast) var(--ws-ease-out);
+}
+
+a:hover {
+    color: #60A5FA;
+}
+
+code, kbd, samp, pre {
+    font-family: var(--ws-font-mono);
+    font-size: 0.9em;
+}
+
+/* ─── Selection ─── */
+::selection {
+    background-color: rgba(59, 130, 246, 0.35);
+    color: #FFFFFF;
+}
+
+/* ─── Precision Scrollbars ─── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ws-bg-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ws-bg-surface-3);
+    border-radius: var(--ws-radius-xs);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ws-text-muted);
+}
+
+/* ─── Layout Shells ─── */
+.app-viewport {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content-flow {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--ws-space-6);
+    padding-right: var(--ws-space-6);
+}
+
+.dashboard-shell {
+    display: flex;
+    min-height: calc(100vh - 64px);
+}
+
+.dashboard-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background-color: var(--ws-bg-surface-1);
+    border-right: 1px solid var(--ws-border-quiet);
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-main {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--ws-bg-canvas);
+    padding: var(--ws-space-6);
+}
+
+/* ─── Responsive Media Breakpoints ─── */
+@media (max-width: 991.98px) {
+    .content-container {
+        padding-left: var(--ws-space-4);
+        padding-right: var(--ws-space-4);
+    }
+
+    .dashboard-shell {
+        flex-direction: column;
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--ws-border-quiet);
+    }
+}
