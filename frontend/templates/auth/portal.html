@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container py-5 d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 160px);">
+    <div class="ws-card p-4 p-md-5" style="width: 100%; max-width: 480px;">
+        <div class="text-center mb-4">
+            <h2 class="ws-text-ink fs-4 fw-semibold mb-1">DevNexus Identity Portal</h2>
+            <p class="ws-text-secondary small mb-3">Authenticate or provision access across WareSoft workspaces</p>
+
+            <div class="jp-pill-nav w-100 justify-content-center">
+                <button type="button" class="jp-pill-tab {% if active_tab|default('login') == 'login' %}active{% endif %}" onclick="switchAuthTab('login', this)">Sign In</button>
+                <button type="button" class="jp-pill-tab {% if active_tab == 'register' %}active{% endif %}" onclick="switchAuthTab('register', this)">Register</button>
+                <button type="button" class="jp-pill-tab {% if active_tab == 'forgot' %}active{% endif %}" onclick="switchAuthTab('forgot', this)">Recovery</button>
+            </div>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="auth-login" class="auth-pane {% if active_tab|default('login') != 'login' %}d-none{% endif %}" onsubmit="handleLoginSubmit(event)">
+            <div class="ws-form-group">
+                <label class="ws-label" for="loginEmail">Work Email</label>
+                <input type="email" class="ws-input" id="loginEmail" placeholder="name@company.com" required value="ariprakash32@gmail.com">
+            </div>
+            <div class="ws-form-group">
+                <label class="ws-label" for="loginPassword">Password</label>
+                <input type="password" class="ws-input" id="loginPassword" placeholder="••••••••••••" required value="password123">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 small">
+                <label class="form-check">
+                    <input class="form-check-input" type="checkbox" checked>
+                    <span class="form-check-label ws-text-secondary">Keep session 30d</span>
+                </label>
+                <span class="ws-pill ws-pill-telemetry" style="font-size: 10px;">256-BIT TLS</span>
+            </div>
+            <button type="submit" class="ws-btn ws-btn-navy w-100" id="loginSubmitBtn">Sign In to Console</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="auth-register" class="auth-pane {% if active_tab != 'register' %}d-none{% endif %}" onsubmit="handleRegisterSubmit(event)">
+            <div class="row g-3 mb-3">
+                <div class="col-6">
+                    <label class="ws-label">Full Name</label>
+                    <input type="text" class="ws-input" placeholder="Ari Prakash" required>
+                </div>
+                <div class="col-6">
+                    <label class="ws-label">Organization</label>
+                    <input type="text" class="ws-input" placeholder="Acme Inc." required>
+                </div>
+                <div class="col-12">
+                    <label class="ws-label">Corporate Email</label>
+                    <input type="email" class="ws-input" placeholder="ari@acme.com" required>
+                </div>
+                <div class="col-6">
+                    <label class="ws-label">Role</label>
+                    <select class="ws-select">
+                        <option value="client">Client</option>
+                        <option value="developer" selected>Developer</option>
+                        <option value="qa">QA Lead</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label class="ws-label">Password</label>
+                    <input type="password" class="ws-input" placeholder="Min. 8 chars" required minlength="8">
+                </div>
+            </div>
+            <button type="submit" class="ws-btn ws-btn-primary w-100" id="regSubmitBtn">Provision Account</button>
+        </form>
+
+        <!-- Recovery Form -->
+        <form id="auth-forgot" class="auth-pane {% if active_tab != 'forgot' %}d-none{% endif %}" onsubmit="handleForgotSubmit(event)">
+            <div class="ws-form-group">
+                <label class="ws-label">Verified Email Address</label>
+                <input type="email" class="ws-input" placeholder="name@company.com" required>
+            </div>
+            <button type="submit" class="ws-btn ws-btn-primary w-100" id="resetSubmitBtn">Dispatch Recovery Link</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchAuthTab(tab, btn) {
+        document.querySelectorAll('.auth-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('auth-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-pill-tab').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+
+    async function handleLoginSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('loginSubmitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating...';
+        try {
+            await WareSoftAPI.login(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
+        } catch (err) {
+            btn.disabled = false;
+            btn.innerHTML = 'Sign In to Console';
+        }
+    }
+
+    function handleRegisterSubmit(e) {
+        e.preventDefault();
+        WareSoftAPI.showToast('Account provisioned. Switching to Sign In...', 'success');
+        switchAuthTab('login', document.querySelector('.jp-pill-tab'));
+    }
+
+    function handleForgotSubmit(e) {
+        e.preventDefault();
+        WareSoftAPI.showToast('Recovery instructions dispatched.', 'success');
+    }
+</script>
+{% endblock %}

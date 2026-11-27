@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Cloud Ops, SLA &amp; Billing Hub</h1>
+                        <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> 99.98% SLA</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Manage environment deployments, tagged releases, SLA tickets, and milestone escrow invoices.</p>
+                </div>
+                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="triggerDeploy('staging')">
+                    <i class="bi bi-cloud-arrow-up"></i> Deploy Staging
+                </button>
+            </div>
+
+            <!-- Unified Workspace Tab Bar -->
+            <div class="jp-tab-strip">
+                <button class="jp-tab-btn {% if active_tab|default('deployments') == 'deployments' %}active{% endif %}" data-otab="deployments" onclick="switchOpsTab('deployments', this)">
+                    <i class="bi bi-cloud-arrow-up"></i> CI/CD Deployments
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'releases' %}active{% endif %}" data-otab="releases" onclick="switchOpsTab('releases', this)">
+                    <i class="bi bi-tag"></i> Release History
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'maintenance' %}active{% endif %}" data-otab="maintenance" onclick="switchOpsTab('maintenance', this)">
+                    <i class="bi bi-tools"></i> SLA Support Tickets
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'billing' %}active{% endif %}" data-otab="billing" onclick="switchOpsTab('billing', this)">
+                    <i class="bi bi-receipt"></i> Billing &amp; Invoices
+                </button>
+            </div>
+
+            <!-- TAB 1: CI/CD Deployments -->
+            <div id="ops-deployments" class="ops-pane {% if active_tab|default('deployments') != 'deployments' %}d-none{% endif %}">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="ws-opp-card">
+                            <div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="ws-pill ws-pill-muted">DEV</span>
+                                    <span class="ws-pill ws-pill-success">HEALTHY</span>
+                                </div>
+                                <h4 class="ws-text-ink fs-6 fw-semibold mb-1">Development Cluster</h4>
+                                <p class="ws-text-muted small font-monospace mb-3">dev-941a2b &bull; 8m ago</p>
+                            </div>
+                            <button class="ws-btn ws-btn-secondary ws-btn-sm w-100" onclick="triggerDeploy('development')">Redeploy Dev</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="ws-opp-card">
+                            <div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="ws-pill ws-pill-telemetry">STAGING</span>
+                                    <span class="ws-pill ws-pill-success">HEALTHY</span>
+                                </div>
+                                <h4 class="ws-text-ink fs-6 fw-semibold mb-1">Staging Pre-Prod</h4>
+                                <p class="ws-text-muted small font-monospace mb-3">v2.4.2-rc1 &bull; 2h ago</p>
+                            </div>
+                            <button class="ws-btn ws-btn-primary ws-btn-sm w-100" onclick="triggerDeploy('staging')">Promote to Staging</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="ws-opp-card">
+                            <div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="ws-pill ws-pill-navy">PRODUCTION</span>
+                                    <span class="ws-pill ws-pill-success">LIVE</span>
+                                </div>
+                                <h4 class="ws-text-ink fs-6 fw-semibold mb-1">Production Edge</h4>
+                                <p class="ws-text-muted small font-monospace mb-3">{{ system_status.version }} ({{ system_status.commit }})</p>
+                            </div>
+                            <button class="ws-btn ws-btn-navy ws-btn-sm w-100" onclick="triggerDeploy('production')">Promote Prod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>Run ID</th>
+                                <th>Environment</th>
+                                <th>Commit</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deployHistoryBody">
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">DEP-8840</td>
+                                <td><span class="ws-pill ws-pill-navy">PRODUCTION</span></td>
+                                <td class="font-monospace">9b10618</td>
+                                <td><span class="ws-pill ws-pill-success">DEPLOYED</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: Release History -->
+            <div id="ops-releases" class="ops-pane {% if active_tab != 'releases' %}d-none{% endif %}">
+                <div class="d-flex flex-column gap-3" style="max-width: 820px;">
+                    <div class="ws-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="ws-pill ws-pill-navy">v2.4.2 (CURRENT)</span>
+                            <span class="font-monospace ws-text-muted small">Nov 27, 2026</span>
+                        </div>
+                        <h4 class="ws-text-ink fs-6 fw-semibold mt-2">Calm Juspay Blend UI &amp; 8-Workspace Consolidation</h4>
+                        <p class="ws-text-secondary small m-0">Unified 40 routes into 8 cohesive tabbed workspaces with quiet hairline typography.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: SLA Maintenance -->
+            <div id="ops-maintenance" class="ops-pane {% if active_tab != 'maintenance' %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>Ticket #</th>
+                                <th>Client &amp; Summary</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">#3041</td>
+                                <td class="ws-text-ink fw-medium">FinTech Global &bull; Edge Timeout on APAC Settlement Gateway</td>
+                                <td><span class="ws-pill ws-pill-danger">P1 (2H SLA)</span></td>
+                                <td><span class="ws-pill ws-pill-warning">INVESTIGATING</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">#3038</td>
+                                <td class="ws-text-ink fw-medium">Logix Worldwide &bull; MQTT Reconnect Jitter on Sensor v4</td>
+                                <td><span class="ws-pill ws-pill-warning">P2 (8H SLA)</span></td>
+                                <td><span class="ws-pill ws-pill-telemetry">PATCH READY</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 4: Billing & Invoices -->
+            <div id="ops-billing" class="ops-pane {% if active_tab != 'billing' %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Client &amp; Milestone</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">INV-2048</td>
+                                <td class="ws-text-ink fw-medium">FinTech Global &bull; Milestone 2 Webhook Core</td>
+                                <td class="font-monospace fw-semibold">$22,000</td>
+                                <td><span class="ws-pill ws-pill-warning">DUE DEC 10</span></td>
+                                <td><button class="ws-btn ws-btn-primary ws-btn-sm" onclick="WareSoftAPI.showToast('Escrow invoice settlement opened', 'success')">Settle</button></td>
+                            </tr>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">INV-2041</td>
+                                <td class="ws-text-ink fw-medium">FinTech Global &bull; Milestone 1 Blueprint</td>
+                                <td class="font-monospace fw-semibold">$10,000</td>
+                                <td><span class="ws-pill ws-pill-success">PAID</span></td>
+                                <td><button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="window.print()">Print PDF</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchOpsTab(tab, btn) {
+        document.querySelectorAll('.ops-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('ops-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+
+    async function triggerDeploy(env) {
+        const res = await WareSoftAPI.fetch('/api/deployment/trigger', {
+            method: 'POST',
+            body: JSON.stringify({ environment: env })
+        });
+        WareSoftAPI.showToast(res.message || `Deployment triggered for ${env}`, 'success');
+        const tbody = document.getElementById('deployHistoryBody');
+        if (tbody) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td class="font-monospace ws-text-cyan fw-semibold">${res.deployment_id.toUpperCase()}</td><td><span class="ws-pill ws-pill-telemetry">${env.toUpperCase()}</span></td><td class="font-monospace">9b10618</td><td><span class="ws-pill ws-pill-warning">${res.status}</span></td>`;
+            tbody.prepend(tr);
+        }
+    }
+</script>
+{% endblock %}
