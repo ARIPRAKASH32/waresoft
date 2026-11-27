@@ -44,7 +44,7 @@
 }
 
 .jp-tab-btn:hover {
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
 }
 
 .jp-tab-btn.active {
@@ -177,15 +177,15 @@
 
 .jp-logo-item:hover {
     opacity: 1;
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
 }
 
 /* ─── Juspay Developer Studio API Explorer (#0B1020 Surface) ─── */
 .jp-code-explorer {
-    background-color: var(--ws-brand-navy);
+    background-color: var(--ws-bg-surface-1);
     border-radius: var(--ws-radius-lg);
     overflow: hidden;
-    border: 1px solid rgba(11, 16, 32, 0.25);
+    border: 1px solid var(--ws-border-subtle);
     box-shadow: var(--ws-shadow-lg);
 }
 
@@ -270,28 +270,29 @@
 }
 
 .ws-btn-navy {
-    background-color: var(--ws-brand-navy);
-    border-color: var(--ws-brand-navy);
-    color: #FFFFFF;
+    background-color: var(--ws-text-primary);
+    border-color: var(--ws-text-primary);
+    color: var(--ws-text-inverse);
+    font-weight: 600;
 }
 
 .ws-btn-navy:hover {
-    background-color: #162038;
-    border-color: #162038;
-    color: #FFFFFF;
+    background-color: #E2E8F0;
+    border-color: #E2E8F0;
+    color: var(--ws-text-inverse);
 }
 
 .ws-btn-secondary {
-    background-color: var(--ws-bg-surface-1);
+    background-color: var(--ws-bg-surface-2);
     border-color: var(--ws-border-subtle);
     color: var(--ws-text-primary);
     box-shadow: var(--ws-shadow-sm);
 }
 
 .ws-btn-secondary:hover, .ws-btn-secondary.active {
-    background-color: var(--ws-bg-surface-2);
+    background-color: var(--ws-bg-surface-3);
     border-color: var(--ws-brand-blue);
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
 }
 
 .ws-btn-outline {
@@ -404,12 +405,12 @@
 
 .ws-filter-chip:hover {
     border-color: var(--ws-brand-blue);
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
 }
 
 .ws-filter-chip.active {
-    background-color: var(--ws-brand-navy);
-    border-color: var(--ws-brand-navy);
+    background-color: var(--ws-brand-blue);
+    border-color: var(--ws-brand-blue);
     color: #FFFFFF;
 }
 
@@ -514,9 +515,9 @@
 }
 
 .ws-pill-navy {
-    background-color: var(--ws-brand-navy);
-    border-color: var(--ws-brand-navy);
-    color: #FFFFFF;
+    background-color: var(--ws-bg-surface-2);
+    border-color: rgba(59, 130, 246, 0.35);
+    color: var(--ws-text-primary);
 }
 
 .ws-pill-success {
@@ -533,8 +534,8 @@
 
 .ws-pill-danger {
     background-color: var(--ws-signal-danger-soft);
-    border-color: rgba(11, 16, 32, 0.22);
-    color: var(--ws-brand-navy);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: var(--ws-signal-danger);
 }
 
 .ws-pill-muted {
@@ -693,8 +694,8 @@
     top: 0;
     z-index: 1030;
     padding: 16px 24px 10px;
-    background-color: rgba(248, 250, 252, 0.88);
-    backdrop-filter: blur(8px);
+    background-color: rgba(11, 16, 32, 0.86);
+    backdrop-filter: blur(10px);
 }
 
 .ws-header-pill {
@@ -702,10 +703,10 @@
     margin: 0 auto;
     height: 60px;
     padding: 0 24px;
-    background-color: var(--ws-brand-navy);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 999px;
-    box-shadow: 0 10px 28px -6px rgba(11, 16, 32, 0.24), 0 2px 6px rgba(11, 16, 32, 0.12);
+    box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.40);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1005,8 +1006,9 @@
     width: 28px;
     height: 28px;
     border-radius: var(--ws-radius-xs);
-    background-color: var(--ws-brand-navy);
-    color: #FFFFFF;
+    background-color: var(--ws-bg-surface-3);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: var(--ws-text-primary);
     font-family: var(--ws-font-mono);
     font-size: 11px;
     font-weight: 600;
@@ -1037,14 +1039,14 @@
 
 .ws-dropdown-menu .dropdown-item:hover {
     background-color: var(--ws-bg-surface-2);
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
 }
 
 .ws-mobile-toggle {
     background: var(--ws-bg-surface-2);
     border: 1px solid var(--ws-border-quiet);
     border-radius: var(--ws-radius-sm);
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
     padding: 4px 8px;
     cursor: pointer;
 }
@@ -1081,7 +1083,7 @@
 
 .sidebar-item:hover {
     background-color: var(--ws-bg-surface-2);
-    color: var(--ws-brand-navy);
+    color: var(--ws-text-primary);
 }
 
 .sidebar-item:hover i {
@@ -1106,7 +1108,7 @@
     margin-top: auto;
 }
 
-.hover-ink:hover { color: var(--ws-brand-navy) !important; }
+.hover-ink:hover { color: var(--ws-text-primary) !important; }
 
 /* ─── Kanban Board ─── */
 .kanban-board-container { display: flex; overflow-x: auto; }
@@ -1166,4 +1168,70 @@
 @media (max-width: 991.98px) {
     .ws-split-layout { flex-direction: column; }
     .ws-filter-panel { width: 100%; position: static; }
+}
+
+/* ─── Full Dark Navy #0B1020 Surface & Control Harmonization ─── */
+.jp-pill-nav {
+    background-color: var(--ws-bg-surface-2);
+    border: 1px solid var(--ws-border-quiet);
+}
+
+.jp-pill-tab {
+    color: var(--ws-text-secondary);
+}
+
+.jp-pill-tab:hover {
+    color: var(--ws-text-primary);
+}
+
+.jp-pill-tab.active {
+    background-color: var(--ws-bg-surface-3);
+    color: var(--ws-text-primary);
+    box-shadow: var(--ws-shadow-sm);
+    border: 1px solid var(--ws-border-subtle);
+}
+
+.ws-brand-text {
+    color: var(--ws-text-primary);
+}
+
+.ws-brand-badge {
+    background-color: var(--ws-brand-blue-soft);
+    border: 1px solid rgba(59, 130, 246, 0.28);
+    color: var(--ws-brand-blue-ink);
+}
+
+.ws-icon-btn,
+.ws-user-btn {
+    color: var(--ws-text-primary);
+}
+
+.ws-icon-btn:hover {
+    color: var(--ws-text-primary);
+}
+
+.modal-content {
+    background-color: var(--ws-bg-surface-1);
+    border: 1px solid var(--ws-border-subtle);
+    color: var(--ws-text-primary);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--ws-border-quiet);
+}
+
+.form-control,
+.form-select {
+    background-color: var(--ws-bg-input);
+    border-color: var(--ws-border-subtle);
+    color: var(--ws-text-primary);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--ws-bg-input);
+    border-color: var(--ws-brand-blue);
+    color: var(--ws-text-primary);
+    box-shadow: 0 0 0 3px var(--ws-brand-blue-soft);
 }

@@ -1,7 +1,6 @@
 /**
- * WareSoft DevNexus 3D Architecture Visualizer
- * Built on Three.js - Precision shaded node topology on a crisp light blueprint surface
- * Uses #0B1020 (Dark Navy), #3B82F6 (Electric Blue), and #06B6D4 (Cyan)
+ * WareSoft DevNexus 3D Architecture Visualizer (Dark Navy #0B1020 Edition)
+ * Precision shaded nodes in #F8FAFC, #3B82F6, and #06B6D4 on #0B1020 canvas
  */
 
 window.initDevNexus3D = function(containerId) {
@@ -22,25 +21,23 @@ window.initDevNexus3D = function(containerId) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Subtle directional + ambient lighting for soft 3D material shading
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
     keyLight.position.set(8, 12, 10);
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0x06B6D4, 0.4);
+    const rimLight = new THREE.DirectionalLight(0x06B6D4, 0.65);
     rimLight.position.set(-8, -6, 6);
     scene.add(rimLight);
 
     const networkGroup = new THREE.Group();
     scene.add(networkGroup);
 
-    // Subtle orbital ring around gateway core
     const ringGeo = new THREE.TorusGeometry(4.2, 0.025, 12, 72);
     const ringMat = new THREE.MeshBasicMaterial({
-        color: 0xCBD5E1,
+        color: 0x334155,
         transparent: true,
         opacity: 0.75
     });
@@ -49,13 +46,13 @@ window.initDevNexus3D = function(containerId) {
     networkGroup.add(ringMesh);
 
     const nodeCoords = [
-        { name: 'Gateway',   x: 0,    y: 0,    z: 0,    color: 0x0B1020, size: 0.78 },
+        { name: 'Gateway',   x: 0,    y: 0,    z: 0,    color: 0xF8FAFC, size: 0.78 },
         { name: 'Auth',      x: -3.8, y: 1.9,  z: 1.1,  color: 0x06B6D4, size: 0.52 },
         { name: 'Projects',  x: 3.9,  y: 1.8,  z: -0.9, color: 0x3B82F6, size: 0.58 },
         { name: 'Kanban',    x: 3.1,  y: -2.2, z: 1.4,  color: 0x06B6D4, size: 0.50 },
-        { name: 'QA & CI',   x: -3.3, y: -1.9, z: -1.0, color: 0x06B6D4, size: 0.46 },
-        { name: 'Telemetry', x: 0.1,  y: 3.3,  z: 0.4,  color: 0x3B82F6, size: 0.44 },
-        { name: 'Billing',   x: -0.2, y: -3.2, z: -0.4, color: 0x0B1020, size: 0.44 }
+        { name: 'QA & CI',   x: -3.3, y: -1.9, z: -1.0, color: 0x3B82F6, size: 0.46 },
+        { name: 'Telemetry', x: 0.1,  y: 3.3,  z: 0.4,  color: 0x06B6D4, size: 0.44 },
+        { name: 'Billing',   x: -0.2, y: -3.2, z: -0.4, color: 0x94A3B8, size: 0.44 }
     ];
 
     const spheres = [];
@@ -64,8 +61,8 @@ window.initDevNexus3D = function(containerId) {
     nodeCoords.forEach(item => {
         const mat = new THREE.MeshStandardMaterial({
             color: item.color,
-            roughness: 0.28,
-            metalness: 0.15
+            roughness: 0.25,
+            metalness: 0.25
         });
         const mesh = new THREE.Mesh(sphereGeo, mat);
         mesh.scale.setScalar(item.size);
@@ -74,11 +71,10 @@ window.initDevNexus3D = function(containerId) {
         spheres.push({ mesh, originalY: item.y });
     });
 
-    // Crisp slate lines connecting microservices
     const lineMat = new THREE.LineBasicMaterial({
-        color: 0x94A3B8,
+        color: 0x475569,
         transparent: true,
-        opacity: 0.55
+        opacity: 0.65
     });
 
     const connections = [
