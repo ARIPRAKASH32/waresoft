@@ -1,3 +1,4 @@
+import html as html_lib
 import os
 import sys
 import unittest
@@ -31,7 +32,7 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 html = resp.get_data(as_text=True)
                 self.assertIn('Plus+Jakarta+Sans', html)
                 self.assertIn('data-bs-theme="light"', html)
-                self.assertIn(marker, html)
+                self.assertIn(marker, html_lib.unescape(html))
 
     def test_legacy_routes_and_tab_parameters(self):
         legacy_routes = [
