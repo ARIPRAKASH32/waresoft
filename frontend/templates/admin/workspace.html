@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Command & Analytics Center</h1>
+                        <span class="ws-pill ws-pill-telemetry">EXECUTIVE</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Platform governance, enterprise clients, RBAC directory, and velocity telemetry.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="WareSoftAPI.showToast('Telemetry synchronized', 'info')">
+                        <i class="bi bi-arrow-repeat"></i> Sync
+                    </button>
+                    <a href="/client?tab=submit" class="ws-btn ws-btn-primary ws-btn-sm">
+                        <i class="bi bi-plus-lg"></i> New RFP
+                    </a>
+                </div>
+            </div>
+
+            <!-- Unified Workspace Tab Bar -->
+            <div class="jp-tab-strip">
+                <button class="jp-tab-btn {% if active_tab|default('overview') == 'overview' %}active{% endif %}" onclick="switchAdminTab('overview', this)">
+                    <i class="bi bi-grid-1x2"></i> Executive Overview
+                </button>
+                <button class="jp-tab-btn {% if active_tab in ['users', 'clients', 'directory'] %}active{% endif %}" onclick="switchAdminTab('directory', this)">
+                    <i class="bi bi-people"></i> Clients & Users (RBAC)
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'analytics' %}active{% endif %}" onclick="switchAdminTab('analytics', this)">
+                    <i class="bi bi-graph-up"></i> Velocity Analytics
+                </button>
+            </div>
+
+            <!-- TAB 1: Overview -->
+            <div id="admin-overview" class="admin-pane {% if active_tab|default('overview') != 'overview' %}d-none{% endif %}">
+                <div class="jp-stat-strip mb-4">
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Active Clients</div>
+                        <div class="ws-metric-value ws-text-ink">34</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);">+3 this month</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Active Projects</div>
+                        <div class="ws-metric-value ws-text-blue">19</div>
+                        <div class="ws-metric-trend ws-text-cyan">48 live sprints</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Escrow Invoiced</div>
+                        <div class="ws-metric-value ws-text-ink">$482,500</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);">98% collected</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Platform Health</div>
+                        <div class="ws-metric-value" style="color: var(--ws-signal-success);">99.98%</div>
+                        <div class="ws-metric-trend ws-text-muted">0 active incidents</div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="ws-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="ws-text-ink fs-6 fw-semibold m-0">Active Client Deliveries</h4>
+                                <a href="/projects" class="small fw-medium">Open Directory &rarr;</a>
+                            </div>
+                            <div class="ws-table-container">
+                                <table class="ws-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Project & Client</th>
+                                            <th>Milestone</th>
+                                            <th>Progress</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="ws-text-ink fw-semibold">NX-101 Payment Router</div>
+                                                <div class="ws-text-muted" style="font-size: 11px;">FinTech Global Inc.</div>
+                                            </td>
+                                            <td>Webhook Integration</td>
+                                            <td class="font-monospace ws-text-ink">75%</td>
+                                            <td><span class="ws-pill ws-pill-success">ON TRACK</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ws-text-ink fw-semibold">NX-104 Cold-Chain Hub</div>
+                                                <div class="ws-text-muted" style="font-size: 11px;">Logix Worldwide</div>
+                                            </td>
+                                            <td>Cloud Load Stress</td>
+                                            <td class="font-monospace ws-text-ink">90%</td>
+                                            <td><span class="ws-pill ws-pill-telemetry">STAGING</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ws-text-ink fw-semibold">NX-109 HIPAA Portal</div>
+                                                <div class="ws-text-muted" style="font-size: 11px;">Aegis Health Group</div>
+                                            </td>
+                                            <td>Security Audit</td>
+                                            <td class="font-monospace ws-text-ink">45%</td>
+                                            <td><span class="ws-pill ws-pill-warning">IN REVIEW</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="ws-card p-4">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Pending Approvals</h4>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="p-3 ws-surface-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="ws-pill ws-pill-warning" style="font-size: 10px;">PROPOSAL</span>
+                                        <span class="font-monospace small ws-text-ink">$78,000</span>
+                                    </div>
+                                    <div class="ws-text-ink small fw-semibold mb-2">Logix Telemetry Expansion RFP</div>
+                                    <a href="/client?tab=quotes" class="ws-btn ws-btn-secondary ws-btn-sm w-100">Review Proposal</a>
+                                </div>
+                                <div class="p-3 ws-surface-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="ws-pill ws-pill-telemetry" style="font-size: 10px;">RELEASE</span>
+                                        <span class="font-monospace small ws-text-muted">PROD</span>
+                                    </div>
+                                    <div class="ws-text-ink small fw-semibold mb-2">Core API v2.4.2 Rollout</div>
+                                    <a href="/operations?tab=deployments" class="ws-btn ws-btn-primary ws-btn-sm w-100">Promote Release</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Clients & Users RBAC -->
+            <div id="admin-directory" class="admin-pane {% if active_tab not in ['users', 'clients', 'directory'] %}d-none{% endif %}">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="ws-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="ws-text-ink fs-6 fw-semibold m-0">Team & Client RBAC Directory</h4>
+                                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="WareSoftAPI.showToast('User invite sent', 'success')">+ Invite</button>
+                            </div>
+                            <div class="ws-table-container">
+                                <table class="ws-table">
+                                    <thead>
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Role</th>
+                                            <th>Workspace</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="ws-user-avatar">AP</span>
+                                                    <div>
+                                                        <div class="ws-text-ink fw-semibold">Ari Prakash</div>
+                                                        <div class="ws-text-muted" style="font-size: 11px;">ariprakash32@gmail.com</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="ws-pill ws-pill-navy">Lead Frontend</span></td>
+                                            <td>DevNexus Core</td>
+                                            <td><span class="ws-pill ws-pill-success">ACTIVE</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="ws-user-avatar" style="background-color: var(--ws-brand-blue);">DT</span>
+                                                    <div>
+                                                        <div class="ws-text-ink fw-semibold">Datcha</div>
+                                                        <div class="ws-text-muted" style="font-size: 11px;">datcha@waresoft.dev</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="ws-pill ws-pill-telemetry">Systems Architect</span></td>
+                                            <td>DevNexus Core</td>
+                                            <td><span class="ws-pill ws-pill-success">ACTIVE</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="ws-user-avatar" style="background-color: var(--ws-signal-success);">ER</span>
+                                                    <div>
+                                                        <div class="ws-text-ink fw-semibold">Elena Rostova</div>
+                                                        <div class="ws-text-muted" style="font-size: 11px;">elena@fintechglobal.com</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="ws-pill ws-pill-muted">Client Admin</span></td>
+                                            <td>NX-101 Gateway</td>
+                                            <td><span class="ws-pill ws-pill-success">ACTIVE</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="ws-card p-4">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Enterprise Client Accounts</h4>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="p-3 ws-surface-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="ws-text-ink fw-semibold small">FinTech Global Inc.</span>
+                                        <span class="ws-pill ws-pill-success">TIER 1</span>
+                                    </div>
+                                    <div class="ws-text-muted small">2 Active Projects &bull; $145,000 Escrow</div>
+                                </div>
+                                <div class="p-3 ws-surface-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="ws-text-ink fw-semibold small">Logix Worldwide Freight</span>
+                                        <span class="ws-pill ws-pill-telemetry">GROWTH</span>
+                                    </div>
+                                    <div class="ws-text-muted small">1 Active Project &bull; $78,000 Escrow</div>
+                                </div>
+                                <div class="p-3 ws-surface-subtle">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="ws-text-ink fw-semibold small">Aegis Medical Systems</span>
+                                        <span class="ws-pill ws-pill-warning">HIPAA</span>
+                                    </div>
+                                    <div class="ws-text-muted small">1 Active Project &bull; $32,000 Escrow</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Velocity Analytics -->
+            <div id="admin-analytics" class="admin-pane {% if active_tab != 'analytics' %}d-none{% endif %}">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="ws-card p-4 h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div>
+                                    <h4 class="ws-text-ink fs-6 fw-semibold m-0">Sprint Story Points: Committed vs Delivered</h4>
+                                    <div class="ws-text-muted small">Last 6 two-week engineering sprints</div>
+                                </div>
+                                <div class="d-flex gap-3 small font-monospace">
+                                    <span class="d-inline-flex align-items-center gap-1"><span style="width: 10px; height: 10px; background: #CBD5E1; display: inline-block; border-radius: 2px;"></span> Committed</span>
+                                    <span class="d-inline-flex align-items-center gap-1 ws-text-ink fw-semibold"><span style="width: 10px; height: 10px; background: #3B82F6; display: inline-block; border-radius: 2px;"></span> Delivered</span>
+                                </div>
+                            </div>
+                            <div class="w-100 overflow-x-auto">
+                                <svg viewBox="0 0 640 240" width="100%" height="240" role="img" aria-label="Sprint velocity comparison chart">
+                                    <line x1="48" y1="20" x2="620" y2="20" stroke="#EAECEF" stroke-width="1" />
+                                    <line x1="48" y1="70" x2="620" y2="70" stroke="#EAECEF" stroke-width="1" />
+                                    <line x1="48" y1="120" x2="620" y2="120" stroke="#EAECEF" stroke-width="1" />
+                                    <line x1="48" y1="170" x2="620" y2="170" stroke="#EAECEF" stroke-width="1" />
+                                    <line x1="48" y1="210" x2="620" y2="210" stroke="#D5DCE6" stroke-width="1" />
+                                    <text x="38" y="24" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#64748B">50</text>
+                                    <text x="38" y="74" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#64748B">40</text>
+                                    <text x="38" y="124" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#64748B">30</text>
+                                    <text x="38" y="174" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#64748B">20</text>
+                                    <text x="38" y="214" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#64748B">0</text>
+                                    <rect x="76" y="70" width="22" height="140" rx="3" fill="#CBD5E1" />
+                                    <rect x="102" y="80" width="22" height="130" rx="3" fill="#3B82F6" />
+                                    <text x="100" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#475569">Sp-1</text>
+                                    <rect x="170" y="55" width="22" height="155" rx="3" fill="#CBD5E1" />
+                                    <rect x="196" y="60" width="22" height="150" rx="3" fill="#3B82F6" />
+                                    <text x="194" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#475569">Sp-2</text>
+                                    <rect x="264" y="60" width="22" height="150" rx="3" fill="#CBD5E1" />
+                                    <rect x="290" y="55" width="22" height="155" rx="3" fill="#3B82F6" />
+                                    <text x="288" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#475569">Sp-3</text>
+                                    <rect x="358" y="45" width="22" height="165" rx="3" fill="#CBD5E1" />
+                                    <rect x="384" y="50" width="22" height="160" rx="3" fill="#3B82F6" />
+                                    <text x="382" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#475569">Sp-4</text>
+                                    <rect x="452" y="35" width="22" height="175" rx="3" fill="#CBD5E1" />
+                                    <rect x="478" y="40" width="22" height="170" rx="3" fill="#3B82F6" />
+                                    <text x="476" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#475569">Sp-5</text>
+                                    <rect x="546" y="30" width="22" height="180" rx="3" fill="#CBD5E1" />
+                                    <rect x="572" y="35" width="22" height="175" rx="3" fill="#06B6D4" />
+                                    <text x="570" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#0B1020" font-weight="600">Sp-6</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="ws-card p-4 h-100">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Active Project Adherence</h4>
+                            <div class="d-flex flex-column gap-3 small">
+                                <div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="ws-text-ink fw-medium">NX-104 Logix Telemetry</span>
+                                        <span class="font-monospace ws-text-cyan fw-semibold">98%</span>
+                                    </div>
+                                    <div class="progress" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                        <div class="progress-bar" style="width: 98%; background-color: var(--ws-brand-cyan);"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="ws-text-ink fw-medium">NX-101 FinTech Router</span>
+                                        <span class="font-monospace ws-text-blue fw-semibold">94%</span>
+                                    </div>
+                                    <div class="progress" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                        <div class="progress-bar" style="width: 94%; background-color: var(--ws-brand-blue);"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="ws-text-ink fw-medium">NX-109 Aegis HIPAA</span>
+                                        <span class="font-monospace ws-text-ink fw-semibold">88%</span>
+                                    </div>
+                                    <div class="progress" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                        <div class="progress-bar" style="width: 88%; background-color: var(--ws-brand-navy);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchAdminTab(tab, btn) {
+        document.querySelectorAll('.admin-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('admin-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+</script>
+{% endblock %}

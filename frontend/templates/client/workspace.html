@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Client & Commercial Workspace</h1>
+                        <span class="ws-pill ws-pill-telemetry">FINTECH GLOBAL</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Unified portal for active sprints, RFP intake, proposals, digital approvals, and NDA compliance.</p>
+                </div>
+                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="switchClientTab('submit', document.querySelector('[data-ctab=submit]'))">
+                    <i class="bi bi-plus-lg"></i> Submit New RFP
+                </button>
+            </div>
+
+            <!-- Unified Workspace Tab Bar -->
+            <div class="jp-tab-strip">
+                <button class="jp-tab-btn {% if active_tab|default('overview') == 'overview' %}active{% endif %}" data-ctab="overview" onclick="switchClientTab('overview', this)">
+                    <i class="bi bi-building"></i> Workspace
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'requirements' %}active{% endif %}" data-ctab="requirements" onclick="switchClientTab('requirements', this)">
+                    <i class="bi bi-file-earmark-text"></i> Requirements Ledger
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'submit' %}active{% endif %}" data-ctab="submit" onclick="switchClientTab('submit', this)">
+                    <i class="bi bi-plus-circle"></i> Submit RFP
+                </button>
+                <button class="jp-tab-btn {% if active_tab in ['quotes', 'quotations'] %}active{% endif %}" data-ctab="quotes" onclick="switchClientTab('quotes', this)">
+                    <i class="bi bi-calculator"></i> Quotations & Sign-off
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'profile' %}active{% endif %}" data-ctab="profile" onclick="switchClientTab('profile', this)">
+                    <i class="bi bi-shield-check"></i> Org & MSA
+                </button>
+            </div>
+
+            <!-- TAB 1: Client Overview -->
+            <div id="client-overview" class="client-pane {% if active_tab|default('overview') != 'overview' %}d-none{% endif %}">
+                <div class="jp-stat-strip mb-4">
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Active Contracts</div>
+                        <div class="ws-metric-value ws-text-ink">2 Projects</div>
+                        <div class="ws-metric-trend ws-text-cyan">NX-101 &amp; NX-108</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Completion</div>
+                        <div class="ws-metric-value ws-text-blue">78%</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);">On-schedule delivery</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Pending Proposals</div>
+                        <div class="ws-metric-value" style="color: var(--ws-signal-warning);">1 Quote</div>
+                        <div class="ws-metric-trend ws-text-muted">QT-1041 awaiting sign-off</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Escrow Funded</div>
+                        <div class="ws-metric-value" style="color: var(--ws-signal-success);">$95,000</div>
+                        <div class="ws-metric-trend ws-text-muted">Milestone protected</div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="ws-card p-4">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Active Sprints & Engineering Milestones</h4>
+                            <div class="p-3 ws-surface-subtle mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div>
+                                        <div class="ws-text-ink fw-semibold">NX-101: High-Throughput Payment Router</div>
+                                        <div class="ws-text-muted small">Sprint 4: Stripe &amp; Adyen Webhook Core</div>
+                                    </div>
+                                    <span class="ws-pill ws-pill-success">IN PROGRESS</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 my-2">
+                                    <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                        <div class="progress-bar" style="width: 82%; background-color: var(--ws-brand-blue);"></div>
+                                    </div>
+                                    <span class="font-monospace ws-text-ink small fw-semibold">82%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="ws-card p-4">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Dedicated Tech Leads</h4>
+                            <div class="d-flex flex-column gap-3 small">
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="ws-user-avatar">AP</span>
+                                    <div>
+                                        <div class="ws-text-ink fw-semibold">Ari Prakash</div>
+                                        <div class="ws-text-muted">Frontend Lead</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="ws-user-avatar" style="background-color: var(--ws-brand-blue);">DT</span>
+                                    <div>
+                                        <div class="ws-text-ink fw-semibold">Datcha</div>
+                                        <div class="ws-text-muted">Systems Architect</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Requirements Ledger -->
+            <div id="client-requirements" class="client-pane {% if active_tab != 'requirements' %}d-none{% endif %}">
+                <div class="ws-table-container mb-4">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>RFP ID</th>
+                                <th>Requirement Title</th>
+                                <th>Budget</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">RFP-1041</td>
+                                <td>
+                                    <div class="ws-text-ink fw-semibold">Cloud Native Payment Gateway Core</div>
+                                    <div class="ws-text-muted" style="font-size: 11px;">FinTech Global &bull; Clarification thread resolved</div>
+                                </td>
+                                <td class="font-monospace">$45,000</td>
+                                <td><span class="ws-pill ws-pill-danger">HIGH</span></td>
+                                <td><span class="ws-pill ws-pill-warning">UNDER REVIEW</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">RFP-1040</td>
+                                <td>
+                                    <div class="ws-text-ink fw-semibold">Warehouse IoT Telemetry Hub</div>
+                                    <div class="ws-text-muted" style="font-size: 11px;">Logix Logistics &bull; Incepted as NX-104</div>
+                                </td>
+                                <td class="font-monospace">$78,000</td>
+                                <td><span class="ws-pill ws-pill-navy">CRITICAL</span></td>
+                                <td><span class="ws-pill ws-pill-success">APPROVED</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 3: Submit RFP -->
+            <div id="client-submit" class="client-pane {% if active_tab != 'submit' %}d-none{% endif %}">
+                <div class="ws-card p-4 p-md-5" style="max-width: 820px;">
+                    <h4 class="ws-text-ink fs-6 fw-semibold mb-1">Submit Project Requirement (RFP)</h4>
+                    <p class="ws-text-secondary small mb-4">Specify project scope, security tier, and target delivery budget.</p>
+                    <form id="rfpWizardForm" onsubmit="handleRfpSubmit(event)">
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label class="ws-label" for="rfpTitle">Project Title</label>
+                                <input type="text" class="ws-input" id="rfpTitle" placeholder="e.g. Distributed Analytics Warehouse Migration" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ws-label" for="rfpCategory">Domain</label>
+                                <select class="ws-select" id="rfpCategory">
+                                    <option value="fintech">FinTech</option>
+                                    <option value="logistics">Logistics</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="saas" selected>Enterprise SaaS</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ws-label" for="rfpPriority">Priority</label>
+                                <select class="ws-select" id="rfpPriority">
+                                    <option value="critical">Critical</option>
+                                    <option value="high" selected>High</option>
+                                    <option value="medium">Standard</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ws-label" for="rfpBudget">Budget Band</label>
+                                <select class="ws-select" id="rfpBudget">
+                                    <option value="25k-50k">$25k – $50k</option>
+                                    <option value="50k-100k" selected>$50k – $100k</option>
+                                    <option value="100k+">$100k+</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="ws-label" for="rfpOverview">Technical Specifications</label>
+                                <textarea class="ws-textarea" id="rfpOverview" rows="4" placeholder="Describe user workflows, API specs, and compliance targets..." required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="ws-btn ws-btn-primary" id="submitRfpBtn">
+                            <i class="bi bi-send-check"></i> Submit Requirement (RFP)
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- TAB 4: Quotations & Sign-Off -->
+            <div id="client-quotes" class="client-pane {% if active_tab not in ['quotes', 'quotations'] %}d-none{% endif %}">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="ws-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="ws-text-ink fs-6 fw-semibold m-0">Proposal QT-1041: FinTech Router</h4>
+                                <span class="ws-pill ws-pill-warning">PENDING APPROVAL</span>
+                            </div>
+                            <div class="ws-table-container">
+                                <table class="ws-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Milestone Phase</th>
+                                            <th>Sprints</th>
+                                            <th class="text-end">Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="ws-text-ink fw-medium">Phase 1: Architecture &amp; Schemas</td>
+                                            <td class="font-monospace ws-text-muted">Sprint 1</td>
+                                            <td class="text-end font-monospace">$10,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ws-text-ink fw-medium">Phase 2: Gateway &amp; Webhooks</td>
+                                            <td class="font-monospace ws-text-muted">Sprint 2-3</td>
+                                            <td class="text-end font-monospace">$22,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ws-text-ink fw-medium">Phase 3: Automated QA &amp; Deploy</td>
+                                            <td class="font-monospace ws-text-muted">Sprint 4</td>
+                                            <td class="text-end font-monospace">$13,000</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2" class="text-end fw-semibold ws-text-secondary">Total Contract:</td>
+                                            <td class="text-end font-monospace fw-semibold ws-text-blue fs-6">$45,000</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="ws-card p-4">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Digital Proposal Sign-Off</h4>
+                            <form onsubmit="handleQuoteApprove(event)">
+                                <div class="ws-form-group">
+                                    <label class="ws-label">Signatory Name</label>
+                                    <input type="text" class="ws-input" placeholder="Elena Rostova" required>
+                                </div>
+                                <div class="ws-form-group">
+                                    <label class="ws-label">Digital Signature</label>
+                                    <input type="text" class="ws-input font-monospace" placeholder="/s/ Elena Rostova" required>
+                                </div>
+                                <button type="submit" class="ws-btn ws-btn-navy w-100">Authorize &amp; Incept Sprints</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Org Profile -->
+            <div id="client-profile" class="client-pane {% if active_tab != 'profile' %}d-none{% endif %}">
+                <div class="ws-card p-4" style="max-width: 720px;">
+                    <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Organization &amp; MSA Compliance</h4>
+                    <div class="row g-3 mb-4 small">
+                        <div class="col-md-6">
+                            <div class="ws-text-muted">Entity Name</div>
+                            <div class="ws-text-ink fw-semibold">FinTech Global Inc.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ws-text-muted">Tax / EIN</div>
+                            <div class="ws-text-ink font-monospace">US-EIN-884920194</div>
+                        </div>
+                    </div>
+                    <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="ws-text-ink small fw-semibold">Master Services Agreement &amp; NDA</div>
+                            <div class="ws-text-muted small">Executed on Nov 10, 2026</div>
+                        </div>
+                        <span class="ws-pill ws-pill-success">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchClientTab(tab, btn) {
+        document.querySelectorAll('.client-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('client-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+
+    async function handleRfpSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitRfpBtn');
+        btn.disabled = true;
+        try {
+            const res = await WareSoftAPI.fetch('/api/requirements', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: document.getElementById('rfpTitle').value,
+                    category: document.getElementById('rfpCategory').value,
+                    priority: document.getElementById('rfpPriority').value,
+                    budget: document.getElementById('rfpBudget').value,
+                    overview: document.getElementById('rfpOverview').value
+                })
+            });
+            WareSoftAPI.showToast(res.message || 'Requirement submitted.', 'success');
+            document.getElementById('rfpWizardForm').reset();
+            switchClientTab('requirements', document.querySelector('[data-ctab=requirements]'));
+        } finally {
+            btn.disabled = false;
+        }
+    }
+
+    function handleQuoteApprove(e) {
+        e.preventDefault();
+        WareSoftAPI.showToast('Proposal QT-1041 approved! Sprint 1 initialized.', 'success');
+    }
+</script>
+{% endblock %}

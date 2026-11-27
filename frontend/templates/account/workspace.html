@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <h1 class="fs-4 fw-semibold ws-text-ink m-0">Account &amp; Notifications</h1>
+                    <p class="ws-text-secondary small m-0">Manage your identity, 2FA security, and real-time DevNexus activity stream.</p>
+                </div>
+            </div>
+
+            <div class="jp-tab-strip">
+                <button class="jp-tab-btn {% if active_tab|default('profile') == 'profile' %}active{% endif %}" onclick="switchAcctTab('profile', this)">
+                    <i class="bi bi-person"></i> Profile &amp; Security
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'notifications' %}active{% endif %}" onclick="switchAcctTab('notifications', this)">
+                    <i class="bi bi-bell"></i> Notification Stream
+                </button>
+            </div>
+
+            <!-- TAB 1: Profile -->
+            <div id="acct-profile" class="acct-pane {% if active_tab|default('profile') != 'profile' %}d-none{% endif %}">
+                <div class="row g-4" style="max-width: 920px;">
+                    <div class="col-lg-4">
+                        <div class="ws-card text-center p-4">
+                            <div class="d-inline-flex mb-3">
+                                <span class="ws-user-avatar" style="width: 64px; height: 64px; font-size: 20px;">{{ current_user.avatar }}</span>
+                            </div>
+                            <h3 class="ws-text-ink fs-6 fw-semibold mb-1">{{ current_user.name }}</h3>
+                            <div class="ws-text-muted small mb-3">{{ current_user.email }}</div>
+                            <span class="ws-pill ws-pill-navy">{{ current_user.role }}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="ws-card p-4">
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Preferences &amp; 2FA</h4>
+                            <form onsubmit="handleProfileSave(event)">
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="ws-label">Display Name</label>
+                                        <input type="text" class="ws-input" value="{{ current_user.name }}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ws-label">Work Email</label>
+                                        <input type="email" class="ws-input" value="{{ current_user.email }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center mb-4">
+                                    <div>
+                                        <div class="ws-text-ink small fw-semibold">Hardware / TOTP Authenticator</div>
+                                        <div class="ws-text-muted small">2FA verification active on login</div>
+                                    </div>
+                                    <span class="ws-pill ws-pill-success">ENFORCED</span>
+                                </div>
+                                <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">Save Preferences</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Notifications -->
+            <div id="acct-notifications" class="acct-pane {% if active_tab != 'notifications' %}d-none{% endif %}">
+                <div class="d-flex justify-content-between align-items-center mb-3" style="max-width: 780px;">
+                    <span class="ws-pill ws-pill-telemetry" id="unreadCount">2 UNREAD</span>
+                    <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="markRead()">Mark All Read</button>
+                </div>
+                <div class="d-flex flex-column gap-3" style="max-width: 780px;">
+                    <div class="ws-card p-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="ws-text-ink fw-semibold small">PR #27 Unified Workspaces Ready for Review</div>
+                            <div class="ws-text-muted small">10m ago &bull; GitHub Sync</div>
+                        </div>
+                        <a href="/developer?tab=github" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect</a>
+                    </div>
+                    <div class="ws-card p-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="ws-text-ink fw-semibold small">Staging Deployment DEP-8840 Completed</div>
+                            <div class="ws-text-muted small">45m ago &bull; CI/CD Cluster</div>
+                        </div>
+                        <a href="/operations" class="ws-btn ws-btn-secondary ws-btn-sm">Console</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchAcctTab(tab, btn) {
+        document.querySelectorAll('.acct-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('acct-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+    function handleProfileSave(e) {
+        e.preventDefault();
+        WareSoftAPI.showToast('Account preferences updated.', 'success');
+    }
+    function markRead() {
+        document.getElementById('unreadCount').textContent = '0 UNREAD';
+        document.getElementById('unreadCount').className = 'ws-pill ws-pill-muted';
+        WareSoftAPI.showToast('All notifications cleared.', 'success');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Projects &amp; Delivery Studio</h1>
+                        <span class="ws-pill ws-pill-telemetry">NX-{{ "%03d"|format(project_id|default(101)) }} ACTIVE</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Switch smoothly between active workspaces, Sprint Kanban, milestones, backlog, and team capacity.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="/client?tab=submit" class="ws-btn ws-btn-primary ws-btn-sm">
+                        <i class="bi bi-plus-lg"></i> Incept Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Unified Workspace Tab Bar -->
+            <div class="jp-tab-strip">
+                <button class="jp-tab-btn {% if active_tab|default('directory') == 'directory' %}active{% endif %}" data-ptab="directory" onclick="switchProjTab('directory', this)">
+                    <i class="bi bi-grid-1x2"></i> Projects Directory
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'kanban' %}active{% endif %}" data-ptab="kanban" onclick="switchProjTab('kanban', this)">
+                    <i class="bi bi-kanban"></i> Sprint Kanban
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'milestones' %}active{% endif %}" data-ptab="milestones" onclick="switchProjTab('milestones', this)">
+                    <i class="bi bi-flag"></i> Milestones &amp; Escrow
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'tasks' %}active{% endif %}" data-ptab="tasks" onclick="switchProjTab('tasks', this)">
+                    <i class="bi bi-check2-square"></i> Task Backlog
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'team' %}active{% endif %}" data-ptab="team" onclick="switchProjTab('team', this)">
+                    <i class="bi bi-people"></i> Team Allocation
+                </button>
+            </div>
+
+            <!-- TAB 1: Projects Directory -->
+            <div id="proj-directory" class="proj-pane {% if active_tab|default('directory') != 'directory' %}d-none{% endif %}">
+                <div class="ws-card p-3 mb-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="ws-search-bar">
+                                <i class="bi bi-search ws-text-muted"></i>
+                                <input type="text" id="projectSearch" placeholder="Search projects by code, client, or stack..." oninput="filterProjects()">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex flex-wrap gap-2 justify-content-lg-end">
+                            <button type="button" class="ws-filter-chip active" onclick="setQuickDomain('all', this)">All</button>
+                            <button type="button" class="ws-filter-chip" onclick="setQuickDomain('fintech', this)">FinTech</button>
+                            <button type="button" class="ws-filter-chip" onclick="setQuickDomain('logistics', this)">Logistics</button>
+                            <button type="button" class="ws-filter-chip" onclick="setQuickDomain('healthcare', this)">Healthcare</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="projectsGrid">
+                    <div class="col-lg-4 col-md-6 project-item" data-domain="fintech">
+                        <div class="ws-opp-card">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ws-opp-org"><i class="bi bi-patch-check-fill" style="color: var(--ws-brand-blue);"></i> FinTech Global</span>
+                                    <span class="ws-pill ws-pill-success">SPRINT 4</span>
+                                </div>
+                                <h4 class="ws-text-ink fs-6 fw-semibold mb-2">NX-101: Payment Router Core</h4>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="ws-meta-tag">Flask + Redis</span>
+                                    <span class="ws-meta-tag">$45,000</span>
+                                </div>
+                                <p class="ws-text-secondary small mb-3">Fault-tolerant multi-currency checkout router and webhook engine.</p>
+                            </div>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                                <span class="font-monospace small fw-semibold ws-text-blue">75%</span>
+                                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="switchProjTab('kanban', document.querySelector('[data-ptab=kanban]'))">Open Kanban</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 project-item" data-domain="logistics">
+                        <div class="ws-opp-card">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ws-opp-org"><i class="bi bi-patch-check-fill" style="color: var(--ws-brand-cyan);"></i> Logix Worldwide</span>
+                                    <span class="ws-pill ws-pill-telemetry">SPRINT 5</span>
+                                </div>
+                                <h4 class="ws-text-ink fs-6 fw-semibold mb-2">NX-104: Cold-Chain Telemetry</h4>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="ws-meta-tag">MQTT + Three.js</span>
+                                    <span class="ws-meta-tag">$78,000</span>
+                                </div>
+                                <p class="ws-text-secondary small mb-3">IoT cold-chain ingest hub and real-time edge anomaly alerts.</p>
+                            </div>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                                <span class="font-monospace small fw-semibold ws-text-cyan">90%</span>
+                                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="switchProjTab('milestones', document.querySelector('[data-ptab=milestones]'))">Milestones</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 project-item" data-domain="healthcare">
+                        <div class="ws-opp-card">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ws-opp-org"><i class="bi bi-patch-check-fill" style="color: var(--ws-signal-success);"></i> Aegis Health</span>
+                                    <span class="ws-pill ws-pill-warning">IN REVIEW</span>
+                                </div>
+                                <h4 class="ws-text-ink fs-6 fw-semibold mb-2">NX-109: HIPAA Telehealth Portal</h4>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="ws-meta-tag">HIPAA AES-256</span>
+                                    <span class="ws-meta-tag">$32,000</span>
+                                </div>
+                                <p class="ws-text-secondary small mb-3">Outpatient telehealth consultation workspace and encrypted records.</p>
+                            </div>
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                                <span class="font-monospace small fw-semibold" style="color: var(--ws-signal-warning);">45%</span>
+                                <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="switchProjTab('tasks', document.querySelector('[data-ptab=tasks]'))">Backlog</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Sprint Kanban -->
+            <div id="proj-kanban" class="proj-pane {% if active_tab != 'kanban' %}d-none{% endif %}">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="ws-text-secondary small">Drag and drop task cards across columns</span>
+                    <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="loadKanbanData()"><i class="bi bi-arrow-repeat"></i> Sync API</button>
+                </div>
+                <div class="kanban-board-container d-flex gap-3 pb-4" style="min-height: 500px;">
+                    <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'backlog')">
+                        <div class="kanban-lane-header">
+                            <span class="fw-semibold ws-text-ink small">Backlog</span>
+                            <span class="ws-pill ws-pill-muted">2</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="lane-backlog">
+                            <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-204')" id="card-T-204">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="font-monospace ws-text-cyan small fw-semibold">T-204</span>
+                                    <span class="ws-pill ws-pill-danger" style="font-size: 10px;">HIGH</span>
+                                </div>
+                                <div class="kanban-card-title">Webhook Retry Exponential Backoff</div>
+                            </div>
+                            <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-209')" id="card-T-209">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="font-monospace ws-text-cyan small fw-semibold">T-209</span>
+                                    <span class="ws-pill ws-pill-muted" style="font-size: 10px;">MED</span>
+                                </div>
+                                <div class="kanban-card-title">Optimize Jinja2 SSR Cache Headers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'in_progress')">
+                        <div class="kanban-lane-header">
+                            <span class="fw-semibold ws-text-ink small">In Progress</span>
+                            <span class="ws-pill ws-pill-telemetry">2</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="lane-in_progress">
+                            <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-198')" id="card-T-198">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="font-monospace ws-text-cyan small fw-semibold">T-198</span>
+                                    <span class="ws-pill ws-pill-navy" style="font-size: 10px;">CRITICAL</span>
+                                </div>
+                                <div class="kanban-card-title">Blend Design Tokens &amp; Workspace Tabs</div>
+                            </div>
+                            <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-201')" id="card-T-201">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="font-monospace ws-text-cyan small fw-semibold">T-201</span>
+                                    <span class="ws-pill ws-pill-danger" style="font-size: 10px;">HIGH</span>
+                                </div>
+                                <div class="kanban-card-title">Three.js Service Fabric Visualizer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'code_review')">
+                        <div class="kanban-lane-header">
+                            <span class="fw-semibold ws-text-ink small">Code Review</span>
+                            <span class="ws-pill ws-pill-warning">1</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="lane-code_review">
+                            <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-195')" id="card-T-195">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="font-monospace ws-text-cyan small fw-semibold">T-195</span>
+                                    <span class="ws-pill ws-pill-warning" style="font-size: 10px;">REVIEW</span>
+                                </div>
+                                <div class="kanban-card-title">Admin RBAC Middleware</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'completed')">
+                        <div class="kanban-lane-header">
+                            <span class="fw-semibold ws-text-ink small">Completed</span>
+                            <span class="ws-pill ws-pill-success">1</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="lane-completed">
+                            <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-185')" id="card-T-185">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="font-monospace small fw-semibold" style="color: var(--ws-signal-success);">T-185</span>
+                                    <span class="ws-pill ws-pill-success" style="font-size: 10px;">DONE</span>
+                                </div>
+                                <div class="kanban-card-title">Architecture Blueprint &amp; Schema</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Milestones -->
+            <div id="proj-milestones" class="proj-pane {% if active_tab != 'milestones' %}d-none{% endif %}">
+                <div class="d-flex flex-column gap-3" style="max-width: 920px;">
+                    <div class="ws-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="ws-text-ink fw-semibold">Milestone 1: Architecture Blueprint &amp; Schema</div>
+                            <span class="ws-pill ws-pill-success">COMPLETED ($10,000 RELEASED)</span>
+                        </div>
+                        <div class="progress my-2" style="height: 6px; background-color: var(--ws-border-quiet);">
+                            <div class="progress-bar" style="width: 100%; background-color: var(--ws-signal-success);"></div>
+                        </div>
+                    </div>
+                    <div class="ws-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="ws-text-ink fw-semibold">Milestone 2: Webhook Engine &amp; Bank Connectors</div>
+                            <span class="ws-pill ws-pill-telemetry">78% IN PROGRESS ($22,000 ESCROW)</span>
+                        </div>
+                        <div class="progress my-2" style="height: 6px; background-color: var(--ws-border-quiet);">
+                            <div class="progress-bar" style="width: 78%; background-color: var(--ws-brand-blue);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Task Backlog -->
+            <div id="proj-tasks" class="proj-pane {% if active_tab != 'tasks' %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Task Summary</th>
+                                <th>Assignee</th>
+                                <th>Priority</th>
+                                <th>Points</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">T-198</td>
+                                <td class="ws-text-ink fw-medium">Blend Design Tokens &amp; Workspace Tabs</td>
+                                <td>Ari Prakash</td>
+                                <td><span class="ws-pill ws-pill-navy">CRITICAL</span></td>
+                                <td class="font-monospace">8</td>
+                                <td><span class="ws-pill ws-pill-telemetry">IN PROGRESS</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">T-195</td>
+                                <td class="ws-text-ink fw-medium">Admin RBAC Middleware</td>
+                                <td>Datcha</td>
+                                <td><span class="ws-pill ws-pill-warning">HIGH</span></td>
+                                <td class="font-monospace">5</td>
+                                <td><span class="ws-pill ws-pill-warning">REVIEW</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 5: Team Allocation -->
+            <div id="proj-team" class="proj-pane {% if active_tab != 'team' %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>Engineer</th>
+                                <th>Role</th>
+                                <th>Sprint Hours</th>
+                                <th>Utilization</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ws-text-ink fw-semibold">Ari Prakash</td>
+                                <td><span class="ws-pill ws-pill-navy">Lead Frontend</span></td>
+                                <td class="font-monospace">36 / 40 hrs</td>
+                                <td class="font-monospace ws-text-blue fw-semibold">90%</td>
+                            </tr>
+                            <tr>
+                                <td class="ws-text-ink fw-semibold">Datcha</td>
+                                <td><span class="ws-pill ws-pill-telemetry">Backend Architect</span></td>
+                                <td class="font-monospace">38 / 40 hrs</td>
+                                <td class="font-monospace ws-text-cyan fw-semibold">95%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchProjTab(tab, btn) {
+        document.querySelectorAll('.proj-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('proj-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+
+    let currentDomain = 'all';
+    function setQuickDomain(domain, btn) {
+        currentDomain = domain;
+        document.querySelectorAll('.ws-filter-chip').forEach(c => c.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        filterProjects();
+    }
+    function filterProjects() {
+        const q = (document.getElementById('projectSearch').value || '').toLowerCase();
+        document.querySelectorAll('.project-item').forEach(card => {
+            const ok = (currentDomain === 'all' || card.dataset.domain === currentDomain) && (!q || card.innerText.toLowerCase().includes(q));
+            card.classList.toggle('d-none', !ok);
+        });
+    }
+
+    let draggedTaskId = null;
+    function handleDragStart(e, id) { draggedTaskId = id; e.dataTransfer.setData('text/plain', id); }
+    function allowDrop(e) { e.preventDefault(); }
+    function handleDrop(e, lane) {
+        e.preventDefault();
+        const id = e.dataTransfer.getData('text/plain') || draggedTaskId;
+        const card = document.getElementById('card-' + id);
+        const target = document.getElementById('lane-' + lane);
+        if (card && target) {
+            target.appendChild(card);
+            WareSoftAPI.showToast(`Moved ${id} to ${lane.replace('_', ' ')}`, 'success');
+        }
+    }
+    async function loadKanbanData() {
+        await WareSoftAPI.fetch('/api/kanban/tasks');
+        WareSoftAPI.showToast('Kanban board synced with backend API.', 'info');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Engineering &amp; QA Cockpit</h1>
+                        <span class="ws-pill ws-pill-telemetry">ARIPRAKASH32/WARESOFT</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Sprint tasks, GitHub PR diff tracking, automated QA coverage, and defect resolution.</p>
+                </div>
+            </div>
+
+            <!-- Unified Workspace Tab Bar -->
+            <div class="jp-tab-strip">
+                <button class="jp-tab-btn {% if active_tab|default('sprint') == 'sprint' %}active{% endif %}" data-dtab="sprint" onclick="switchDevTab('sprint', this)">
+                    <i class="bi bi-terminal"></i> My Sprint
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'github' %}active{% endif %}" data-dtab="github" onclick="switchDevTab('github', this)">
+                    <i class="bi bi-github"></i> GitHub PRs &amp; Commits
+                </button>
+                <button class="jp-tab-btn {% if active_tab in ['qa', 'bugs'] %}active{% endif %}" data-dtab="qa" onclick="switchDevTab('qa', this)">
+                    <i class="bi bi-bug"></i> QA &amp; Defects
+                </button>
+                <button class="jp-tab-btn {% if active_tab == 'tests' %}active{% endif %}" data-dtab="tests" onclick="switchDevTab('tests', this)">
+                    <i class="bi bi-list-check"></i> Test Suites
+                </button>
+            </div>
+
+            <!-- TAB 1: My Sprint -->
+            <div id="dev-sprint" class="dev-pane {% if active_tab|default('sprint') != 'sprint' %}d-none{% endif %}">
+                <div class="jp-stat-strip mb-4">
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Assigned Points</div>
+                        <div class="ws-metric-value ws-text-ink">24 pts</div>
+                        <div class="ws-metric-trend ws-text-cyan">4 active tasks</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">PRs Open</div>
+                        <div class="ws-metric-value ws-text-blue">1 PR</div>
+                        <div class="ws-metric-trend ws-text-muted">Ready for review</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Unit Pass Rate</div>
+                        <div class="ws-metric-value" style="color: var(--ws-signal-success);">100%</div>
+                        <div class="ws-metric-trend ws-text-muted">All route checks OK</div>
+                    </div>
+                    <div class="jp-stat-cell">
+                        <div class="ws-metric-label">Open Blockers</div>
+                        <div class="ws-metric-value ws-text-ink">1</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-warning);">BUG-409 Webhook race</div>
+                    </div>
+                </div>
+
+                <div class="ws-card p-4">
+                    <h4 class="ws-text-ink fs-6 fw-semibold mb-3">Active Assigned Tasks</h4>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="ws-text-ink fw-semibold small">T-198: Blend Design Tokens &amp; Unified Tabs</div>
+                                <div class="ws-text-muted small">Branch: <code>feat/unified-workspaces</code> &bull; 8 Points</div>
+                            </div>
+                            <span class="ws-pill ws-pill-telemetry">IN PROGRESS</span>
+                        </div>
+                        <div class="p-3 ws-surface-subtle d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="ws-text-ink fw-semibold small">T-201: Three.js Service Fabric Visualizer</div>
+                                <div class="ws-text-muted small">Branch: <code>main</code> &bull; 8 Points</div>
+                            </div>
+                            <span class="ws-pill ws-pill-success">MERGED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: GitHub PRs & Commits -->
+            <div id="dev-github" class="dev-pane {% if active_tab != 'github' %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>PR #</th>
+                                <th>Pull Request Title</th>
+                                <th>Branch</th>
+                                <th>Diff</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">#27</td>
+                                <td class="ws-text-ink fw-medium">Unified 8-Workspace Architecture &amp; Juspay Showcase</td>
+                                <td class="font-monospace small">feat/unified-workspaces</td>
+                                <td class="font-monospace small"><span style="color: var(--ws-signal-success);">+1420</span></td>
+                                <td><span class="ws-pill ws-pill-telemetry">ACTIVE</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">#26</td>
+                                <td class="ws-text-ink fw-medium">Calm Juspay Blend Design System &amp; Minimalist Nav</td>
+                                <td class="font-monospace small">feat/juspay-design-system</td>
+                                <td class="font-monospace small"><span style="color: var(--ws-signal-success);">+306</span></td>
+                                <td><span class="ws-pill ws-pill-navy">MERGED</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 3: QA & Defects -->
+            <div id="dev-qa" class="dev-pane {% if active_tab not in ['qa', 'bugs'] %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>Bug ID</th>
+                                <th>Defect Summary</th>
+                                <th>Severity</th>
+                                <th>Owner</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">BUG-409</td>
+                                <td class="ws-text-ink fw-medium">Concurrent webhook retry race on duplicate Stripe event</td>
+                                <td><span class="ws-pill ws-pill-danger">CRITICAL</span></td>
+                                <td>Datcha</td>
+                                <td><span class="ws-pill ws-pill-danger">OPEN</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-monospace ws-text-cyan fw-semibold">BUG-406</td>
+                                <td class="ws-text-ink fw-medium">Kanban horizontal overflow on narrow tablet screens</td>
+                                <td><span class="ws-pill ws-pill-warning">HIGH</span></td>
+                                <td>Ari Prakash</td>
+                                <td><span class="ws-pill ws-pill-success">RESOLVED</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 4: Test Suites -->
+            <div id="dev-tests" class="dev-pane {% if active_tab != 'tests' %}d-none{% endif %}">
+                <div class="ws-table-container">
+                    <table class="ws-table">
+                        <thead>
+                            <tr>
+                                <th>Suite</th>
+                                <th>Coverage</th>
+                                <th>Duration</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ws-text-ink fw-semibold">Unified Workspace Route &amp; REST API Contract Tests</td>
+                                <td class="font-monospace">100% Routes</td>
+                                <td class="font-monospace ws-text-muted">0.4s</td>
+                                <td><span class="ws-pill ws-pill-success">PASS</span></td>
+                            </tr>
+                            <tr>
+                                <td class="ws-text-ink fw-semibold">Payment Webhook Idempotency E2E</td>
+                                <td class="font-monospace">48 / 48 Cases</td>
+                                <td class="font-monospace ws-text-muted">42s</td>
+                                <td><span class="ws-pill ws-pill-success">PASS</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function switchDevTab(tab, btn) {
+        document.querySelectorAll('.dev-pane').forEach(p => p.classList.add('d-none'));
+        document.getElementById('dev-' + tab).classList.remove('d-none');
+        document.querySelectorAll('.jp-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
+</script>
+{% endblock %}
