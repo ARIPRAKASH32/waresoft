@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Top Action Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold text-white m-0">Admin Command Center</h1>
+                        <span class="ws-pill ws-pill-telemetry">EXECUTIVE ACCESS</span>
+                    </div>
+                    <p class="text-secondary small m-0">Platform overview, revenue escrow, cluster status, and pending approvals.</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="WareSoftAPI.showToast('Telemetry refreshed', 'info')">
+                        <i class="bi bi-arrow-repeat"></i> Sync
+                    </button>
+                    <a href="/requirements/submit" class="ws-btn ws-btn-primary ws-btn-sm">
+                        <i class="bi bi-plus-lg"></i> New RFP
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4 Metric Highlight Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Active Clients</div>
+                        <div class="ws-metric-value text-white">34</div>
+                        <div class="ws-metric-trend text-success"><i class="bi bi-arrow-up-right"></i> +3 this month</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Active Projects</div>
+                        <div class="ws-metric-value text-info">19</div>
+                        <div class="ws-metric-trend text-info"><i class="bi bi-kanban"></i> 48 active sprints</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Escrow Invoiced</div>
+                        <div class="ws-metric-value text-white">$482,500</div>
+                        <div class="ws-metric-trend text-success"><i class="bi bi-check-circle"></i> 98% collection</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="ws-metric-box">
+                        <div class="ws-metric-label">Platform Health</div>
+                        <div class="ws-metric-value text-success">99.98%</div>
+                        <div class="ws-metric-trend text-muted"><i class="bi bi-hdd-network"></i> 0 incident reports</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-Column Overview Content -->
+            <div class="row g-4 mb-4">
+                <!-- Left: Recent Projects & Milestones -->
+                <div class="col-lg-8">
+                    <div class="ws-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-white fs-6 fw-medium m-0">Active Client Deliveries</h4>
+                            <a href="/projects" class="small text-info text-decoration-none">All projects <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                        <div class="ws-table-container">
+                            <table class="ws-table">
+                                <thead>
+                                    <tr>
+                                        <th>Project & Client</th>
+                                        <th>Sprint Milestone</th>
+                                        <th>Progress</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="text-white fw-medium">FinTech Payment Router</div>
+                                            <div class="text-muted" style="font-size: 11px;">FinTech Global Inc.</div>
+                                        </td>
+                                        <td>Milestone 3: Gateway Integration</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
+                                                    <div class="progress-bar bg-primary" style="width: 75%;"></div>
+                                                </div>
+                                                <span class="small font-monospace text-muted">75%</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="ws-pill ws-pill-success">ON TRACK</span></td>
+                                        <td><a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-white fw-medium">Logistics IoT Telemetry</div>
+                                            <div class="text-muted" style="font-size: 11px;">Logix Worldwide</div>
+                                        </td>
+                                        <td>Milestone 4: Cloud Stress Testing</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
+                                                    <div class="progress-bar bg-info" style="width: 90%;"></div>
+                                                </div>
+                                                <span class="small font-monospace text-muted">90%</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="ws-pill ws-pill-telemetry">DEPLOYING</span></td>
+                                        <td><a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-white fw-medium">Aegis Healthcare Portal</div>
+                                            <div class="text-muted" style="font-size: 11px;">Aegis Health Group</div>
+                                        </td>
+                                        <td>Milestone 2: HIPAA Authorization</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
+                                                    <div class="progress-bar bg-warning" style="width: 45%;"></div>
+                                                </div>
+                                                <span class="small font-monospace text-muted">45%</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="ws-pill ws-pill-warning">IN REVIEW</span></td>
+                                        <td><a href="/projects/101" class="ws-btn ws-btn-secondary ws-btn-sm">Inspect</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: High-Priority Queue & Quick Approvals -->
+                <div class="col-lg-4">
+                    <div class="ws-card p-4">
+                        <h4 class="text-white fs-6 fw-medium mb-3">Pending Executive Action</h4>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="badge bg-warning bg-opacity-25 text-warning font-monospace" style="font-size: 10px;">PROPOSAL APPROVAL</span>
+                                    <span class="text-muted small font-monospace">$78,000</span>
+                                </div>
+                                <div class="text-white small fw-medium">Logix Telemetry Expansion RFP</div>
+                                <div class="text-muted small mb-2" style="font-size: 11px;">Submitted by Logix Global 2h ago</div>
+                                <a href="/quotations/104" class="ws-btn ws-btn-secondary ws-btn-sm w-100">Review Proposal</a>
+                            </div>
+
+                            <div class="p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="badge bg-info bg-opacity-25 text-info font-monospace" style="font-size: 10px;">RELEASE SIGN-OFF</span>
+                                    <span class="text-muted small font-monospace">STAGING -> PROD</span>
+                                </div>
+                                <div class="text-white small fw-medium">Core API Microservice v2.4.2</div>
+                                <div class="text-muted small mb-2" style="font-size: 11px;">QA Lead approved with 100% tests passing</div>
+                                <a href="/deployment" class="ws-btn ws-btn-cyan ws-btn-sm w-100">Approve Deployment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
