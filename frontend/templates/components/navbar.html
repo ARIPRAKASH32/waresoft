@@ -1,0 +1,77 @@
+<header class="ws-header">
+    <div class="ws-header-inner content-container">
+        <!-- Brand Logo & Platform Title -->
+        <div class="ws-brand-cluster">
+            <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+            <a href="/" class="ws-brand-link">
+                <span class="ws-brand-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="ws-brand-text">{{ app_name }}</span>
+                <span class="ws-brand-badge">DevNexus</span>
+            </a>
+            
+            <!-- Live Signature Telemetry -->
+            <div class="d-none d-md-flex align-items-center ms-3">
+                <span class="ws-pill ws-pill-telemetry">
+                    <span class="status-dot status-dot-live"></span>
+                    {{ system_status.env }} // rev:{{ system_status.commit }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Navigation Links (Public Context) -->
+        <nav class="ws-header-nav d-none d-lg-flex">
+            <a href="/" class="ws-nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+            <a href="/about" class="ws-nav-link {% if request.path == '/about' %}active{% endif %}">About</a>
+            <a href="/services" class="ws-nav-link {% if request.path == '/services' %}active{% endif %}">Services</a>
+            <a href="/portfolio" class="ws-nav-link {% if request.path == '/portfolio' %}active{% endif %}">Portfolio</a>
+            <a href="/contact" class="ws-nav-link {% if request.path == '/contact' %}active{% endif %}">Contact</a>
+            <a href="/careers" class="ws-nav-link {% if request.path == '/careers' %}active{% endif %}">Careers</a>
+        </nav>
+
+        <!-- Right Quick Actions & User Roster -->
+        <div class="ws-header-actions">
+            <!-- Global Workspace Switcher / Portal Link -->
+            <a href="/projects" class="ws-btn ws-btn-secondary ws-btn-sm d-none d-sm-inline-flex">
+                <i class="bi bi-kanban"></i> Workspaces
+            </a>
+
+            <!-- Notification Trigger -->
+            <a href="/notifications" class="ws-icon-btn position-relative" title="Notifications">
+                <i class="bi bi-bell"></i>
+                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-dark rounded-circle"></span>
+            </a>
+
+            <!-- User Avatar & Dropdown -->
+            <div class="dropdown">
+                <button class="ws-user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="ws-user-avatar">{{ current_user.avatar }}</span>
+                    <span class="d-none d-md-inline-block text-start">
+                        <span class="d-block text-truncate fw-medium" style="max-width: 110px; font-size: 12px; color: var(--ws-text-primary);">{{ current_user.name }}</span>
+                        <span class="d-block text-truncate" style="max-width: 110px; font-size: 11px; color: var(--ws-text-muted);">{{ current_user.role }}</span>
+                    </span>
+                    <i class="bi bi-chevron-down text-muted ms-1" style="font-size: 10px;"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end ws-dropdown-menu">
+                    <li class="px-3 py-2 border-bottom border-secondary border-opacity-10">
+                        <div class="small fw-semibold text-white">{{ current_user.name }}</div>
+                        <div class="text-muted" style="font-size: 11px;">{{ current_user.email }}</div>
+                    </li>
+                    <li><a class="dropdown-item" href="/profile"><i class="bi bi-person me-2"></i>My Profile</a></li>
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2"></i>Admin Center</a></li>
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client Portal</a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2"></i>Developer Hub</a></li>
+                    <li><hr class="dropdown-divider border-secondary border-opacity-10"></li>
+                    <li><button class="dropdown-item text-danger" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

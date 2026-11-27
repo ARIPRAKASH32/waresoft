@@ -1,0 +1,9 @@
+<nav aria-label="breadcrumb" class="ws-breadcrumb">
+    <a href="/"><i class="bi bi-house-door"></i></a>
+    <span class="ws-breadcrumb-sep">/</span>
+    {% if parent_title and parent_url %}
+        <a href="{{ parent_url }}">{{ parent_title }}</a>
+        <span class="ws-breadcrumb-sep">/</span>
+    {% endif %}
+    <span class="ws-breadcrumb-current">{{ title }}</span>
+</nav>
