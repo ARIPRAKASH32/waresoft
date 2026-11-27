@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container py-5">
+    {% include 'components/breadcrumbs.html' %}
+
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-7">
+            <span class="ws-pill ws-pill-telemetry mb-3">
+                <span class="status-dot status-dot-live"></span>
+                ABOUT WARESOFT & DEVNEXUS
+            </span>
+            <h1 class="text-white fw-semibold mb-3">Architected for technical excellence and predictable delivery.</h1>
+            <p class="text-secondary lead fs-6" style="line-height: 1.6;">
+                WareSoft was founded with a singular conviction: enterprise software delivery shouldn't depend on fragmented tools and opaque spreadsheets. We combine rigorous engineering standards with our proprietary DevNexus delivery management platform.
+            </p>
+        </div>
+        <div class="col-lg-5">
+            <div class="ws-card p-4">
+                <div class="text-muted small font-monospace mb-2">SYSTEM SPECIFICATION</div>
+                <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
+                    <span class="text-secondary">Core Methodology</span>
+                    <span class="text-white fw-medium">Agile Scrum + Telemetry</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
+                    <span class="text-secondary">Deployment Cadence</span>
+                    <span class="text-white fw-medium">Continuous / Bi-weekly</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
+                    <span class="text-secondary">Client Transparency</span>
+                    <span class="text-white fw-medium">100% Real-Time Kanban</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 small">
+                    <span class="text-secondary">Security Compliance</span>
+                    <span class="text-success fw-medium">SOC2 Type II + ISO 27001</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Engineering Tenets -->
+    <div class="my-5">
+        <h3 class="text-white fw-medium mb-4">Our Engineering Tenets</h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="ws-card h-100">
+                    <div class="text-primary fs-5 mb-2"><i class="bi bi-code-square"></i></div>
+                    <h5 class="text-white fs-6 fw-medium mb-2">Deterministic Code Quality</h5>
+                    <p class="text-secondary small">Every pull request undergoes mandatory automated linting, unit test coverage validation (>85%), and dual-peer code review before staging merge.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ws-card h-100">
+                    <div class="text-info fs-5 mb-2"><i class="bi bi-speedometer2"></i></div>
+                    <h5 class="text-white fs-6 fw-medium mb-2">Measurable Velocity</h5>
+                    <p class="text-secondary small">We track sprint burndown rates, lead time to production, and defect escape metrics in real time on our public client dashboard.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ws-card h-100">
+                    <div class="text-success fs-5 mb-2"><i class="bi bi-shield-check"></i></div>
+                    <h5 class="text-white fs-6 fw-medium mb-2">Security-by-Design</h5>
+                    <p class="text-secondary small">Automated dependency vulnerability audits, role-based access control, encrypted payloads, and strict secret rotation from day zero.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leadership & Team Overview -->
+    <div class="my-5 pt-4 border-top border-secondary border-opacity-10">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="text-white fw-medium mb-1">Engineering Leadership</h3>
+                <p class="text-secondary small m-0">The architects and directors overseeing platform delivery.</p>
+            </div>
+            <a href="/careers" class="ws-btn ws-btn-secondary ws-btn-sm">Join Our Team</a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="ws-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="ws-user-avatar" style="width: 44px; height: 44px; font-size: 14px;">AP</span>
+                        <div>
+                            <div class="text-white fw-medium">Ari Prakash</div>
+                            <div class="text-muted small">Frontend Lead & UI/UX Architect</div>
+                        </div>
+                    </div>
+                    <p class="text-secondary small m-0">Owner of WareSoft design systems, Jinja2/Bootstrap responsive architecture, and real-time client console experiences.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ws-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="ws-user-avatar" style="width: 44px; height: 44px; font-size: 14px; color: var(--ws-brand-blue);">DT</span>
+                        <div>
+                            <div class="text-white fw-medium">Datcha</div>
+                            <div class="text-muted small">Backend & Platform Architect</div>
+                        </div>
+                    </div>
+                    <p class="text-secondary small m-0">Head of DevNexus core services, database schemas, REST API contracts, and CI/CD deployment pipelines.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ws-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <span class="ws-user-avatar" style="width: 44px; height: 44px; font-size: 14px; color: var(--ws-signal-success);">QA</span>
+                        <div>
+                            <div class="text-white fw-medium">Elena Rostova</div>
+                            <div class="text-muted small">Head of Quality Assurance</div>
+                        </div>
+                    </div>
+                    <p class="text-secondary small m-0">Leading automated regression testing, security fuzzing, and compliance verification across staging and production.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

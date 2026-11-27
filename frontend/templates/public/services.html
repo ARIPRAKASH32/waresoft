@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container py-5">
+    {% include 'components/breadcrumbs.html' %}
+
+    <div class="mb-5" style="max-width: 720px;">
+        <span class="ws-pill ws-pill-telemetry mb-3">
+            <span class="status-dot status-dot-live"></span>
+            SERVICES & CAPABILITIES
+        </span>
+        <h1 class="text-white fw-semibold mb-3">Full-cycle software engineering services backed by DevNexus management.</h1>
+        <p class="text-secondary lead fs-6">
+            We deliver bespoke enterprise web applications, high-throughput cloud infrastructure, and continuous SLA maintenance with full milestone transparency.
+        </p>
+    </div>
+
+    <!-- Service Offerings Grid -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="ws-card h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 font-monospace">TIER 1</span>
+                    <i class="bi bi-window-sidebar fs-4 text-primary"></i>
+                </div>
+                <h4 class="text-white fs-6 fw-medium mb-2">Custom SaaS & Web Applications</h4>
+                <p class="text-secondary small mb-3">Modern, responsive, accessible web portals built with Flask, React, and Bootstrap. High performance, SEO optimized, and intuitive.</p>
+                <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4">
+                    <li><i class="bi bi-check2 text-info me-2"></i>Multi-tenant Architecture</li>
+                    <li><i class="bi bi-check2 text-info me-2"></i>Role-based RBAC Controls</li>
+                    <li><i class="bi bi-check2 text-info me-2"></i>Responsive Mobile/Desktop UX</li>
+                </ul>
+                <a href="/requirements/submit" class="ws-btn ws-btn-secondary ws-btn-sm w-100">Request Scope</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="ws-card h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-25 font-monospace">TIER 2</span>
+                    <i class="bi bi-cloud-check fs-4 text-info"></i>
+                </div>
+                <h4 class="text-white fs-6 fw-medium mb-2">Cloud DevOps & CI/CD Pipelines</h4>
+                <p class="text-secondary small mb-3">Containerized infrastructure deployments on AWS, GCP, and Cloudflare. Automated GitHub Actions pipelines with zero-downtime blue/green rollouts.</p>
+                <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4">
+                    <li><i class="bi bi-check2 text-info me-2"></i>Docker & Kubernetes clusters</li>
+                    <li><i class="bi bi-check2 text-info me-2"></i>Automated Telemetry & Alerts</li>
+                    <li><i class="bi bi-check2 text-info me-2"></i>Disaster Recovery & Hot Standby</li>
+                </ul>
+                <a href="/requirements/submit" class="ws-btn ws-btn-secondary ws-btn-sm w-100">Request Scope</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="ws-card h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 font-monospace">TIER 3</span>
+                    <i class="bi bi-shield-check fs-4 text-success"></i>
+                </div>
+                <h4 class="text-white fs-6 fw-medium mb-2">Automated QA & Security Auditing</h4>
+                <p class="text-secondary small mb-3">End-to-end regression test suites, load stress testing, API contract verification, and automated vulnerability scanning before every release.</p>
+                <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-4">
+                    <li><i class="bi bi-check2 text-info me-2"></i>Automated Cypress / Playwright E2E</li>
+                    <li><i class="bi bi-check2 text-info me-2"></i>Penetration & OWASP Compliance</li>
+                    <li><i class="bi bi-check2 text-info me-2"></i>Detailed Defect Reproduction Logs</li>
+                </ul>
+                <a href="/requirements/submit" class="ws-btn ws-btn-secondary ws-btn-sm w-100">Request Scope</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Engagement Workflow -->
+    <div class="ws-card p-4">
+        <h4 class="text-white fs-6 fw-medium mb-4">Transparent 4-Phase Delivery Process</h4>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="font-monospace text-info small mb-1">PHASE 01</div>
+                <div class="text-white fw-medium mb-1">Requirement & RFP</div>
+                <div class="text-secondary small">Comprehensive scope definition, technical architecture review, and line-item quotation within 48 hours.</div>
+            </div>
+            <div class="col-md-3">
+                <div class="font-monospace text-info small mb-1">PHASE 02</div>
+                <div class="text-white fw-medium mb-1">Sprint Inception</div>
+                <div class="text-secondary small">Milestone structuring, Jira/GitHub synchronization, design system tokens, and initial staging build.</div>
+            </div>
+            <div class="col-md-3">
+                <div class="font-monospace text-info small mb-1">PHASE 03</div>
+                <div class="text-white fw-medium mb-1">Iterative Sprints</div>
+                <div class="text-secondary small">Bi-weekly demo rollouts, client kanban visibility, automated test matrices, and progress reporting.</div>
+            </div>
+            <div class="col-md-3">
+                <div class="font-monospace text-info small mb-1">PHASE 04</div>
+                <div class="text-white fw-medium mb-1">Production & SLA</div>
+                <div class="text-secondary small">Zero-downtime deployment, escrow release upon approval, and ongoing 24/7 SLA maintenance coverage.</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
