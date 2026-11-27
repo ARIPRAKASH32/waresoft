@@ -1,8 +1,89 @@
 {% set is_public = request.path in ['/', '/about', '/services', '/portfolio', '/contact', '/careers', '/auth', '/login', '/register', '/forgot-password'] %}
 
+{% if is_public %}
+<!-- Juspay-Style Floating Pill Header (Preserving All-Light Brand Palette) -->
+<header class="ws-header-floating-wrap">
+    <div class="ws-header-pill">
+        <!-- Left: Logo -->
+        <div class="d-flex align-items-center gap-2">
+            <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+            <a href="/" class="ws-brand-link">
+                <span class="ws-brand-icon">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="WareSoft Logo" width="26" height="26" style="display: block;">
+                </span>
+                <span class="ws-brand-text" style="letter-spacing: -0.02em;">{{ app_name }}</span>
+            </a>
+        </div>
+
+        <!-- Center: 4 Clean Links with Interactive Dropdowns -->
+        <nav class="d-none d-lg-flex align-items-center gap-4">
+            <div class="dropdown">
+                <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Products <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                </button>
+                <ul class="dropdown-menu ws-dropdown-menu">
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client &amp; Commercial</a></li>
+                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-kanban me-2"></i>Projects &amp; Sprint Kanban</a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-terminal me-2"></i>Engineering &amp; QA</a></li>
+                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2"></i>Cloud Ops &amp; Escrow</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Resources <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                </button>
+                <ul class="dropdown-menu ws-dropdown-menu">
+                    <li><a class="dropdown-item" href="/#solutions"><i class="bi bi-layers me-2"></i>Architecture Overview</a></li>
+                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces me-2"></i>DevNexus API Explorer</a></li>
+                    <li><a class="dropdown-item" href="/operations?tab=releases"><i class="bi bi-tag me-2"></i>Release Changelogs</a></li>
+                </ul>
+            </div>
+
+            <a href="/#developers" class="ws-pill-nav-link">Integrations</a>
+
+            <div class="dropdown">
+                <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Company <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                </button>
+                <ul class="dropdown-menu ws-dropdown-menu">
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-check me-2"></i>Executive Command</a></li>
+                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-grid-1x2 me-2"></i>Workspaces Console</a></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In / Portal</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Right: Region/Cluster Pill + Electric Blue Contact CTA -->
+        <div class="d-flex align-items-center gap-3">
+            <div class="dropdown d-none d-sm-block">
+                <button class="ws-region-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="regionSelectorBtn">
+                    <i class="bi bi-globe2" style="color: var(--ws-brand-blue); font-size: 13px;"></i>
+                    <span id="activeRegionLabel">India</span>
+                    <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end ws-dropdown-menu">
+                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('India', 'ap-south-1')"><i class="bi bi-geo-alt me-2"></i>India (ap-south-1)</button></li>
+                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('Global', 'us-east-1')"><i class="bi bi-globe me-2"></i>Global (us-east-1)</button></li>
+                    <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
+                    <li><a class="dropdown-item fw-semibold" href="/projects"><i class="bi bi-kanban me-2 ws-text-blue"></i>Open Console</a></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-person me-2"></i>Sign In</a></li>
+                </ul>
+            </div>
+
+            <a href="/#contact" class="ws-contact-cta">
+                Contact us <i class="bi bi-caret-right-fill" style="font-size: 10px;"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+{% else %}
+<!-- Dashboard Console Header with Cmd+K Command Search Bar -->
 <header class="ws-header">
     <div class="ws-header-inner content-container">
-        <!-- Brand Logo -->
         <div class="ws-brand-cluster">
             <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-5"></i>
@@ -12,32 +93,10 @@
                     <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="WareSoft Logo" width="26" height="26" style="display: block;">
                 </span>
                 <span class="ws-brand-text">{{ app_name }}</span>
-                {% if not is_public %}
                 <span class="ws-text-muted small fw-normal d-none d-sm-inline">/ Console</span>
-                {% endif %}
             </a>
         </div>
 
-        {% if is_public %}
-        <!-- Public Context: Quiet Centered Navigation Links -->
-        <nav class="ws-header-nav d-none d-lg-flex">
-            <a href="/" class="ws-nav-link {% if request.path == '/' %}active{% endif %}">Platform</a>
-            <a href="/#solutions" class="ws-nav-link">Solutions</a>
-            <a href="/projects" class="ws-nav-link">Workspaces</a>
-            <a href="/#developers" class="ws-nav-link">Developers</a>
-            <a href="/#contact" class="ws-nav-link">Contact</a>
-        </nav>
-
-        <!-- Public Context: Quiet Text Sign In + 1 Primary Button -->
-        <div class="ws-header-actions gap-3">
-            <a href="/auth" class="ws-nav-link d-none d-sm-inline-block">Sign In</a>
-            <a href="/projects" class="ws-btn ws-btn-navy ws-btn-sm">
-                Open Console <i class="bi bi-arrow-right"></i>
-            </a>
-        </div>
-
-        {% else %}
-        <!-- Dashboard Context: Command Search Bar -->
         <div class="jp-cmd-wrap d-none d-md-block">
             <div class="jp-cmd-search">
                 <i class="bi bi-search ws-text-muted small"></i>
@@ -72,7 +131,6 @@
             </div>
         </div>
 
-        <!-- Dashboard Context: Alerts & Profile Dropdown -->
         <div class="ws-header-actions">
             <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications">
                 <i class="bi bi-bell"></i>
@@ -104,18 +162,18 @@
                 </ul>
             </div>
         </div>
-        {% endif %}
     </div>
 </header>
+{% endif %}
 
 <!-- Mobile Quick Nav Drawer -->
 <div id="mobilePublicNav" class="d-none d-lg-none bg-white border-bottom px-4 py-3" style="border-color: var(--ws-border-quiet) !important;">
     <div class="d-flex flex-column gap-2 small fw-medium">
-        <a href="/" class="py-1 ws-text-ink text-decoration-none">Platform</a>
-        <a href="/#solutions" class="py-1 ws-text-secondary text-decoration-none">Solutions</a>
-        <a href="/projects" class="py-1 ws-text-secondary text-decoration-none">Workspaces Console</a>
-        <a href="/#developers" class="py-1 ws-text-secondary text-decoration-none">Developers</a>
-        <a href="/#contact" class="py-1 ws-text-secondary text-decoration-none">Contact</a>
-        <a href="/auth" class="py-1 ws-text-blue text-decoration-none">Sign In</a>
+        <a href="/projects" class="py-1 ws-text-ink text-decoration-none">Workspaces Console</a>
+        <a href="/client" class="py-1 ws-text-secondary text-decoration-none">Client &amp; Commercial</a>
+        <a href="/developer" class="py-1 ws-text-secondary text-decoration-none">Engineering &amp; QA</a>
+        <a href="/operations" class="py-1 ws-text-secondary text-decoration-none">Cloud Ops &amp; Billing</a>
+        <a href="/#developers" class="py-1 ws-text-secondary text-decoration-none">Integrations</a>
+        <a href="/#contact" class="py-1 ws-text-blue text-decoration-none">Contact us &rarr;</a>
     </div>
 </div>

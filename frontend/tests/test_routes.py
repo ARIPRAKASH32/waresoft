@@ -36,7 +36,8 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
                 self.assertIn('data-bs-theme="light"', html)
                 self.assertIn(marker, html_lib.unescape(html))
                 if route in ('/', '/auth'):
-                    self.assertIn('Open Console', html)
+                    self.assertIn('ws-header-pill', html)
+                    self.assertIn('Contact us', html)
                     self.assertNotIn('workspaceCmdInput', html)
                 else:
                     self.assertIn('workspaceCmdInput', html)
