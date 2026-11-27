@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold text-white m-0">Engineering Projects Portfolio</h1>
+                        <span class="ws-pill ws-pill-telemetry">19 ACTIVE</span>
+                    </div>
+                    <p class="text-secondary small m-0">Cross-project sprint velocity, deliverable milestones, and cluster health.</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="/requirements/submit" class="ws-btn ws-btn-primary ws-btn-sm">
+                        <i class="bi bi-plus-lg"></i> Incept New Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-6">
+                    <div class="ws-card h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 font-monospace">PROJECT NX-101</span>
+                            <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> SPRINT 4</span>
+                        </div>
+                        <h3 class="text-white fs-5 fw-medium mb-1">FinTech High-Throughput Payment Router</h3>
+                        <div class="text-muted small mb-3">Client: FinTech Global Inc. • Lead: Ari Prakash (Frontend), Datcha (Backend)</div>
+                        <p class="text-secondary small mb-3">
+                            Fault-tolerant multi-currency checkout engine. Current focus: Webhook processing and idempotency testing.
+                        </p>
+                        <div class="d-flex align-items-center gap-3 my-3">
+                            <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
+                                <div class="progress-bar bg-primary" style="width: 75%;"></div>
+                            </div>
+                            <span class="font-monospace text-white small">75% Complete</span>
+                        </div>
+                        <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
+                                <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
+                            </div>
+                            <a href="/projects/101" class="ws-btn ws-btn-cyan ws-btn-sm">Open Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="ws-card h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-25 font-monospace">PROJECT NX-104</span>
+                            <span class="ws-pill ws-pill-telemetry"><span class="status-dot status-dot-live"></span> SPRINT 5</span>
+                        </div>
+                        <h3 class="text-white fs-5 fw-medium mb-1">Logistics Cold-Chain Telemetry Hub</h3>
+                        <div class="text-muted small mb-3">Client: Logix Logistics Worldwide • Lead: Systems Architecture Team</div>
+                        <p class="text-secondary small mb-3">
+                            High-volume IoT ingest pipeline and dashboard alerts. Current focus: Staging deployment & load stress testing.
+                        </p>
+                        <div class="d-flex align-items-center gap-3 my-3">
+                            <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
+                                <div class="progress-bar bg-info" style="width: 90%;"></div>
+                            </div>
+                            <span class="font-monospace text-white small">90% Complete</span>
+                        </div>
+                        <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
+                                <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
+                            </div>
+                            <a href="/projects/101" class="ws-btn ws-btn-cyan ws-btn-sm">Open Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
