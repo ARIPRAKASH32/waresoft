@@ -153,6 +153,85 @@
     box-shadow: var(--ws-shadow-sm);
 }
 
+/* ─── Juspay Enterprise Trust Logo Strip ─── */
+.jp-logo-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ws-space-8);
+    padding: var(--ws-space-4) 0;
+}
+
+.jp-logo-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ws-text-muted);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+    transition: opacity var(--ws-duration-fast) var(--ws-ease-out);
+}
+
+.jp-logo-item:hover {
+    opacity: 1;
+    color: var(--ws-brand-navy);
+}
+
+/* ─── Juspay Developer Studio API Explorer (#0B1020 Surface) ─── */
+.jp-code-explorer {
+    background-color: var(--ws-brand-navy);
+    border-radius: var(--ws-radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(11, 16, 32, 0.25);
+    box-shadow: var(--ws-shadow-lg);
+}
+
+.jp-code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.jp-code-tab {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #94A3B8;
+    font-family: var(--ws-font-mono);
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: var(--ws-radius-xs);
+    cursor: pointer;
+    transition: var(--ws-transition-base);
+}
+
+.jp-code-tab:hover {
+    color: #FFFFFF;
+}
+
+.jp-code-tab.active {
+    background-color: rgba(59, 130, 246, 0.16);
+    border-color: rgba(59, 130, 246, 0.45);
+    color: #FFFFFF;
+}
+
+.jp-code-body {
+    padding: 20px;
+    margin: 0;
+    color: #E2E8F0;
+    font-family: var(--ws-font-mono);
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: auto;
+    min-height: 220px;
+}
+
 /* ─── Buttons ─── */
 .ws-btn {
     display: inline-flex;

@@ -16,7 +16,7 @@ class WareSoftUnifiedWorkspaceTests(unittest.TestCase):
 
     def test_eight_primary_workspaces(self):
         workspaces = [
-            ('/', 'The operating system for software delivery'),
+            ('/', 'Software delivery, engineered for enterprise scale.'),
             ('/auth', 'DevNexus Identity Portal'),
             ('/admin', 'Command & Analytics Center'),
             ('/client', 'Client & Commercial Workspace'),
