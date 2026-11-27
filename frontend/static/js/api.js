@@ -108,14 +108,19 @@ const WareSoftAPI = (function() {
 
     // ─── UI Listeners ───
     document.addEventListener('DOMContentLoaded', () => {
-        // Mobile Sidebar Drawer Toggle
+        // Mobile Sidebar or Public Drawer Toggle
         const toggleBtn = document.getElementById('sidebarToggle');
         const closeBtn = document.getElementById('sidebarCloseBtn');
         const sidebar = document.getElementById('appSidebar');
+        const mobilePublicNav = document.getElementById('mobilePublicNav');
 
-        if (toggleBtn && sidebar) {
+        if (toggleBtn) {
             toggleBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('d-none');
+                if (sidebar) {
+                    sidebar.classList.toggle('d-none');
+                } else if (mobilePublicNav) {
+                    mobilePublicNav.classList.toggle('d-none');
+                }
             });
         }
         if (closeBtn && sidebar) {
