@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+
+        <main class="dashboard-main">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom gap-3" style="border-color: var(--ws-border-quiet) !important;">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Release History & Changelogs</h1>
+                        <span class="ws-pill ws-pill-navy">SEMVER TAGS</span>
+                    </div>
+                    <p class="ws-text-secondary small m-0">Tagged production releases, rollback targets, and verified artifact digests.</p>
+                </div>
+                <a href="/deployment" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-arrow-left"></i> Deployment Console</a>
+            </div>
+
+            <div class="d-flex flex-column gap-3" style="max-width: 960px;">
+                <div class="ws-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="ws-pill ws-pill-navy">v2.4.1 (LATEST)</span>
+                            <h4 class="ws-text-ink fs-6 fw-semibold m-0">All-Light Editorial Shell & Directory Filtering</h4>
+                        </div>
+                        <span class="font-monospace ws-text-muted small">Nov 27, 2026</span>
+                    </div>
+                    <p class="ws-text-secondary small mb-3">
+                        Introduced crisp light theme design tokens, split filter sidebars on project/portfolio directories, and zero-clipping responsive topbar.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center pt-2 border-top small" style="border-color: var(--ws-border-quiet) !important;">
+                        <span class="font-monospace ws-text-muted">SHA: <code>39eeb46</code> • Verified by QA Lead</span>
+                        <span class="ws-pill ws-pill-success">LIVE ON PROD</span>
+                    </div>
+                </div>
+
+                <div class="ws-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="ws-pill ws-pill-muted">v2.4.0</span>
+                            <h4 class="ws-text-ink fs-6 fw-semibold m-0">Sprint Kanban & RFP Intake Engine</h4>
+                        </div>
+                        <span class="font-monospace ws-text-muted small">Nov 24, 2026</span>
+                    </div>
+                    <p class="ws-text-secondary small mb-3">
+                        Launched 5-lane drag-and-drop Sprint Kanban board, digital quotation approvals, and 3-step RFP wizard.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center pt-2 border-top small" style="border-color: var(--ws-border-quiet) !important;">
+                        <span class="font-monospace ws-text-muted">SHA: <code>3c1f43c</code> • Archive Snapshot</span>
+                        <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="WareSoftAPI.showToast('Rollback preview prepared for v2.4.0', 'warning')">Rollback Target</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
