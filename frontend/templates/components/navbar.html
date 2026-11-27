@@ -62,9 +62,9 @@
             </div>
         </nav>
 
-        <!-- Right: Region/Cluster Pill + Electric Blue Contact CTA -->
-        <div class="d-flex align-items-center gap-3">
-            <div class="dropdown d-none d-sm-block">
+        <!-- Right: Region/Cluster Pill + Login / Sign Up + Contact CTA -->
+        <div class="d-flex align-items-center gap-2 gap-md-3">
+            <div class="dropdown d-none d-xl-block">
                 <button class="ws-region-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="regionSelectorBtn">
                     <i class="bi bi-globe2" style="color: #06B6D4; font-size: 13px;"></i>
                     <span id="activeRegionLabel">India</span>
@@ -75,11 +75,13 @@
                     <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('Global', 'us-east-1')"><i class="bi bi-globe"></i><span>Global (us-east-1)</span></button></li>
                     <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
                     <li><a class="dropdown-item fw-semibold" href="/projects"><i class="bi bi-kanban"></i><span>Open Console</span></a></li>
-                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-person"></i><span>Sign In</span></a></li>
                 </ul>
             </div>
 
-            <a href="/#contact" class="ws-contact-cta">
+            <a href="/login" class="ws-btn ws-btn-secondary ws-btn-sm">Login</a>
+            <a href="/register" class="ws-btn ws-btn-primary ws-btn-sm">Sign Up</a>
+
+            <a href="/#contact" class="ws-contact-cta d-none d-lg-inline-flex">
                 Contact us <i class="bi bi-caret-right-fill" style="font-size: 10px;"></i>
             </a>
         </div>
@@ -142,7 +144,10 @@
             </div>
         </div>
 
-        <div class="ws-header-actions gap-3">
+        <div class="ws-header-actions gap-2 gap-sm-3">
+            <a href="/login" class="ws-btn ws-btn-secondary ws-btn-sm">Login</a>
+            <a href="/register" class="ws-btn ws-btn-primary ws-btn-sm">Sign Up</a>
+
             <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications" aria-label="Notifications">
                 <i class="bi bi-bell"></i>
                 <span class="ws-notify-dot"></span>
@@ -183,10 +188,6 @@
                     <li><button class="dropdown-item" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right"></i><span>Sign Out</span></button></li>
                 </ul>
             </div>
-
-            <a href="/" class="ws-contact-cta d-none d-lg-inline-flex">
-                Showcase <i class="bi bi-caret-right-fill" style="font-size: 10px;"></i>
-            </a>
         </div>
     </div>
 </header>
@@ -200,6 +201,9 @@
         <a href="/developer" class="py-1 ws-text-secondary text-decoration-none">Engineering &amp; QA</a>
         <a href="/operations" class="py-1 ws-text-secondary text-decoration-none">Cloud Ops &amp; Billing</a>
         <a href="/#developers" class="py-1 ws-text-secondary text-decoration-none">Integrations</a>
-        <a href="/#contact" class="py-1 ws-text-blue text-decoration-none">Contact us &rarr;</a>
+        <div class="d-flex gap-2 pt-2">
+            <a href="/login" class="ws-btn ws-btn-secondary ws-btn-sm flex-grow-1">Login</a>
+            <a href="/register" class="ws-btn ws-btn-primary ws-btn-sm flex-grow-1">Sign Up</a>
+        </div>
     </div>
 </div>
