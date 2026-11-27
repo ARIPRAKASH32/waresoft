@@ -232,7 +232,7 @@
     min-height: 220px;
 }
 
-/* ─── Buttons ─── */
+/* ─── Buttons (Unified Cobalt / Cyan / Dark Pill System) ─── */
 .ws-btn {
     display: inline-flex;
     align-items: center;
@@ -242,9 +242,9 @@
     font-size: var(--ws-text-sm);
     font-weight: 500;
     line-height: 1;
-    padding: var(--ws-space-2) var(--ws-space-4);
+    padding: 0 var(--ws-space-5);
     height: 38px;
-    border-radius: var(--ws-radius-sm);
+    border-radius: 999px;
     border: 1px solid transparent;
     cursor: pointer;
     text-decoration: none;
@@ -257,81 +257,72 @@
     transform: scale(0.98);
 }
 
-.ws-btn-primary {
-    background-color: var(--ws-brand-blue);
-    border-color: var(--ws-brand-blue);
-    color: #FFFFFF;
-}
-
-.ws-btn-primary:hover {
-    background-color: var(--ws-brand-blue-hover);
-    border-color: var(--ws-brand-blue-hover);
-    color: #FFFFFF;
-}
-
+.ws-btn-primary,
 .ws-btn-navy {
-    background-color: var(--ws-text-primary);
-    border-color: var(--ws-text-primary);
-    color: var(--ws-text-inverse);
-    font-weight: 600;
+    background-color: var(--ws-brand-blue-strong);
+    border-color: rgba(96, 165, 250, 0.45);
+    color: #FFFFFF;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 4px 12px rgba(37, 99, 235, 0.24);
 }
 
+.ws-btn-primary:hover,
 .ws-btn-navy:hover {
-    background-color: #E2E8F0;
-    border-color: #E2E8F0;
-    color: var(--ws-text-inverse);
+    background-color: var(--ws-brand-blue);
+    border-color: var(--ws-brand-blue-ink);
+    color: #FFFFFF;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 6px 16px rgba(59, 130, 246, 0.34);
 }
 
 .ws-btn-secondary {
     background-color: var(--ws-bg-surface-2);
-    border-color: var(--ws-border-subtle);
+    border-color: rgba(255, 255, 255, 0.12);
     color: var(--ws-text-primary);
-    box-shadow: var(--ws-shadow-sm);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .ws-btn-secondary:hover, .ws-btn-secondary.active {
     background-color: var(--ws-bg-surface-3);
-    border-color: var(--ws-brand-blue);
-    color: var(--ws-text-primary);
+    border-color: rgba(96, 165, 250, 0.45);
+    color: #FFFFFF;
 }
 
 .ws-btn-outline {
-    background-color: transparent;
-    border-color: var(--ws-border-subtle);
+    background-color: var(--ws-bg-surface-2);
+    border-color: rgba(255, 255, 255, 0.12);
     color: var(--ws-text-primary);
 }
 
 .ws-btn-outline:hover {
-    background-color: var(--ws-bg-surface-1);
-    border-color: var(--ws-brand-blue);
-    color: var(--ws-brand-blue-ink);
+    background-color: var(--ws-bg-surface-3);
+    border-color: var(--ws-brand-cyan);
+    color: var(--ws-brand-cyan-ink);
 }
 
 .ws-btn-cyan {
     background-color: var(--ws-brand-cyan);
-    border-color: var(--ws-brand-cyan);
-    color: var(--ws-brand-navy);
+    border-color: rgba(34, 211, 238, 0.55);
+    color: #0B1020;
     font-weight: 600;
 }
 
 .ws-btn-cyan:hover {
-    background-color: #0891B2;
-    border-color: #0891B2;
-    color: #FFFFFF;
+    background-color: var(--ws-brand-cyan-ink);
+    border-color: var(--ws-brand-cyan-ink);
+    color: #0B1020;
 }
 
 .ws-btn-sm {
-    height: 30px;
-    padding: var(--ws-space-1) var(--ws-space-3);
+    height: 32px;
+    padding: 0 14px;
     font-size: var(--ws-text-xs);
-    border-radius: var(--ws-radius-xs);
+    border-radius: 999px;
 }
 
 .ws-btn-lg {
     height: 44px;
-    padding: var(--ws-space-3) var(--ws-space-6);
+    padding: 0 var(--ws-space-6);
     font-size: var(--ws-text-base);
-    border-radius: var(--ws-radius-md);
+    border-radius: 999px;
 }
 
 /* ─── Cards & Containers ─── */
@@ -411,9 +402,9 @@
 }
 
 .ws-filter-chip.active {
-    background-color: var(--ws-text-primary);
-    border-color: var(--ws-text-primary);
-    color: var(--ws-text-inverse);
+    background-color: var(--ws-brand-blue-strong);
+    border-color: rgba(96, 165, 250, 0.55);
+    color: #FFFFFF;
     font-weight: 600;
 }
 
@@ -691,14 +682,14 @@
     min-width: 0;
 }
 
-/* ─── Juspay-Style Dark Navy (#0B1020) Floating Pill Navbar ─── */
+/* ─── Unified Floating Obsidian Pill Header (All Public & Console Pages) ─── */
 .ws-header-floating-wrap {
     position: sticky;
     top: 0;
     z-index: 1030;
-    padding: 16px 24px 10px;
+    padding: 16px 24px 12px;
     background-color: rgba(11, 16, 32, 0.86);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
 }
 
 .ws-header-pill {
@@ -707,13 +698,18 @@
     height: 60px;
     padding: 0 24px;
     background-color: var(--ws-bg-surface-1);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 999px;
-    box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.40);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 14px 36px -8px rgba(0, 0, 0, 0.72), 0 2px 8px rgba(0, 0, 0, 0.45);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--ws-space-5);
+}
+
+.ws-header-pill.ws-header-pill-console {
+    max-width: 1280px;
+    padding: 0 18px 0 22px;
 }
 
 .ws-header-pill .ws-brand-text,
@@ -745,7 +741,7 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--ws-bg-surface-2);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 999px;
     padding: 6px 14px;
@@ -758,7 +754,7 @@
 }
 
 .ws-region-pill:hover {
-    background-color: rgba(255, 255, 255, 0.14);
+    background-color: var(--ws-bg-surface-3);
     border-color: rgba(59, 130, 246, 0.45);
 }
 
@@ -775,32 +771,32 @@
 }
 
 .ws-contact-cta:hover {
-    color: var(--ws-brand-cyan);
+    color: var(--ws-brand-cyan-ink);
 }
 
 @media (max-width: 991.98px) {
     .ws-header-floating-wrap {
-        padding: 12px 16px 6px;
+        padding: 12px 16px 8px;
     }
     .ws-header-pill {
-        padding: 0 16px;
+        padding: 0 14px;
         height: 54px;
     }
 }
 
-/* ─── Dashboard Command Search Bar (Inside #0B1020 Console Header) ─── */
+/* ─── Dashboard Command Search Pill (Inside Floating Pill Header) ─── */
 .jp-cmd-wrap {
     position: relative;
     flex: 1;
-    max-width: 440px;
+    max-width: 420px;
 }
 
 .jp-cmd-search {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    background-color: var(--ws-bg-surface-2);
+    border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: 999px;
     padding: 0 8px 0 14px;
     height: 38px;
@@ -809,9 +805,9 @@
 }
 
 .jp-cmd-search:focus-within {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(96, 165, 250, 0.50);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+    background-color: var(--ws-bg-surface-3);
+    border-color: rgba(96, 165, 250, 0.55);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.20);
 }
 
 .jp-cmd-search input {
@@ -824,14 +820,14 @@
 }
 
 .jp-cmd-search input::placeholder {
-    color: #78869B;
+    color: #94A3B8;
 }
 
 .jp-cmd-keycap {
     font-family: var(--ws-font-mono);
     font-size: 10px;
     color: #94A3B8;
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: rgba(11, 16, 32, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 999px;
     padding: 2px 8px;
@@ -839,19 +835,21 @@
     flex-shrink: 0;
 }
 
+.ws-header-pill .ws-icon-btn,
 .ws-header .ws-icon-btn {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-color: rgba(255, 255, 255, 0.10);
+    background-color: var(--ws-bg-surface-2);
+    border-color: rgba(255, 255, 255, 0.11);
     color: #CBD5E1;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.ws-header-pill .ws-icon-btn:hover,
 .ws-header .ws-icon-btn:hover {
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.20);
+    background-color: var(--ws-bg-surface-3);
+    border-color: rgba(96, 165, 250, 0.45);
     color: #FFFFFF;
 }
 
@@ -863,24 +861,28 @@
     height: 7px;
     border-radius: 50%;
     background-color: #06B6D4;
-    box-shadow: 0 0 0 2px #0F172A;
+    box-shadow: 0 0 0 2px #22293B;
 }
 
+.ws-header-pill .ws-user-btn,
 .ws-header .ws-user-btn {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.025) 100%);
-    border-color: rgba(255, 255, 255, 0.11);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 2px 8px rgba(0, 0, 0, 0.28);
+    background-color: var(--ws-bg-surface-2);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.ws-header-pill .ws-user-btn:hover,
+.ws-header-pill .ws-user-btn[aria-expanded="true"],
 .ws-header .ws-user-btn:hover,
 .ws-header .ws-user-btn[aria-expanded="true"] {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.045) 100%);
-    border-color: rgba(255, 255, 255, 0.22);
+    background-color: var(--ws-bg-surface-3);
+    border-color: rgba(96, 165, 250, 0.45);
 }
 
+.ws-header-pill .ws-user-avatar,
 .ws-header .ws-user-avatar {
-    background: radial-gradient(140% 140% at 25% 20%, #2563EB 0%, #1E3A8A 62%, #172554 100%);
-    border-color: rgba(147, 197, 253, 0.42);
+    background: radial-gradient(140% 140% at 25% 20%, #3B82F6 0%, #1D4ED8 60%, #1E3A8A 100%);
+    border-color: rgba(147, 197, 253, 0.45);
 }
 
 .ws-header .ws-mobile-toggle,
