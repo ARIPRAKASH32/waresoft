@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+<div class="app-viewport">
+    {% include 'components/navbar.html' %}
+    
+    <div class="dashboard-shell">
+        {% include 'components/sidebar.html' %}
+        
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h1 class="fs-4 fw-semibold text-white m-0">RFP-{{ "%04d"|format(req_id) }}: Cloud Native Payment Gateway</h1>
+                        <span class="ws-pill ws-pill-warning">UNDER REVIEW</span>
+                    </div>
+                    <p class="text-secondary small m-0">Submitted by FinTech Global • Assigned Lead: Ari Prakash (Frontend) & Datcha (Systems)</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="/quotations/{{ req_id }}" class="ws-btn ws-btn-primary ws-btn-sm">
+                        <i class="bi bi-file-earmark-spreadsheet"></i> View Proposal Quotation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Two Column Detail Layout -->
+            <div class="row g-4">
+                <!-- Left: Scope & Clarifications -->
+                <div class="col-lg-8">
+                    <div class="ws-card p-4 mb-4">
+                        <h4 class="text-white fs-6 fw-medium mb-3">Technical Scope Specification</h4>
+                        <p class="text-secondary small mb-3">
+                            The client requests an overhaul of their existing billing and checkout infrastructure to support multi-currency payment intents, automated retry algorithms, and real-time ledger sync. Must support 4,500 RPS peak volume with zero ledger drift.
+                        </p>
+                        <div class="row g-3 py-3 border-top border-bottom border-secondary border-opacity-10 my-3 small text-secondary">
+                            <div class="col-sm-4">
+                                <div class="text-muted">Target Architecture:</div>
+                                <div class="text-white fw-medium">Distributed Microservices</div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-muted">Security Tier:</div>
+                                <div class="text-white fw-medium">PCI-DSS Level 1 + SOC2</div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-muted">Target Release:</div>
+                                <div class="text-white fw-medium">Feb 2027 (Q1)</div>
+                            </div>
+                        </div>
+
+                        <!-- Architecture Documents -->
+                        <h5 class="text-white fs-6 fw-medium mb-3">Attached Specifications & Schemas</h5>
+                        <div class="d-flex flex-column gap-2 mb-4">
+                            <div class="p-2 px-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-file-earmark-pdf text-danger"></i>
+                                    <span class="text-white small">FinTech_Gateway_Architecture_v1.2.pdf</span>
+                                    <span class="text-muted small font-monospace" style="font-size: 10px;">(4.2 MB)</span>
+                                </div>
+                                <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="WareSoftAPI.showToast('Downloading spec PDF...', 'info')">Download</button>
+                            </div>
+                        </div>
+
+                        <!-- Clarification Discussion Thread -->
+                        <h5 class="text-white fs-6 fw-medium mb-3">Architecture Clarifications Thread</h5>
+                        <div class="d-flex flex-column gap-3 mb-4">
+                            <div class="p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="text-white small fw-medium">Datcha (Systems Architect)</span>
+                                    <span class="text-muted small font-monospace" style="font-size: 10px;">Nov 21, 14:30</span>
+                                </div>
+                                <div class="text-secondary small">Does your settlement ledger require idempotent webhooks delivered over Kafka or standard Redis event streams?</div>
+                            </div>
+                            <div class="p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="text-info small fw-medium">Elena Rostova (Client Tech Lead)</span>
+                                    <span class="text-muted small font-monospace" style="font-size: 10px;">Nov 22, 09:15</span>
+                                </div>
+                                <div class="text-secondary small">Standard Redis streams are fully compatible with our consumer workers.</div>
+                            </div>
+                        </div>
+
+                        <!-- Post Clarification Form -->
+                        <form onsubmit="handleCommentSubmit(event)">
+                            <div class="ws-form-group mb-2">
+                                <textarea class="ws-textarea" id="clarificationInput" rows="2" placeholder="Post an architectural question or note..." required></textarea>
+                            </div>
+                            <button type="submit" class="ws-btn ws-btn-secondary ws-btn-sm">
+                                <i class="bi bi-chat-left-text"></i> Post Clarification Note
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right: Status Card -->
+                <div class="col-lg-4">
+                    <div class="ws-card p-4">
+                        <h4 class="text-white fs-6 fw-medium mb-3">RFP Status & Metadata</h4>
+                        <div class="d-flex flex-column gap-3 small">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Target Budget:</span>
+                                <span class="text-white font-monospace">$45,000 USD</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Contract Model:</span>
+                                <span class="text-white">Milestone-linked Escrow</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Engineering Estimate:</span>
+                                <span class="text-white">4 Sprints (8 Weeks)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function handleCommentSubmit(e) {
+        e.preventDefault();
+        WareSoftAPI.showToast('Clarification note posted to RFP audit log.', 'success');
+        document.getElementById('clarificationInput').value = '';
+    }
+</script>
+{% endblock %}
