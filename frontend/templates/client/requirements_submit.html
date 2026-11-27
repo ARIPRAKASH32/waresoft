@@ -9,10 +9,10 @@
         
         <main class="dashboard-main">
             <!-- Header -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-light-subtle gap-3">
                 <div>
                     <div class="d-flex align-items-center gap-2 mb-1">
-                        <h1 class="fs-4 fw-semibold text-white m-0">Submit Project Requirement (RFP)</h1>
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Submit Project Requirement (RFP)</h1>
                         <span class="ws-pill ws-pill-telemetry">STEP-BY-STEP INTAKE</span>
                     </div>
                     <p class="text-secondary small m-0">Define specifications, architecture goals, target timelines, and budget expectations.</p>
@@ -25,17 +25,17 @@
             <!-- Wizard Card -->
             <div class="ws-card p-4 p-md-5" style="max-width: 920px;">
                 <!-- Step Indicator -->
-                <div class="d-flex justify-content-between align-items-center mb-5 border-bottom border-secondary border-opacity-10 pb-4">
+                <div class="d-flex justify-content-between align-items-center mb-5 border-bottom border-light-subtle pb-4">
                     <div class="d-flex align-items-center gap-2" id="stepIndicator1">
                         <span class="badge bg-primary text-white rounded-circle p-2" style="width: 28px; height: 28px;">1</span>
-                        <span class="text-white small fw-medium">Project Metadata</span>
+                        <span class="ws-text-ink small fw-medium">Project Metadata</span>
                     </div>
-                    <div class="flex-grow-1 mx-3 border-top border-secondary border-opacity-25 d-none d-md-block"></div>
+                    <div class="flex-grow-1 mx-3 border-top border-light-subtle d-none d-md-block"></div>
                     <div class="d-flex align-items-center gap-2" id="stepIndicator2">
                         <span class="badge bg-secondary bg-opacity-25 text-muted rounded-circle p-2" style="width: 28px; height: 28px;">2</span>
                         <span class="text-secondary small">Technical Scope</span>
                     </div>
-                    <div class="flex-grow-1 mx-3 border-top border-secondary border-opacity-25 d-none d-md-block"></div>
+                    <div class="flex-grow-1 mx-3 border-top border-light-subtle d-none d-md-block"></div>
                     <div class="d-flex align-items-center gap-2" id="stepIndicator3">
                         <span class="badge bg-secondary bg-opacity-25 text-muted rounded-circle p-2" style="width: 28px; height: 28px;">3</span>
                         <span class="text-secondary small">Budget & Dispatch</span>
@@ -45,7 +45,7 @@
                 <form id="rfpWizardForm" onsubmit="handleRfpSubmit(event)">
                     <!-- Step 1 Pane -->
                     <div id="stepPane1">
-                        <h4 class="text-white fs-6 fw-medium mb-3">1. General Information & Domain</h4>
+                        <h4 class="ws-text-ink fs-6 fw-medium mb-3">1. General Information & Domain</h4>
                         <div class="row g-3 mb-4">
                             <div class="col-12">
                                 <label class="ws-label" for="rfpTitle">Project Title / Core Initiative</label>
@@ -76,7 +76,7 @@
 
                     <!-- Step 2 Pane -->
                     <div id="stepPane2" class="d-none">
-                        <h4 class="text-white fs-6 fw-medium mb-3">2. Technical Specifications & Architecture</h4>
+                        <h4 class="ws-text-ink fs-6 fw-medium mb-3">2. Technical Specifications & Architecture</h4>
                         <div class="row g-3 mb-4">
                             <div class="col-12">
                                 <label class="ws-label" for="rfpOverview">Detailed Technical Scope</label>
@@ -104,7 +104,7 @@
 
                     <!-- Step 3 Pane -->
                     <div id="stepPane3" class="d-none">
-                        <h4 class="text-white fs-6 fw-medium mb-3">3. Timeline, Budget & Architecture Files</h4>
+                        <h4 class="ws-text-ink fs-6 fw-medium mb-3">3. Timeline, Budget & Architecture Files</h4>
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="ws-label" for="rfpBudget">Target Budget Allocation (USD)</label>
@@ -121,9 +121,9 @@
                             </div>
                             <div class="col-12">
                                 <label class="ws-label">Upload Architecture Documents / Wireframes</label>
-                                <div class="p-4 border border-secondary border-opacity-25 rounded text-center bg-dark bg-opacity-25">
-                                    <i class="bi bi-cloud-arrow-up fs-3 text-info d-block mb-2"></i>
-                                    <div class="text-white small fw-medium">Drag and drop PDF, Figma, or Word specs here</div>
+                                <div class="p-4 ws-surface-subtle text-center">
+                                    <i class="bi bi-cloud-arrow-up fs-3 ws-text-cyan d-block mb-2"></i>
+                                    <div class="ws-text-ink small fw-medium">Drag and drop PDF, Figma, or Word specs here</div>
                                     <div class="text-muted small">Max 25MB per file • AES-256 encrypted at rest</div>
                                 </div>
                             </div>

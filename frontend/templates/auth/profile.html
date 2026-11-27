@@ -11,25 +11,25 @@
                 <div class="d-inline-flex align-items-center justify-content-center mb-3">
                     <span class="ws-user-avatar" style="width: 72px; height: 72px; font-size: 24px;">{{ current_user.avatar }}</span>
                 </div>
-                <h3 class="text-white fs-5 fw-medium mb-1">{{ current_user.name }}</h3>
+                <h3 class="ws-text-ink fs-5 fw-medium mb-1">{{ current_user.name }}</h3>
                 <div class="text-muted small mb-3">{{ current_user.email }}</div>
                 <div class="d-flex justify-content-center gap-2 mb-4">
                     <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 font-monospace">{{ current_user.role }}</span>
                     <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> ACTIVE</span>
                 </div>
 
-                <div class="text-start border-top border-secondary border-opacity-10 pt-3 small">
-                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                <div class="text-start border-top border-light-subtle pt-3 small">
+                    <div class="d-flex justify-content-between py-2 border-bottom border-light-subtle">
                         <span class="text-muted">Organization</span>
-                        <span class="text-white">WareSoft Technologies</span>
+                        <span class="ws-text-ink">WareSoft Technologies</span>
                     </div>
-                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                    <div class="d-flex justify-content-between py-2 border-bottom border-light-subtle">
                         <span class="text-muted">Security Clearance</span>
-                        <span class="text-info font-monospace">LEVEL 4 - WRITE</span>
+                        <span class="ws-text-cyan font-monospace">LEVEL 4 - WRITE</span>
                     </div>
                     <div class="d-flex justify-content-between py-2">
                         <span class="text-muted">Active Project</span>
-                        <span class="text-white text-truncate" style="max-width: 140px;">{{ current_user.active_project }}</span>
+                        <span class="ws-text-ink text-truncate" style="max-width: 140px;">{{ current_user.active_project }}</span>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
         <!-- Right: Profile Settings & Security -->
         <div class="col-lg-8">
             <div class="ws-card p-4 p-md-5">
-                <h4 class="text-white fs-6 fw-medium mb-1">Account & Telemetry Preferences</h4>
+                <h4 class="ws-text-ink fs-6 fw-medium mb-1">Account & Telemetry Preferences</h4>
                 <p class="text-secondary small mb-4">Manage identity attributes and authentication security</p>
 
                 <form onsubmit="handleProfileUpdate(event)">
@@ -65,12 +65,12 @@
                         </div>
                     </div>
 
-                    <h5 class="text-white fs-6 fw-medium mb-3 pt-3 border-top border-secondary border-opacity-10">Two-Factor Authentication (2FA)</h5>
-                    <div class="d-flex align-items-center justify-content-between p-3 bg-dark bg-opacity-25 border border-secondary border-opacity-10 rounded mb-4">
+                    <h5 class="ws-text-ink fs-6 fw-medium mb-3 pt-3 border-top border-light-subtle">Two-Factor Authentication (2FA)</h5>
+                    <div class="d-flex align-items-center justify-content-between p-3 ws-surface-subtle mb-4">
                         <div class="d-flex align-items-center gap-3">
                             <i class="bi bi-shield-lock text-success fs-4"></i>
                             <div>
-                                <div class="text-white small fw-medium">Hardware / TOTP Authenticator</div>
+                                <div class="ws-text-ink small fw-medium">Hardware / TOTP Authenticator</div>
                                 <div class="text-muted small" style="font-size: 11px;">Enabled via YubiKey / Google Authenticator</div>
                             </div>
                         </div>

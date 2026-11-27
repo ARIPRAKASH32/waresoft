@@ -8,74 +8,193 @@
         {% include 'components/sidebar.html' %}
         
         <main class="dashboard-main">
-            <!-- Header -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
-                <div>
-                    <div class="d-flex align-items-center gap-2 mb-1">
-                        <h1 class="fs-4 fw-semibold text-white m-0">Engineering Projects Portfolio</h1>
-                        <span class="ws-pill ws-pill-telemetry">19 ACTIVE</span>
+            <!-- Header & Search Strip -->
+            <div class="ws-card p-4 mb-4">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 pb-3 border-bottom" style="border-color: var(--ws-border-quiet) !important;">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <h1 class="fs-4 fw-semibold ws-text-ink m-0">Engineering Projects Directory</h1>
+                            <span class="ws-pill ws-pill-telemetry">19 ACTIVE</span>
+                        </div>
+                        <p class="ws-text-secondary small m-0">Cross-project sprint velocity, deliverable milestones, and cluster health.</p>
                     </div>
-                    <p class="text-secondary small m-0">Cross-project sprint velocity, deliverable milestones, and cluster health.</p>
-                </div>
-                <div class="d-flex align-items-center gap-2">
                     <a href="/requirements/submit" class="ws-btn ws-btn-primary ws-btn-sm">
                         <i class="bi bi-plus-lg"></i> Incept New Project
                     </a>
                 </div>
-            </div>
 
-            <!-- Project Cards Grid -->
-            <div class="row g-4 mb-4">
-                <div class="col-lg-6">
-                    <div class="ws-card h-100">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 font-monospace">PROJECT NX-101</span>
-                            <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> SPRINT 4</span>
-                        </div>
-                        <h3 class="text-white fs-5 fw-medium mb-1">FinTech High-Throughput Payment Router</h3>
-                        <div class="text-muted small mb-3">Client: FinTech Global Inc. • Lead: Ari Prakash (Frontend), Datcha (Backend)</div>
-                        <p class="text-secondary small mb-3">
-                            Fault-tolerant multi-currency checkout engine. Current focus: Webhook processing and idempotency testing.
-                        </p>
-                        <div class="d-flex align-items-center gap-3 my-3">
-                            <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
-                                <div class="progress-bar bg-primary" style="width: 75%;"></div>
-                            </div>
-                            <span class="font-monospace text-white small">75% Complete</span>
-                        </div>
-                        <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2">
-                                <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
-                                <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
-                            </div>
-                            <a href="/projects/101" class="ws-btn ws-btn-cyan ws-btn-sm">Open Project <i class="bi bi-arrow-right"></i></a>
+                <div class="row g-3 align-items-center pt-3">
+                    <div class="col-lg-6">
+                        <div class="ws-search-bar">
+                            <i class="bi bi-search ws-text-muted"></i>
+                            <input type="text" id="projectSearch" placeholder="Search projects by code, client, or sprint focus..." oninput="filterProjects()">
                         </div>
                     </div>
+                    <div class="col-lg-6 d-flex flex-wrap gap-2 justify-content-lg-end">
+                        <button type="button" class="ws-filter-chip active" onclick="setQuickDomain('all', this)">All Domains</button>
+                        <button type="button" class="ws-filter-chip" onclick="setQuickDomain('fintech', this)">FinTech</button>
+                        <button type="button" class="ws-filter-chip" onclick="setQuickDomain('logistics', this)">Logistics & IoT</button>
+                        <button type="button" class="ws-filter-chip" onclick="setQuickDomain('healthcare', this)">Healthcare</button>
+                    </div>
                 </div>
+            </div>
 
-                <div class="col-lg-6">
-                    <div class="ws-card h-100">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-25 font-monospace">PROJECT NX-104</span>
-                            <span class="ws-pill ws-pill-telemetry"><span class="status-dot status-dot-live"></span> SPRINT 5</span>
+            <!-- Split Layout: Left Filter Panel + Right Project Cards Grid -->
+            <div class="ws-split-layout">
+                <aside class="ws-filter-panel">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom" style="border-color: var(--ws-border-quiet) !important;">
+                        <span class="fw-semibold ws-text-ink small"><i class="bi bi-funnel me-1"></i> Filter Projects</span>
+                        <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none small" onclick="resetProjectFilters()">Reset</button>
+                    </div>
+
+                    <div class="ws-filter-group">
+                        <div class="ws-filter-title">Delivery Status</div>
+                        <div class="d-flex flex-column gap-2 small">
+                            <label class="form-check">
+                                <input class="form-check-input proj-status-cb" type="checkbox" value="active" checked onchange="filterProjects()">
+                                <span class="form-check-label ws-text-secondary">Active Sprint</span>
+                            </label>
+                            <label class="form-check">
+                                <input class="form-check-input proj-status-cb" type="checkbox" value="staging" checked onchange="filterProjects()">
+                                <span class="form-check-label ws-text-secondary">Staging & QA</span>
+                            </label>
+                            <label class="form-check">
+                                <input class="form-check-input proj-status-cb" type="checkbox" value="review" checked onchange="filterProjects()">
+                                <span class="form-check-label ws-text-secondary">Client Review</span>
+                            </label>
                         </div>
-                        <h3 class="text-white fs-5 fw-medium mb-1">Logistics Cold-Chain Telemetry Hub</h3>
-                        <div class="text-muted small mb-3">Client: Logix Logistics Worldwide • Lead: Systems Architecture Team</div>
-                        <p class="text-secondary small mb-3">
-                            High-volume IoT ingest pipeline and dashboard alerts. Current focus: Staging deployment & load stress testing.
-                        </p>
-                        <div class="d-flex align-items-center gap-3 my-3">
-                            <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
-                                <div class="progress-bar bg-info" style="width: 90%;"></div>
-                            </div>
-                            <span class="font-monospace text-white small">90% Complete</span>
+                    </div>
+
+                    <div class="ws-filter-group">
+                        <div class="ws-filter-title">Contract Tier</div>
+                        <div class="d-flex flex-column gap-2 small">
+                            <label class="form-check">
+                                <input class="form-check-input proj-tier-cb" type="checkbox" value="enterprise" checked onchange="filterProjects()">
+                                <span class="form-check-label ws-text-secondary">Enterprise Managed</span>
+                            </label>
+                            <label class="form-check">
+                                <input class="form-check-input proj-tier-cb" type="checkbox" value="growth" checked onchange="filterProjects()">
+                                <span class="form-check-label ws-text-secondary">Growth Sprint</span>
+                            </label>
                         </div>
-                        <div class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2">
-                                <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
-                                <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
+                    </div>
+                </aside>
+
+                <div class="flex-grow-1 w-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="ws-text-secondary small">Showing <strong class="ws-text-ink" id="projectCount">3</strong> active workspaces</span>
+                    </div>
+
+                    <div class="row g-4" id="projectsGrid">
+                        <!-- Project 1 -->
+                        <div class="col-xl-6 project-item" data-domain="fintech" data-status="active" data-tier="enterprise">
+                            <div class="ws-opp-card">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="ws-opp-org">
+                                            <i class="bi bi-patch-check-fill" style="color: var(--ws-brand-blue);"></i>
+                                            FinTech Global Inc.
+                                        </span>
+                                        <span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> SPRINT 4</span>
+                                    </div>
+                                    <h3 class="ws-text-ink fs-6 fw-semibold mb-2">NX-101: FinTech High-Throughput Payment Router</h3>
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <span class="ws-meta-tag"><i class="bi bi-code-slash"></i> Flask + Redis</span>
+                                        <span class="ws-meta-tag"><i class="bi bi-currency-dollar"></i> $45,000</span>
+                                        <span class="ws-meta-tag"><i class="bi bi-people"></i> 4 Engineers</span>
+                                    </div>
+                                    <p class="ws-text-secondary small mb-3">
+                                        Fault-tolerant multi-currency checkout engine. Focus: Webhook processing and idempotency testing.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                            <div class="progress-bar" style="width: 75%; background-color: var(--ws-brand-blue);"></div>
+                                        </div>
+                                        <span class="font-monospace ws-text-ink small fw-semibold">75%</span>
+                                    </div>
+                                </div>
+                                <div class="pt-3 border-top d-flex justify-content-between align-items-center gap-2" style="border-color: var(--ws-border-quiet) !important;">
+                                    <div class="d-flex gap-2">
+                                        <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
+                                        <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
+                                    </div>
+                                    <a href="/projects/101" class="ws-btn ws-btn-primary ws-btn-sm">Open <i class="bi bi-arrow-right"></i></a>
+                                </div>
                             </div>
-                            <a href="/projects/101" class="ws-btn ws-btn-cyan ws-btn-sm">Open Project <i class="bi bi-arrow-right"></i></a>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="col-xl-6 project-item" data-domain="logistics" data-status="staging" data-tier="enterprise">
+                            <div class="ws-opp-card">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="ws-opp-org">
+                                            <i class="bi bi-patch-check-fill" style="color: var(--ws-brand-cyan);"></i>
+                                            Logix Worldwide
+                                        </span>
+                                        <span class="ws-pill ws-pill-telemetry"><span class="status-dot status-dot-live"></span> SPRINT 5</span>
+                                    </div>
+                                    <h3 class="ws-text-ink fs-6 fw-semibold mb-2">NX-104: Logistics Cold-Chain Telemetry Hub</h3>
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <span class="ws-meta-tag"><i class="bi bi-broadcast"></i> MQTT + Three.js</span>
+                                        <span class="ws-meta-tag"><i class="bi bi-currency-dollar"></i> $78,000</span>
+                                        <span class="ws-meta-tag"><i class="bi bi-people"></i> 6 Engineers</span>
+                                    </div>
+                                    <p class="ws-text-secondary small mb-3">
+                                        High-volume IoT ingest pipeline and dashboard alerts. Focus: Staging deployment & load stress testing.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                            <div class="progress-bar" style="width: 90%; background-color: var(--ws-brand-cyan);"></div>
+                                        </div>
+                                        <span class="font-monospace ws-text-ink small fw-semibold">90%</span>
+                                    </div>
+                                </div>
+                                <div class="pt-3 border-top d-flex justify-content-between align-items-center gap-2" style="border-color: var(--ws-border-quiet) !important;">
+                                    <div class="d-flex gap-2">
+                                        <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
+                                        <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
+                                    </div>
+                                    <a href="/projects/101" class="ws-btn ws-btn-primary ws-btn-sm">Open <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="col-xl-6 project-item" data-domain="healthcare" data-status="review" data-tier="growth">
+                            <div class="ws-opp-card">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="ws-opp-org">
+                                            <i class="bi bi-patch-check-fill" style="color: var(--ws-signal-success);"></i>
+                                            Aegis Health Group
+                                        </span>
+                                        <span class="ws-pill ws-pill-warning">IN REVIEW</span>
+                                    </div>
+                                    <h3 class="ws-text-ink fs-6 fw-semibold mb-2">NX-109: Aegis HIPAA Telehealth Portal</h3>
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <span class="ws-meta-tag"><i class="bi bi-shield-lock"></i> HIPAA AES-256</span>
+                                        <span class="ws-meta-tag"><i class="bi bi-currency-dollar"></i> $32,000</span>
+                                        <span class="ws-meta-tag"><i class="bi bi-people"></i> 3 Engineers</span>
+                                    </div>
+                                    <p class="ws-text-secondary small mb-3">
+                                        Outpatient telehealth consultation portal and compliance ledger. Focus: Client security sign-off.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
+                                            <div class="progress-bar" style="width: 45%; background-color: var(--ws-signal-warning);"></div>
+                                        </div>
+                                        <span class="font-monospace ws-text-ink small fw-semibold">45%</span>
+                                    </div>
+                                </div>
+                                <div class="pt-3 border-top d-flex justify-content-between align-items-center gap-2" style="border-color: var(--ws-border-quiet) !important;">
+                                    <div class="d-flex gap-2">
+                                        <a href="/projects/101/kanban" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-kanban"></i> Kanban</a>
+                                        <a href="/projects/101/milestones" class="ws-btn ws-btn-secondary ws-btn-sm"><i class="bi bi-flag"></i> Milestones</a>
+                                    </div>
+                                    <a href="/projects/101" class="ws-btn ws-btn-primary ws-btn-sm">Open <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,4 +202,42 @@
         </main>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let currentDomain = 'all';
+
+    function setQuickDomain(domain, btn) {
+        currentDomain = domain;
+        document.querySelectorAll('.ws-filter-chip').forEach(c => c.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        filterProjects();
+    }
+
+    function filterProjects() {
+        const q = (document.getElementById('projectSearch').value || '').toLowerCase();
+        const statuses = Array.from(document.querySelectorAll('.proj-status-cb:checked')).map(c => c.value);
+        const tiers = Array.from(document.querySelectorAll('.proj-tier-cb:checked')).map(c => c.value);
+
+        let visible = 0;
+        document.querySelectorAll('.project-item').forEach(card => {
+            const domainOk = currentDomain === 'all' || card.dataset.domain === currentDomain;
+            const statusOk = statuses.includes(card.dataset.status);
+            const tierOk = tiers.includes(card.dataset.tier);
+            const textOk = !q || card.innerText.toLowerCase().includes(q);
+
+            const show = domainOk && statusOk && tierOk && textOk;
+            card.classList.toggle('d-none', !show);
+            if (show) visible++;
+        });
+        document.getElementById('projectCount').textContent = visible;
+    }
+
+    function resetProjectFilters() {
+        document.getElementById('projectSearch').value = '';
+        document.querySelectorAll('.proj-status-cb, .proj-tier-cb').forEach(c => c.checked = true);
+        setQuickDomain('all', document.querySelector('.ws-filter-chip'));
+    }
+</script>
 {% endblock %}

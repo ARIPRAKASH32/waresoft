@@ -18,21 +18,22 @@ const WareSoftAPI = (function() {
         };
 
         const toastEl = document.createElement('div');
-        toastEl.className = 'toast align-items-center text-white bg-dark border border-secondary border-opacity-25 show';
+        toastEl.className = 'toast align-items-center bg-white text-dark border shadow-sm show';
         toastEl.id = toastId;
         toastEl.setAttribute('role', 'alert');
         toastEl.setAttribute('aria-live', 'assertive');
         toastEl.setAttribute('aria-atomic', 'true');
         toastEl.style.minWidth = '280px';
-        toastEl.style.borderRadius = 'var(--ws-radius-sm)';
+        toastEl.style.borderRadius = 'var(--ws-radius-md)';
+        toastEl.style.borderColor = 'var(--ws-border-quiet)';
 
         toastEl.innerHTML = `
             <div class="d-flex">
                 <div class="toast-body d-flex align-items-center gap-2 small py-2 px-3">
                     <i class="bi ${iconMap[type] || iconMap.info} fs-6"></i>
-                    <span>${message}</span>
+                    <span class="fw-medium">${message}</span>
                 </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         `;
 

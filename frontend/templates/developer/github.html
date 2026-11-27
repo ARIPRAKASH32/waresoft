@@ -9,10 +9,10 @@
         
         <main class="dashboard-main">
             <!-- Header -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-light-subtle gap-3">
                 <div>
                     <div class="d-flex align-items-center gap-2 mb-1">
-                        <h1 class="fs-4 fw-semibold text-white m-0">GitHub Repository Sync & Webhook Stream</h1>
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">GitHub Repository Sync & Webhook Stream</h1>
                         <span class="ws-pill ws-pill-telemetry">GITHUB APP CONNECTED</span>
                     </div>
                     <p class="text-secondary small m-0">Synchronized with organization <code>waresoft</code> • Webhook status: 200 OK</p>
@@ -30,15 +30,15 @@
                     <div class="ws-card p-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="d-flex align-items-center gap-2">
-                                <i class="bi bi-github fs-5 text-white"></i>
-                                <span class="text-white fw-medium">waresoft/devnexus-core</span>
+                                <i class="bi bi-github fs-5 ws-text-ink"></i>
+                                <span class="ws-text-ink fw-medium">waresoft/devnexus-core</span>
                             </div>
                             <span class="badge bg-success bg-opacity-25 text-success font-monospace" style="font-size: 10px;">SYNCED</span>
                         </div>
                         <p class="text-secondary small mb-3">Core platform services, Flask backend APIs, and database migration models.</p>
-                        <div class="d-flex justify-content-between text-muted small py-2 border-top border-secondary border-opacity-10">
-                            <span>Default Branch: <code class="text-info">main</code></span>
-                            <span>Latest SHA: <code class="text-white">8f12a4</code></span>
+                        <div class="d-flex justify-content-between text-muted small py-2 border-top border-light-subtle">
+                            <span>Default Branch: <code class="ws-text-cyan">main</code></span>
+                            <span>Latest SHA: <code class="ws-text-ink">8f12a4</code></span>
                         </div>
                     </div>
                 </div>
@@ -47,15 +47,15 @@
                     <div class="ws-card p-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="d-flex align-items-center gap-2">
-                                <i class="bi bi-github fs-5 text-white"></i>
-                                <span class="text-white fw-medium">waresoft/payment-router</span>
+                                <i class="bi bi-github fs-5 ws-text-ink"></i>
+                                <span class="ws-text-ink fw-medium">waresoft/payment-router</span>
                             </div>
                             <span class="badge bg-success bg-opacity-25 text-success font-monospace" style="font-size: 10px;">SYNCED</span>
                         </div>
                         <p class="text-secondary small mb-3">FinTech Project NX-101 acquiring engine and webhook idempotency workers.</p>
-                        <div class="d-flex justify-content-between text-muted small py-2 border-top border-secondary border-opacity-10">
-                            <span>Default Branch: <code class="text-info">main</code></span>
-                            <span>Latest SHA: <code class="text-white">4c99e1</code></span>
+                        <div class="d-flex justify-content-between text-muted small py-2 border-top border-light-subtle">
+                            <span>Default Branch: <code class="ws-text-cyan">main</code></span>
+                            <span>Latest SHA: <code class="ws-text-ink">4c99e1</code></span>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
 
             <!-- Live Commit Activity Feed -->
             <div class="ws-card p-4">
-                <h4 class="text-white fs-6 fw-medium mb-3">Recent Commit Stream (Last 24 Hours)</h4>
+                <h4 class="ws-text-ink fs-6 fw-medium mb-3">Recent Commit Stream (Last 24 Hours)</h4>
                 <div class="ws-table-container">
                     <table class="ws-table">
                         <thead>
@@ -78,26 +78,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="font-monospace text-info">8e84e29</td>
-                                <td class="text-white fw-medium">feat(team): add team allocation and sprint bandwidth table</td>
+                                <td class="font-monospace ws-text-cyan">8e84e29</td>
+                                <td class="ws-text-ink fw-medium">feat(team): add team allocation and sprint bandwidth table</td>
                                 <td>Ari Prakash</td>
-                                <td><code class="text-info">main</code></td>
+                                <td><code class="ws-text-cyan">main</code></td>
                                 <td><span class="badge bg-success bg-opacity-25 text-success">GPG OK</span></td>
                                 <td class="font-monospace text-muted small">Just now</td>
                             </tr>
                             <tr>
-                                <td class="font-monospace text-info">15ba6cf</td>
-                                <td class="text-white fw-medium">feat(kanban): add drag-and-drop sprint kanban board</td>
+                                <td class="font-monospace ws-text-cyan">15ba6cf</td>
+                                <td class="ws-text-ink fw-medium">feat(kanban): add drag-and-drop sprint kanban board</td>
                                 <td>Ari Prakash</td>
-                                <td><code class="text-info">main</code></td>
+                                <td><code class="ws-text-cyan">main</code></td>
                                 <td><span class="badge bg-success bg-opacity-25 text-success">GPG OK</span></td>
                                 <td class="font-monospace text-muted small">15m ago</td>
                             </tr>
                             <tr>
-                                <td class="font-monospace text-info">4c99e12</td>
-                                <td class="text-white fw-medium">refactor(webhook): optimize redis idempotency filter</td>
+                                <td class="font-monospace ws-text-cyan">4c99e12</td>
+                                <td class="ws-text-ink fw-medium">refactor(webhook): optimize redis idempotency filter</td>
                                 <td>Datcha</td>
-                                <td><code class="text-info">feat/webhook-retry</code></td>
+                                <td><code class="ws-text-cyan">feat/webhook-retry</code></td>
                                 <td><span class="badge bg-success bg-opacity-25 text-success">GPG OK</span></td>
                                 <td class="font-monospace text-muted small">1h ago</td>
                             </tr>
