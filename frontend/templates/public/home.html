@@ -2,60 +2,60 @@
 
 {% block content %}
 <div class="public-home">
-    <!-- Hero Section with 3D Architecture Canvas -->
-    <section class="py-5 border-bottom border-secondary border-opacity-10" style="background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);">
+    <!-- Clean Light Hero Section with 3D Blueprint Visualizer -->
+    <section class="py-5 border-bottom" style="background-color: var(--ws-bg-surface-1); border-color: var(--ws-border-quiet) !important;">
         <div class="content-container">
-            <div class="row align-items-center g-5 py-lg-4">
+            <div class="row align-items-center g-5 py-lg-3">
                 <div class="col-lg-6">
                     <div class="d-inline-flex align-items-center gap-2 mb-3">
                         <span class="ws-pill ws-pill-telemetry">
                             <span class="status-dot status-dot-live"></span>
                             DEVNEXUS PLATFORM V2.4
                         </span>
-                        <span class="text-muted small">Continuous Delivery Engine</span>
+                        <span class="ws-text-muted small fw-medium">Continuous Delivery Engine</span>
                     </div>
 
-                    <h1 class="display-6 fw-semibold text-white mb-3" style="letter-spacing: -0.03em; line-height: 1.15;">
+                    <h1 class="display-6 fw-semibold ws-text-ink mb-3" style="letter-spacing: -0.03em; line-height: 1.15;">
                         Software delivery from initial scope to live cloud telemetry.
                     </h1>
 
-                    <p class="text-secondary lead fs-6 mb-4" style="line-height: 1.6; max-width: 520px;">
-                        WareSoft eliminates lifecycle fragmentation. Unify client requirements, quotation approvals, sprint kanban, automated QA and CI/CD pipelines in a single mission-control console.
+                    <p class="ws-text-secondary lead fs-6 mb-4" style="line-height: 1.65; max-width: 520px;">
+                        WareSoft eliminates lifecycle fragmentation. Unify client requirements, quotation approvals, sprint kanban, automated QA, and CI/CD pipelines in one clear mission-control platform.
                     </p>
 
                     <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
                         <a href="/projects" class="ws-btn ws-btn-primary ws-btn-lg">
-                            <i class="bi bi-speedometer2"></i> Launch Live Console
+                            <i class="bi bi-grid-1x2"></i> Explore Workspaces
                         </a>
                         <a href="/requirements/submit" class="ws-btn ws-btn-outline ws-btn-lg">
                             <i class="bi bi-file-earmark-plus"></i> Submit Requirement
                         </a>
                     </div>
 
-                    <!-- Trust Telemetry Badges -->
-                    <div class="pt-3 border-top border-secondary border-opacity-10 d-flex flex-wrap gap-4 text-muted small font-monospace">
-                        <div><i class="bi bi-check2 text-info me-1"></i>4.5:1 WCAG AA</div>
-                        <div><i class="bi bi-shield-check text-success me-1"></i>SOC2 TYPE II</div>
-                        <div><i class="bi bi-cpu text-primary me-1"></i>18 LIFECYCLE MODULES</div>
+                    <!-- Trust Telemetry Metadata -->
+                    <div class="pt-3 border-top d-flex flex-wrap gap-4 ws-text-muted small font-monospace" style="border-color: var(--ws-border-quiet) !important;">
+                        <div><i class="bi bi-check2-circle me-1" style="color: var(--ws-brand-cyan-ink);"></i>WCAG AA Compliant</div>
+                        <div><i class="bi bi-shield-check me-1" style="color: var(--ws-signal-success);"></i>SOC2 Type II</div>
+                        <div><i class="bi bi-layers me-1" style="color: var(--ws-brand-blue-ink);"></i>18 Lifecycle Modules</div>
                     </div>
                 </div>
 
-                <!-- 3D WebGL Canvas Visualizer -->
+                <!-- 3D WebGL Canvas Blueprint Visualizer -->
                 <div class="col-lg-6">
-                    <div class="ws-card p-3 position-relative" style="background-color: var(--ws-bg-surface-1); min-height: 420px;">
-                        <div class="d-flex align-items-center justify-content-between pb-2 mb-2 border-bottom border-secondary border-opacity-10">
-                            <div class="d-flex align-items-center gap-2 font-monospace small text-muted">
+                    <div class="ws-card p-3" style="background-color: var(--ws-bg-surface-2);">
+                        <div class="d-flex align-items-center justify-content-between pb-2 mb-2 border-bottom" style="border-color: var(--ws-border-quiet) !important;">
+                            <div class="d-flex align-items-center gap-2 font-monospace small ws-text-secondary">
                                 <span class="status-dot status-dot-live"></span>
                                 <span>TOPOLOGY // SERVICE CLUSTERS</span>
                             </div>
-                            <span class="badge bg-secondary bg-opacity-25 text-info font-monospace" style="font-size: 10px;">WebGL Active</span>
+                            <span class="ws-pill ws-pill-navy" style="font-size: 10px;">WebGL 3D</span>
                         </div>
-                        
-                        <div id="hero-3d-visualizer" style="width: 100%; height: 360px; cursor: grab;"></div>
-                        
-                        <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-10 text-muted small font-monospace" style="font-size: 11px;">
-                            <span>Nodes: 7 Microservices</span>
-                            <span>Latency: 14ms (East-1)</span>
+
+                        <div id="hero-3d-visualizer" class="rounded" style="width: 100%; height: 340px; cursor: grab; background-color: #FFFFFF; border: 1px solid var(--ws-border-quiet);"></div>
+
+                        <div class="d-flex justify-content-between align-items-center pt-2 mt-2 border-top ws-text-muted small font-monospace" style="font-size: 11px; border-color: var(--ws-border-quiet) !important;">
+                            <span>Nodes: 7 Core Services</span>
+                            <span>Latency: 14ms (ap-south-1)</span>
                         </div>
                     </div>
                 </div>
@@ -63,76 +63,146 @@
         </div>
     </section>
 
-    <!-- Key Metrics Grid -->
-    <section class="py-4 border-bottom border-secondary border-opacity-10 bg-dark bg-opacity-25">
+    <!-- Skill India Digital Inspired Search & Quick Sector Strip -->
+    <section class="py-4 border-bottom" style="background-color: var(--ws-bg-canvas); border-color: var(--ws-border-quiet) !important;">
         <div class="content-container">
+            <div class="ws-card p-3 p-md-4 mb-4">
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-6">
+                        <form action="/projects" method="GET" class="ws-search-bar">
+                            <i class="bi bi-search ws-text-muted"></i>
+                            <input type="text" name="q" placeholder="Search active projects, RFPs, quotations, or sprints...">
+                            <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">Search</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 d-flex flex-wrap align-items-center gap-2 justify-content-lg-end">
+                        <span class="ws-text-muted small fw-medium me-1">Quick jump:</span>
+                        <a href="/projects" class="ws-filter-chip active">All Projects</a>
+                        <a href="/requirements" class="ws-filter-chip">Open RFPs</a>
+                        <a href="/quotations" class="ws-filter-chip">Proposals</a>
+                        <a href="/projects/101/kanban" class="ws-filter-chip">Sprint Board</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equal-Height Key Metrics Row -->
             <div class="row g-3">
                 <div class="col-6 col-md-3">
                     <div class="ws-metric-box">
                         <div class="ws-metric-label">Active Deployments</div>
-                        <div class="ws-metric-value text-info">48</div>
-                        <div class="ws-metric-trend text-success"><i class="bi bi-arrow-up-right"></i> +12% this quarter</div>
+                        <div class="ws-metric-value ws-text-cyan">48</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);"><i class="bi bi-arrow-up-right"></i> +12% this quarter</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="ws-metric-box">
                         <div class="ws-metric-label">Service SLA</div>
-                        <div class="ws-metric-value text-white">99.98%</div>
-                        <div class="ws-metric-trend text-muted"><i class="bi bi-clock-history"></i> Past 365 days</div>
+                        <div class="ws-metric-value ws-text-ink">99.98%</div>
+                        <div class="ws-metric-trend ws-text-muted"><i class="bi bi-clock-history"></i> Past 365 days</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="ws-metric-box">
                         <div class="ws-metric-label">Sprint Adherence</div>
-                        <div class="ws-metric-value text-primary">94.2%</div>
-                        <div class="ws-metric-trend text-success"><i class="bi bi-check-circle"></i> On-time milestone delivery</div>
+                        <div class="ws-metric-value ws-text-blue">94.2%</div>
+                        <div class="ws-metric-trend" style="color: var(--ws-signal-success);"><i class="bi bi-check-circle"></i> On-time milestones</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="ws-metric-box">
                         <div class="ws-metric-label">Escrow Invoiced</div>
-                        <div class="ws-metric-value text-white">$1.84M</div>
-                        <div class="ws-metric-trend text-info"><i class="bi bi-shield-lock"></i> Milestone backed</div>
+                        <div class="ws-metric-value ws-text-ink">$1.84M</div>
+                        <div class="ws-metric-trend ws-text-cyan"><i class="bi bi-shield-lock"></i> Milestone backed</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Unified Lifecycle Overview Section -->
+    <!-- Structured Directory Lifecycle Cards -->
     <section class="py-5">
         <div class="content-container">
-            <div class="text-center mb-5" style="max-width: 680px; margin-left: auto; margin-right: auto;">
-                <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-2 py-1 mb-2 font-monospace" style="font-size: 11px;">END-TO-END PIPELINE</span>
-                <h2 class="text-white fw-semibold mb-2">Designed for the entire software engineering lifecycle.</h2>
-                <p class="text-secondary small">Every stage of client delivery connects natively into the next, removing communication gaps and operational friction.</p>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
+                <div>
+                    <span class="ws-pill ws-pill-navy mb-2">END-TO-END PIPELINE</span>
+                    <h2 class="ws-text-ink fw-semibold mb-1">Core Software Lifecycle Modules</h2>
+                    <p class="ws-text-secondary small m-0">Structured workflows connecting clients, engineers, QA, and cloud operations.</p>
+                </div>
+                <a href="/services" class="ws-btn ws-btn-secondary ws-btn-sm">
+                    View All Capabilities <i class="bi bi-arrow-right"></i>
+                </a>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="ws-card h-100 ws-card-interactive">
-                        <div class="text-primary mb-3 fs-4"><i class="bi bi-receipt-cutoff"></i></div>
-                        <h4 class="text-white fs-6 fw-medium mb-2">1. Client RFP & Dynamic Quotation</h4>
-                        <p class="text-secondary small mb-3">Structured requirement intake with document attachment, budget bands, and auto-generated line-item proposals with digital sign-off.</p>
-                        <a href="/requirements" class="small text-info text-decoration-none">View requirements module <i class="bi bi-arrow-right"></i></a>
+                    <div class="ws-opp-card">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="ws-opp-org">
+                                    <i class="bi bi-patch-check-fill" style="color: var(--ws-brand-blue);"></i>
+                                    Commercial Intake
+                                </span>
+                                <span class="ws-pill ws-pill-telemetry">PHASE 01</span>
+                            </div>
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-2">Client RFP & Dynamic Quotation</h4>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="ws-meta-tag"><i class="bi bi-file-text"></i> Multi-step Wizard</span>
+                                <span class="ws-meta-tag"><i class="bi bi-pen"></i> Digital Sign-off</span>
+                            </div>
+                            <p class="ws-text-secondary small mb-4">Structured requirement intake with document attachment, budget bands, and itemized proposals with e-signature.</p>
+                        </div>
+                        <div class="pt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                            <a href="/requirements" class="small fw-medium">View RFPs</a>
+                            <a href="/requirements/submit" class="ws-btn ws-btn-primary ws-btn-sm">Submit RFP</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="ws-card h-100 ws-card-interactive">
-                        <div class="text-info mb-3 fs-4"><i class="bi bi-kanban"></i></div>
-                        <h4 class="text-white fs-6 fw-medium mb-2">2. Sprint Planning & Kanban Board</h4>
-                        <p class="text-secondary small mb-3">Task breakdown with developer assignments, priority tagging, GitHub branch association, and live burndown charts.</p>
-                        <a href="/projects/101/kanban" class="small text-info text-decoration-none">Explore Kanban board <i class="bi bi-arrow-right"></i></a>
+                    <div class="ws-opp-card">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="ws-opp-org">
+                                    <i class="bi bi-patch-check-fill" style="color: var(--ws-brand-blue);"></i>
+                                    Agile Execution
+                                </span>
+                                <span class="ws-pill ws-pill-telemetry">PHASE 02</span>
+                            </div>
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-2">Sprint Planning & Kanban Board</h4>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="ws-meta-tag"><i class="bi bi-kanban"></i> Drag & Drop</span>
+                                <span class="ws-meta-tag"><i class="bi bi-git"></i> Branch Sync</span>
+                            </div>
+                            <p class="ws-text-secondary small mb-4">Task breakdown with developer assignments, priority tagging, GitHub PR links, and real-time burndown tracking.</p>
+                        </div>
+                        <div class="pt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                            <a href="/projects/101/milestones" class="small fw-medium">Milestones</a>
+                            <a href="/projects/101/kanban" class="ws-btn ws-btn-primary ws-btn-sm">Open Kanban</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="ws-card h-100 ws-card-interactive">
-                        <div class="text-success mb-3 fs-4"><i class="bi bi-cloud-check"></i></div>
-                        <h4 class="text-white fs-6 fw-medium mb-2">3. Continuous QA & CI/CD Telemetry</h4>
-                        <p class="text-secondary small mb-3">Integrated defect tracker with reproduction steps, environment promotion matrices, and single-click staging/prod deploys.</p>
-                        <a href="/deployment" class="small text-info text-decoration-none">Check deployment console <i class="bi bi-arrow-right"></i></a>
+                    <div class="ws-opp-card">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="ws-opp-org">
+                                    <i class="bi bi-patch-check-fill" style="color: var(--ws-signal-success);"></i>
+                                    Quality & Release
+                                </span>
+                                <span class="ws-pill ws-pill-success">PHASE 03</span>
+                            </div>
+                            <h4 class="ws-text-ink fs-6 fw-semibold mb-2">Automated QA & CI/CD Telemetry</h4>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="ws-meta-tag"><i class="bi bi-bug"></i> Defect Matrix</span>
+                                <span class="ws-meta-tag"><i class="bi bi-cloud-check"></i> Staging/Prod</span>
+                            </div>
+                            <p class="ws-text-secondary small mb-4">Integrated bug tracking with reproduction logs, test run coverage, and single-click staging/production rollouts.</p>
+                        </div>
+                        <div class="pt-3 border-top d-flex justify-content-between align-items-center" style="border-color: var(--ws-border-quiet) !important;">
+                            <a href="/qa" class="small fw-medium">QA Hub</a>
+                            <a href="/deployment" class="ws-btn ws-btn-primary ws-btn-sm">Deploy Console</a>
+                        </div>
                     </div>
                 </div>
             </div>
