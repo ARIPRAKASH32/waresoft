@@ -1,0 +1,115 @@
+<aside class="dashboard-sidebar" id="appSidebar">
+    <div class="p-3 border-bottom border-secondary border-opacity-10 d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-2 py-1 font-monospace" style="font-size: 11px;">WS // CONSOLE</span>
+            <span class="small text-muted text-truncate" style="max-width: 120px;">{{ current_user.active_project }}</span>
+        </div>
+        <button class="btn btn-sm btn-link text-muted d-lg-none p-0" id="sidebarCloseBtn">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-scrollable flex-grow-1 overflow-y-auto p-2">
+        <!-- Group: Command Center -->
+        <div class="sidebar-group-title">Command Center</div>
+        <a href="/admin" class="sidebar-item {% if request.path == '/admin' %}active{% endif %}">
+            <i class="bi bi-shield-check"></i>
+            <span>Admin Center</span>
+        </a>
+        <a href="/client" class="sidebar-item {% if request.path == '/client' %}active{% endif %}">
+            <i class="bi bi-building"></i>
+            <span>Client Workspace</span>
+        </a>
+        <a href="/developer" class="sidebar-item {% if request.path == '/developer' %}active{% endif %}">
+            <i class="bi bi-terminal"></i>
+            <span>Developer Space</span>
+        </a>
+
+        <!-- Group: Requirements & Bidding -->
+        <div class="sidebar-group-title">Commercial Lifecycle</div>
+        <a href="/requirements" class="sidebar-item {% if '/requirements' in request.path and 'submit' not in request.path %}active{% endif %}">
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Requirements</span>
+        </a>
+        <a href="/requirements/submit" class="sidebar-item {% if '/requirements/submit' in request.path %}active{% endif %}">
+            <i class="bi bi-plus-circle"></i>
+            <span>Submit RFP</span>
+        </a>
+        <a href="/quotations" class="sidebar-item {% if '/quotations' in request.path %}active{% endif %}">
+            <i class="bi bi-calculator"></i>
+            <span>Quotations & Scope</span>
+        </a>
+
+        <!-- Group: Project Delivery -->
+        <div class="sidebar-group-title">Project Delivery</div>
+        <a href="/projects" class="sidebar-item {% if request.path == '/projects' %}active{% endif %}">
+            <i class="bi bi-grid-1x2"></i>
+            <span>Projects Overview</span>
+        </a>
+        <a href="/projects/101/milestones" class="sidebar-item {% if 'milestones' in request.path %}active{% endif %}">
+            <i class="bi bi-flag"></i>
+            <span>Milestones & Timeline</span>
+        </a>
+        <a href="/projects/101/kanban" class="sidebar-item {% if 'kanban' in request.path %}active{% endif %}">
+            <i class="bi bi-kanban"></i>
+            <span>Sprint Kanban</span>
+        </a>
+        <a href="/projects/101/tasks" class="sidebar-item {% if 'tasks' in request.path %}active{% endif %}">
+            <i class="bi bi-check2-square"></i>
+            <span>Task Backlog</span>
+        </a>
+        <a href="/projects/101/team" class="sidebar-item {% if 'team' in request.path %}active{% endif %}">
+            <i class="bi bi-people"></i>
+            <span>Team Allocation</span>
+        </a>
+
+        <!-- Group: Engineering & CI/CD -->
+        <div class="sidebar-group-title">Engineering & QA</div>
+        <a href="/developer/github" class="sidebar-item {% if 'github' in request.path %}active{% endif %}">
+            <i class="bi bi-github"></i>
+            <span>GitHub Sync & PRs</span>
+        </a>
+        <a href="/qa" class="sidebar-item {% if request.path == '/qa' %}active{% endif %}">
+            <i class="bi bi-bug"></i>
+            <span>QA Command Hub</span>
+        </a>
+        <a href="/qa/bugs" class="sidebar-item {% if 'qa/bugs' in request.path %}active{% endif %}">
+            <i class="bi bi-exclamation-octagon"></i>
+            <span>Defect Tracker</span>
+        </a>
+        <a href="/deployment" class="sidebar-item {% if request.path == '/deployment' %}active{% endif %}">
+            <i class="bi bi-cloud-arrow-up"></i>
+            <span>CI/CD Deployments</span>
+        </a>
+
+        <!-- Group: Maintenance & Financials -->
+        <div class="sidebar-group-title">Operations & Finance</div>
+        <a href="/maintenance" class="sidebar-item {% if '/maintenance' in request.path %}active{% endif %}">
+            <i class="bi bi-tools"></i>
+            <span>SLA Support Tickets</span>
+        </a>
+        <a href="/billing" class="sidebar-item {% if '/billing' in request.path %}active{% endif %}">
+            <i class="bi bi-receipt"></i>
+            <span>Invoices & Billing</span>
+        </a>
+        <a href="/admin/analytics" class="sidebar-item {% if 'analytics' in request.path %}active{% endif %}">
+            <i class="bi bi-graph-up"></i>
+            <span>Platform Velocity</span>
+        </a>
+    </div>
+
+    <!-- Sidebar Footer Telemetry -->
+    <div class="p-3 border-top border-secondary border-opacity-10 bg-dark bg-opacity-25">
+        <div class="d-flex align-items-center justify-content-between text-muted" style="font-size: 11px;">
+            <span>Cluster Health</span>
+            <span class="text-success fw-medium"><i class="bi bi-circle-fill" style="font-size: 8px;"></i> 100% OK</span>
+        </div>
+        <div class="progress mt-2" style="height: 4px; background-color: var(--ws-bg-surface-3);">
+            <div class="progress-bar bg-info" style="width: 82%;"></div>
+        </div>
+        <div class="mt-1 d-flex justify-content-between font-monospace text-muted" style="font-size: 10px;">
+            <span>CPU 42%</span>
+            <span>MEM 68%</span>
+        </div>
+    </div>
+</aside>
