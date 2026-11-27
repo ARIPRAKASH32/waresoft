@@ -159,6 +159,31 @@ const WareSoftAPI = (function() {
                 }
             });
         }
+
+        // Interactive 3D Perspective Tilt on Showcase, Architecture & Project Cards
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.ws-tilt-3d, .ws-opp-card, .ws-card-interactive, .jp-code-explorer').forEach(card => {
+                const maxTilt = (card.id === 'hero-render-pane' || card.classList.contains('jp-code-explorer')) ? 2.8 : 4.5;
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    if (!rect.width || !rect.height) return;
+                    const px = (e.clientX - rect.left) / rect.width;
+                    const py = (e.clientY - rect.top) / rect.height;
+                    const rx = ((0.5 - py) * 2 * maxTilt).toFixed(2);
+                    const ry = ((px - 0.5) * 2 * maxTilt).toFixed(2);
+                    card.classList.add('is-tilting');
+                    card.style.setProperty('--rx', `${rx}deg`);
+                    card.style.setProperty('--ry', `${ry}deg`);
+                    card.style.setProperty('--mx', `${(px * 100).toFixed(1)}%`);
+                    card.style.setProperty('--my', `${(py * 100).toFixed(1)}%`);
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('is-tilting');
+                    card.style.setProperty('--rx', '0deg');
+                    card.style.setProperty('--ry', '0deg');
+                });
+            });
+        }
     });
 
     return {
