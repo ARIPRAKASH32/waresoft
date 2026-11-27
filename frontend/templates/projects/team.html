@@ -9,13 +9,13 @@
         
         <main class="dashboard-main">
             <!-- Header -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom gap-3" style="border-color: var(--ws-border-quiet) !important;">
                 <div>
                     <div class="d-flex align-items-center gap-2 mb-1">
-                        <h1 class="fs-4 fw-semibold text-white m-0">Project NX-{{ "%03d"|format(project_id) }}: Team Allocation</h1>
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Project NX-{{ "%03d"|format(project_id) }}: Team Allocation</h1>
                         <span class="ws-pill ws-pill-telemetry">BANDWIDTH MATRIX</span>
                     </div>
-                    <p class="text-secondary small m-0">Weekly engineer hours, sprint capacity utilization, and skill proficiencies.</p>
+                    <p class="ws-text-secondary small m-0">Weekly engineer hours, sprint capacity utilization, and skill proficiencies.</p>
                 </div>
                 <button class="ws-btn ws-btn-primary ws-btn-sm" onclick="WareSoftAPI.showToast('Engineer allocation drawer initialized', 'info')">
                     <i class="bi bi-person-plus"></i> Assign Engineer
@@ -41,26 +41,26 @@
                                 <div class="d-flex align-items-center gap-2">
                                     <span class="ws-user-avatar">AP</span>
                                     <div>
-                                        <div class="text-white fw-medium">Ari Prakash</div>
-                                        <div class="text-muted" style="font-size: 11px;">ariprakash32@gmail.com</div>
+                                        <div class="ws-text-ink fw-semibold">Ari Prakash</div>
+                                        <div class="ws-text-muted" style="font-size: 11px;">ariprakash32@gmail.com</div>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="badge bg-primary bg-opacity-25 text-primary">Lead Frontend</span></td>
-                            <td class="font-monospace text-white">36 hrs / 40 hrs</td>
+                            <td><span class="ws-pill ws-pill-navy">Lead Frontend</span></td>
+                            <td class="font-monospace ws-text-ink fw-medium">36 hrs / 40 hrs</td>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
-                                        <div class="progress-bar bg-primary" style="width: 90%;"></div>
+                                    <div class="progress flex-grow-1" style="height: 6px; width: 80px; background-color: var(--ws-border-quiet);">
+                                        <div class="progress-bar" style="width: 90%; background-color: var(--ws-brand-blue);"></div>
                                     </div>
-                                    <span class="small font-monospace text-info">90%</span>
+                                    <span class="small font-monospace ws-text-cyan fw-semibold">90%</span>
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">HTML5</span>
-                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Bootstrap 5</span>
-                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Three.js</span>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="ws-meta-tag">HTML5</span>
+                                    <span class="ws-meta-tag">Bootstrap 5</span>
+                                    <span class="ws-meta-tag">Three.js</span>
                                 </div>
                             </td>
                             <td><span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> ACTIVE</span></td>
@@ -68,28 +68,28 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <span class="ws-user-avatar" style="color: var(--ws-brand-blue);">DT</span>
+                                    <span class="ws-user-avatar" style="background-color: var(--ws-brand-blue);">DT</span>
                                     <div>
-                                        <div class="text-white fw-medium">Datcha</div>
-                                        <div class="text-muted" style="font-size: 11px;">datcha@waresoft.dev</div>
+                                        <div class="ws-text-ink fw-semibold">Datcha</div>
+                                        <div class="ws-text-muted" style="font-size: 11px;">datcha@waresoft.dev</div>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="badge bg-info bg-opacity-25 text-info">Backend Architect</span></td>
-                            <td class="font-monospace text-white">38 hrs / 40 hrs</td>
+                            <td><span class="ws-pill ws-pill-telemetry">Backend Architect</span></td>
+                            <td class="font-monospace ws-text-ink fw-medium">38 hrs / 40 hrs</td>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <div class="progress flex-grow-1" style="height: 5px; width: 80px; background-color: var(--ws-bg-surface-3);">
-                                        <div class="progress-bar bg-info" style="width: 95%;"></div>
+                                    <div class="progress flex-grow-1" style="height: 6px; width: 80px; background-color: var(--ws-border-quiet);">
+                                        <div class="progress-bar" style="width: 95%; background-color: var(--ws-brand-cyan);"></div>
                                     </div>
-                                    <span class="small font-monospace text-info">95%</span>
+                                    <span class="small font-monospace ws-text-cyan fw-semibold">95%</span>
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Python</span>
-                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">Flask</span>
-                                    <span class="badge bg-dark border border-secondary border-opacity-25 text-muted" style="font-size: 10px;">PostgreSQL</span>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="ws-meta-tag">Python</span>
+                                    <span class="ws-meta-tag">Flask</span>
+                                    <span class="ws-meta-tag">PostgreSQL</span>
                                 </div>
                             </td>
                             <td><span class="ws-pill ws-pill-success"><span class="status-dot status-dot-live"></span> ACTIVE</span></td>

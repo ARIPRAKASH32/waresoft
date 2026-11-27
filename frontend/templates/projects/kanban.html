@@ -9,13 +9,13 @@
         
         <main class="dashboard-main d-flex flex-column" style="overflow-x: auto;">
             <!-- Kanban Header -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom gap-3" style="border-color: var(--ws-border-quiet) !important;">
                 <div>
                     <div class="d-flex align-items-center gap-2 mb-1">
-                        <h1 class="fs-4 fw-semibold text-white m-0">Sprint 4 Kanban Board</h1>
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Sprint 4 Kanban Board</h1>
                         <span class="ws-pill ws-pill-telemetry">LIVE BOARD</span>
                     </div>
-                    <p class="text-secondary small m-0">Drag and drop task cards to transition states across the delivery pipeline.</p>
+                    <p class="ws-text-secondary small m-0">Drag and drop task cards to transition states across the delivery pipeline.</p>
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <button class="ws-btn ws-btn-secondary ws-btn-sm" onclick="loadKanbanData()">
@@ -32,31 +32,31 @@
                 <!-- Column: Backlog -->
                 <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'backlog')">
                     <div class="kanban-lane-header">
-                        <span class="fw-medium text-white small">Backlog</span>
-                        <span class="badge bg-secondary bg-opacity-25 text-muted font-monospace" id="count-backlog">2</span>
+                        <span class="fw-semibold ws-text-ink small">Backlog</span>
+                        <span class="ws-pill ws-pill-muted" id="count-backlog">2</span>
                     </div>
                     <div class="kanban-cards-wrapper" id="lane-backlog">
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-204')" id="card-T-204">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-info small" style="font-size: 11px;">T-204</span>
-                                <span class="badge bg-danger bg-opacity-25 text-danger font-monospace" style="font-size: 10px;">HIGH</span>
+                                <span class="font-monospace ws-text-cyan small fw-semibold" style="font-size: 11px;">T-204</span>
+                                <span class="ws-pill ws-pill-danger" style="font-size: 10px;">HIGH</span>
                             </div>
                             <div class="kanban-card-title">Implement Webhook Retry Exponential Backoff</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
                                 <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px;">AP</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">5 PTS</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">5 PTS</span>
                             </div>
                         </div>
 
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-209')" id="card-T-209">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-info small" style="font-size: 11px;">T-209</span>
-                                <span class="badge bg-secondary bg-opacity-25 text-white font-monospace" style="font-size: 10px;">MED</span>
+                                <span class="font-monospace ws-text-cyan small fw-semibold" style="font-size: 11px;">T-209</span>
+                                <span class="ws-pill ws-pill-muted" style="font-size: 10px;">MED</span>
                             </div>
                             <div class="kanban-card-title">Optimize Jinja2 SSR Cache Headers</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
                                 <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px;">AP</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">3 PTS</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">3 PTS</span>
                             </div>
                         </div>
                     </div>
@@ -65,31 +65,31 @@
                 <!-- Column: In Progress -->
                 <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'in_progress')">
                     <div class="kanban-lane-header">
-                        <span class="fw-medium text-white small">In Progress</span>
-                        <span class="badge bg-primary bg-opacity-25 text-primary font-monospace" id="count-in_progress">2</span>
+                        <span class="fw-semibold ws-text-ink small">In Progress</span>
+                        <span class="ws-pill ws-pill-telemetry" id="count-in_progress">2</span>
                     </div>
                     <div class="kanban-cards-wrapper" id="lane-in_progress">
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-198')" id="card-T-198">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-info small" style="font-size: 11px;">T-198</span>
-                                <span class="badge bg-primary bg-opacity-25 text-primary font-monospace" style="font-size: 10px;">CRITICAL</span>
+                                <span class="font-monospace ws-text-cyan small fw-semibold" style="font-size: 11px;">T-198</span>
+                                <span class="ws-pill ws-pill-navy" style="font-size: 10px;">CRITICAL</span>
                             </div>
                             <div class="kanban-card-title">Design Tokens & 4px Spacing Normalization</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
                                 <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px;">AP</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">8 PTS</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">8 PTS</span>
                             </div>
                         </div>
 
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-201')" id="card-T-201">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-info small" style="font-size: 11px;">T-201</span>
-                                <span class="badge bg-danger bg-opacity-25 text-danger font-monospace" style="font-size: 10px;">HIGH</span>
+                                <span class="font-monospace ws-text-cyan small fw-semibold" style="font-size: 11px;">T-201</span>
+                                <span class="ws-pill ws-pill-danger" style="font-size: 10px;">HIGH</span>
                             </div>
                             <div class="kanban-card-title">Three.js Service Topology Visualizer</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
                                 <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px;">AP</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">8 PTS</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">8 PTS</span>
                             </div>
                         </div>
                     </div>
@@ -98,19 +98,19 @@
                 <!-- Column: Code Review -->
                 <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'code_review')">
                     <div class="kanban-lane-header">
-                        <span class="fw-medium text-white small">Code Review</span>
-                        <span class="badge bg-warning bg-opacity-25 text-warning font-monospace" id="count-code_review">1</span>
+                        <span class="fw-semibold ws-text-ink small">Code Review</span>
+                        <span class="ws-pill ws-pill-warning" id="count-code_review">1</span>
                     </div>
                     <div class="kanban-cards-wrapper" id="lane-code_review">
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-195')" id="card-T-195">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-info small" style="font-size: 11px;">T-195</span>
-                                <span class="badge bg-warning bg-opacity-25 text-warning font-monospace" style="font-size: 10px;">REVIEW</span>
+                                <span class="font-monospace ws-text-cyan small fw-semibold" style="font-size: 11px;">T-195</span>
+                                <span class="ws-pill ws-pill-warning" style="font-size: 10px;">REVIEW</span>
                             </div>
                             <div class="kanban-card-title">Role Based Middleware for Admin Dashboard</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
-                                <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px; color: var(--ws-brand-blue);">DT</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">5 PTS</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
+                                <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px; background-color: var(--ws-brand-blue);">DT</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">5 PTS</span>
                             </div>
                         </div>
                     </div>
@@ -119,19 +119,19 @@
                 <!-- Column: QA Testing -->
                 <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'qa_testing')">
                     <div class="kanban-lane-header">
-                        <span class="fw-medium text-white small">QA Verification</span>
-                        <span class="badge bg-info bg-opacity-25 text-info font-monospace" id="count-qa_testing">1</span>
+                        <span class="fw-semibold ws-text-ink small">QA Verification</span>
+                        <span class="ws-pill ws-pill-telemetry" id="count-qa_testing">1</span>
                     </div>
                     <div class="kanban-cards-wrapper" id="lane-qa_testing">
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-190')" id="card-T-190">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-info small" style="font-size: 11px;">T-190</span>
-                                <span class="badge bg-primary bg-opacity-25 text-primary font-monospace" style="font-size: 10px;">QA RUN</span>
+                                <span class="font-monospace ws-text-cyan small fw-semibold" style="font-size: 11px;">T-190</span>
+                                <span class="ws-pill ws-pill-telemetry" style="font-size: 10px;">QA RUN</span>
                             </div>
                             <div class="kanban-card-title">Stripe & Razorpay Escrow Webhook Verification</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
-                                <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px; color: var(--ws-signal-success);">QA</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">5 PTS</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
+                                <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px; background-color: var(--ws-signal-success);">QA</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">5 PTS</span>
                             </div>
                         </div>
                     </div>
@@ -140,19 +140,19 @@
                 <!-- Column: Completed -->
                 <div class="kanban-lane" ondragover="allowDrop(event)" ondrop="handleDrop(event, 'completed')">
                     <div class="kanban-lane-header">
-                        <span class="fw-medium text-white small">Completed</span>
-                        <span class="badge bg-success bg-opacity-25 text-success font-monospace" id="count-completed">1</span>
+                        <span class="fw-semibold ws-text-ink small">Completed</span>
+                        <span class="ws-pill ws-pill-success" id="count-completed">1</span>
                     </div>
                     <div class="kanban-cards-wrapper" id="lane-completed">
                         <div class="kanban-card" draggable="true" ondragstart="handleDragStart(event, 'T-185')" id="card-T-185">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="font-monospace text-success small" style="font-size: 11px;">T-185</span>
-                                <span class="badge bg-success bg-opacity-25 text-success font-monospace" style="font-size: 10px;">DONE</span>
+                                <span class="font-monospace small fw-semibold" style="font-size: 11px; color: var(--ws-signal-success);">T-185</span>
+                                <span class="ws-pill ws-pill-success" style="font-size: 10px;">DONE</span>
                             </div>
                             <div class="kanban-card-title">Project Inception & Architecture Blueprint</div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style="border-color: var(--ws-border-quiet) !important;">
                                 <span class="ws-user-avatar" style="width: 22px; height: 22px; font-size: 10px;">AP</span>
-                                <span class="badge bg-dark border border-secondary border-opacity-25 text-muted font-monospace" style="font-size: 10px;">3 PTS</span>
+                                <span class="ws-meta-tag font-monospace" style="font-size: 10px;">3 PTS</span>
                             </div>
                         </div>
                     </div>

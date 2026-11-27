@@ -9,13 +9,13 @@
         
         <main class="dashboard-main">
             <!-- Header -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary border-opacity-10 gap-3">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom gap-3" style="border-color: var(--ws-border-quiet) !important;">
                 <div>
                     <div class="d-flex align-items-center gap-2 mb-1">
-                        <h1 class="fs-4 fw-semibold text-white m-0">Project NX-{{ "%03d"|format(project_id) }}: Milestones & Gantt Timeline</h1>
+                        <h1 class="fs-4 fw-semibold ws-text-ink m-0">Project NX-{{ "%03d"|format(project_id) }}: Milestones & Gantt Timeline</h1>
                         <span class="ws-pill ws-pill-telemetry">DELIVERY SCHEDULE</span>
                     </div>
-                    <p class="text-secondary small m-0">Target completion dates, deliverable checklists, and linked escrow releases.</p>
+                    <p class="ws-text-secondary small m-0">Target completion dates, deliverable checklists, and linked escrow releases.</p>
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <a href="/projects/{{ project_id }}/kanban" class="ws-btn ws-btn-secondary ws-btn-sm">
@@ -26,74 +26,71 @@
 
             <!-- Milestone Timeline Cards -->
             <div class="d-flex flex-column gap-4 mb-4" style="max-width: 1000px;">
-                <!-- Milestone 1 -->
                 <div class="ws-card p-4">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
                             <div class="d-flex align-items-center gap-2 mb-1">
-                                <span class="badge bg-success bg-opacity-25 text-success font-monospace">MILESTONE 1</span>
-                                <h3 class="text-white fs-6 fw-medium m-0">Architecture Blueprint & Schema Verification</h3>
+                                <span class="ws-pill ws-pill-success">MILESTONE 1</span>
+                                <h3 class="ws-text-ink fs-6 fw-semibold m-0">Architecture Blueprint & Schema Verification</h3>
                             </div>
-                            <div class="text-muted small">Completed on Nov 14, 2026 • Verified by Client Lead</div>
+                            <div class="ws-text-muted small">Completed on Nov 14, 2026 • Verified by Client Lead</div>
                         </div>
                         <span class="ws-pill ws-pill-success"><i class="bi bi-check-circle-fill"></i> COMPLETED</span>
                     </div>
                     <div class="d-flex align-items-center gap-3 my-3">
-                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
-                            <div class="progress-bar bg-success" style="width: 100%;"></div>
+                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
+                            <div class="progress-bar" style="width: 100%; background-color: var(--ws-signal-success);"></div>
                         </div>
-                        <span class="font-monospace text-success small">100%</span>
+                        <span class="font-monospace small fw-semibold" style="color: var(--ws-signal-success);">100%</span>
                     </div>
-                    <div class="pt-2 border-top border-secondary border-opacity-10 text-muted small d-flex justify-content-between">
-                        <span>Escrow Released: $10,000 USD</span>
-                        <span class="text-white">Pull Request #42 Merged</span>
+                    <div class="pt-2 border-top ws-text-muted small d-flex justify-content-between" style="border-color: var(--ws-border-quiet) !important;">
+                        <span>Escrow Released: <strong class="ws-text-ink">$10,000 USD</strong></span>
+                        <span class="ws-text-ink fw-medium">Pull Request #42 Merged</span>
                     </div>
                 </div>
 
-                <!-- Milestone 2 -->
                 <div class="ws-card p-4">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
                             <div class="d-flex align-items-center gap-2 mb-1">
-                                <span class="badge bg-primary bg-opacity-25 text-primary font-monospace">MILESTONE 2</span>
-                                <h3 class="text-white fs-6 fw-medium m-0">Webhook Engine & Acquiring Bank Connectors</h3>
+                                <span class="ws-pill ws-pill-telemetry">MILESTONE 2</span>
+                                <h3 class="ws-text-ink fs-6 fw-semibold m-0">Webhook Engine & Acquiring Bank Connectors</h3>
                             </div>
-                            <div class="text-muted small">Current Sprint Target • Due Dec 05, 2026</div>
+                            <div class="ws-text-muted small">Current Sprint Target • Due Dec 05, 2026</div>
                         </div>
                         <span class="ws-pill ws-pill-telemetry">IN PROGRESS</span>
                     </div>
                     <div class="d-flex align-items-center gap-3 my-3">
-                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
-                            <div class="progress-bar bg-primary" style="width: 78%;"></div>
+                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
+                            <div class="progress-bar" style="width: 78%; background-color: var(--ws-brand-blue);"></div>
                         </div>
-                        <span class="font-monospace text-white small">78%</span>
+                        <span class="font-monospace ws-text-ink small fw-semibold">78%</span>
                     </div>
-                    <div class="pt-2 border-top border-secondary border-opacity-10 text-muted small d-flex justify-content-between">
-                        <span>Escrow Allocated: $22,000 USD</span>
-                        <span class="text-info">8/10 Deliverables Verified</span>
+                    <div class="pt-2 border-top ws-text-muted small d-flex justify-content-between" style="border-color: var(--ws-border-quiet) !important;">
+                        <span>Escrow Allocated: <strong class="ws-text-ink">$22,000 USD</strong></span>
+                        <span class="ws-text-cyan fw-medium">8/10 Deliverables Verified</span>
                     </div>
                 </div>
 
-                <!-- Milestone 3 -->
                 <div class="ws-card p-4">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
                             <div class="d-flex align-items-center gap-2 mb-1">
-                                <span class="badge bg-secondary bg-opacity-25 text-muted font-monospace">MILESTONE 3</span>
-                                <h3 class="text-white fs-6 fw-medium m-0">Automated QA Stress Matrix & PCI Compliance</h3>
+                                <span class="ws-pill ws-pill-muted">MILESTONE 3</span>
+                                <h3 class="ws-text-ink fs-6 fw-semibold m-0">Automated QA Stress Matrix & PCI Compliance</h3>
                             </div>
-                            <div class="text-muted small">Upcoming Sprint Target • Due Dec 22, 2026</div>
+                            <div class="ws-text-muted small">Upcoming Sprint Target • Due Dec 22, 2026</div>
                         </div>
                         <span class="ws-pill ws-pill-muted">PLANNED</span>
                     </div>
                     <div class="d-flex align-items-center gap-3 my-3">
-                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-bg-surface-3);">
+                        <div class="progress flex-grow-1" style="height: 6px; background-color: var(--ws-border-quiet);">
                             <div class="progress-bar bg-secondary" style="width: 0%;"></div>
                         </div>
-                        <span class="font-monospace text-muted small">0%</span>
+                        <span class="font-monospace ws-text-muted small">0%</span>
                     </div>
-                    <div class="pt-2 border-top border-secondary border-opacity-10 text-muted small d-flex justify-content-between">
-                        <span>Escrow Allocated: $8,000 USD</span>
+                    <div class="pt-2 border-top ws-text-muted small d-flex justify-content-between" style="border-color: var(--ws-border-quiet) !important;">
+                        <span>Escrow Allocated: <strong class="ws-text-ink">$8,000 USD</strong></span>
                         <span>Scheduled for Sprint 5</span>
                     </div>
                 </div>
