@@ -1,0 +1,93 @@
+/**
+ * WareSoft DevNexus Design System Tokens
+ * Strict 4px Scale | Preserved Dark Navy #0B1020, Electric Blue #3B82F6, Cyan #06B6D4
+ * Craftsman UI - Unslop Compliant (No random gradients, glows, or oversized AI headers)
+ */
+
+:root {
+    /* ─── Color Ramp: Surface & Backgrounds ─── */
+    --ws-bg-canvas:       #0B1020; /* Deepest dark navy */
+    --ws-bg-surface-1:    #0F172A; /* Primary container / sidebar */
+    --ws-bg-surface-2:    #1E293B; /* Elevated card / modal backdrop */
+    --ws-bg-surface-3:    #334155; /* Interactive hover / active state */
+    --ws-bg-elevated:     #172033; /* High-contrast card surface */
+    --ws-bg-input:        #0A0F1D; /* Input background */
+
+    /* ─── Color Ramp: Accents & Brand ─── */
+    --ws-brand-blue:      #3B82F6; /* Electric Blue (Primary CTA, link, selection) */
+    --ws-brand-blue-hover:#2563EB;
+    --ws-brand-blue-soft: rgba(59, 130, 246, 0.12);
+    
+    --ws-brand-cyan:      #06B6D4; /* Cyan (Secondary accent, telemetry, branch refs) */
+    --ws-brand-cyan-soft: rgba(6, 182, 212, 0.12);
+
+    /* ─── Semantic Signal Colors ─── */
+    --ws-signal-success:  #10B981; /* Emerald green (Build passed, paid) */
+    --ws-signal-success-soft: rgba(16, 185, 129, 0.12);
+
+    --ws-signal-warning:  #F59E0B; /* Amber (Review required, pending) */
+    --ws-signal-warning-soft: rgba(245, 158, 11, 0.12);
+
+    --ws-signal-danger:   #EF4444; /* Ruby red (Bug, failure, rejected) */
+    --ws-signal-danger-soft: rgba(239, 68, 68, 0.12);
+
+    --ws-signal-info:     #0284C7; /* Azure */
+    --ws-signal-info-soft: rgba(2, 132, 199, 0.12);
+
+    /* ─── Quiet Hairlines & Borders ─── */
+    --ws-border-quiet:    rgba(255, 255, 255, 0.08); /* Universal hairline */
+    --ws-border-subtle:   rgba(255, 255, 255, 0.14); /* Table borders */
+    --ws-border-focus:    rgba(59, 130, 246, 0.50); /* Blue focus ring */
+    --ws-border-cyan:     rgba(6, 182, 212, 0.35);
+
+    /* ─── Typography: 3 Restrained Text Roles (WCAG AA Compliant) ─── */
+    --ws-text-primary:    #F8FAFC; /* Primary content, 900+ readability */
+    --ws-text-secondary:  #94A3B8; /* Explanations, subheads, timestamps */
+    --ws-text-muted:      #64748B; /* Meta tags, table column labels, disabled */
+    --ws-text-inverse:    #0B1020; /* Dark text for light button accents */
+
+    /* ─── Font Families ─── */
+    --ws-font-sans:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --ws-font-mono:       'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+
+    /* ─── Font Scale ─── */
+    --ws-text-2xs:        11px;
+    --ws-text-xs:         12px;
+    --ws-text-sm:         13px;
+    --ws-text-base:       14px;
+    --ws-text-md:         16px;
+    --ws-text-lg:         18px;
+    --ws-text-xl:         20px;
+    --ws-text-2xl:        24px;
+    --ws-text-3xl:        32px;
+
+    /* ─── Strict 4px Spacing Grid Scale ─── */
+    --ws-space-1:         4px;
+    --ws-space-2:         8px;
+    --ws-space-3:         12px;
+    --ws-space-4:         16px;
+    --ws-space-5:         20px;
+    --ws-space-6:         24px;
+    --ws-space-8:         32px;
+    --ws-space-10:        40px;
+    --ws-space-12:        48px;
+    --ws-space-16:        64px;
+
+    /* ─── Mathematical Nested Radii ─── */
+    --ws-radius-xs:       4px;
+    --ws-radius-sm:       6px;  /* Controls, badges, buttons */
+    --ws-radius-md:       8px;  /* Inner cards, list rows */
+    --ws-radius-lg:       12px; /* Standard panels, outer cards */
+    --ws-radius-xl:       16px; /* Modals, hero frames */
+
+    /* ─── Motion & Physics ─── */
+    --ws-ease-out:        cubic-bezier(0.16, 1, 0.3, 1);
+    --ws-duration-fast:   150ms;
+    --ws-duration-normal: 250ms;
+    --ws-transition-base: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* ─── Subtle Shadow & Depth (No Muddy Glows) ─── */
+    --ws-shadow-sm:       0 1px 2px 0 rgba(0, 0, 0, 0.35);
+    --ws-shadow-md:       0 4px 12px 0 rgba(0, 0, 0, 0.40);
+    --ws-shadow-lg:       0 12px 28px -4px rgba(0, 0, 0, 0.55);
+}
