@@ -1,5 +1,5 @@
 /**
- * WareSoft DevNexus Base Stylesheet
+ * WareSoft DevNexus Base Stylesheet (All-Light Shell)
  * Strict reset, typography hierarchy, 4px grid rhythm, layout shells
  */
 
@@ -30,14 +30,14 @@ body.waresoft-body {
 }
 
 /* ─── Tabular Numerics ─── */
-.tabular-nums, .badge, .metric-value, .stat-value, .table td {
+.tabular-nums, .badge, .metric-value, .stat-value, .ws-metric-value, .table td, .ws-table td {
     font-variant-numeric: tabular-nums;
 }
 
 /* ─── Typography Defaults ─── */
 h1, h2, h3, h4, h5, h6 {
     color: var(--ws-text-primary);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.25;
     letter-spacing: -0.015em;
     margin-bottom: var(--ws-space-3);
@@ -56,24 +56,25 @@ p {
 }
 
 a {
-    color: var(--ws-brand-blue);
+    color: var(--ws-brand-blue-ink);
     text-decoration: none;
     transition: color var(--ws-duration-fast) var(--ws-ease-out);
 }
 
 a:hover {
-    color: #60A5FA;
+    color: var(--ws-brand-blue);
 }
 
 code, kbd, samp, pre {
     font-family: var(--ws-font-mono);
     font-size: 0.9em;
+    color: var(--ws-brand-cyan-ink);
 }
 
 /* ─── Selection ─── */
 ::selection {
-    background-color: rgba(59, 130, 246, 0.35);
-    color: #FFFFFF;
+    background-color: rgba(59, 130, 246, 0.20);
+    color: var(--ws-brand-navy);
 }
 
 /* ─── Precision Scrollbars ─── */
@@ -87,7 +88,7 @@ code, kbd, samp, pre {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--ws-bg-surface-3);
+    background: var(--ws-border-subtle);
     border-radius: var(--ws-radius-xs);
 }
 
@@ -109,7 +110,7 @@ code, kbd, samp, pre {
 
 .content-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1360px;
     margin-left: auto;
     margin-right: auto;
     padding-left: var(--ws-space-6);
@@ -152,5 +153,9 @@ code, kbd, samp, pre {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--ws-border-quiet);
+    }
+
+    .dashboard-main {
+        padding: var(--ws-space-4);
     }
 }
