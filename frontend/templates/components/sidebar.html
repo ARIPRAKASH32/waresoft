@@ -1,10 +1,11 @@
 <aside class="dashboard-sidebar" id="appSidebar">
-    <div class="p-3 border-bottom d-flex align-items-center justify-content-between" style="border-color: var(--ws-border-quiet) !important;">
-        <div class="d-flex align-items-center gap-2 min-w-0">
-            <span class="ws-pill ws-pill-navy" style="font-size: 10px;">DEVNEXUS</span>
-            <span class="small ws-text-secondary text-truncate" style="max-width: 118px;">{{ current_user.active_project }}</span>
+    <div class="px-3 py-3 border-bottom d-flex align-items-center justify-content-between" style="border-color: var(--ws-border-quiet) !important;">
+        <div class="d-flex align-items-center gap-2 min-w-0 flex-grow-1">
+            <span class="rounded-circle flex-shrink-0" style="width: 7px; height: 7px; background-color: var(--ws-brand-cyan);"></span>
+            <span class="small fw-medium ws-text-ink text-truncate">{{ current_user.active_project }}</span>
         </div>
-        <button class="btn btn-sm btn-link text-muted d-lg-none p-0" id="sidebarCloseBtn">
+        <span class="font-monospace ws-text-muted flex-shrink-0 ms-2" style="font-size: 11px;">{{ system_status.version }}</span>
+        <button class="btn btn-sm btn-link text-muted d-lg-none p-0 ms-2" id="sidebarCloseBtn">
             <i class="bi bi-x-lg"></i>
         </button>
     </div>
