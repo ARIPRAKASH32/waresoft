@@ -1,17 +1,23 @@
 {% set is_public = request.path in ['/', '/about', '/services', '/portfolio', '/contact', '/careers', '/auth', '/login', '/register', '/forgot-password'] %}
 
 {% if is_public %}
-<!-- Juspay-Style Floating Pill Header (Preserving All-Light Brand Palette) -->
+<!-- Juspay-Style Dark Navy (#0B1020) Floating Pill Header -->
 <header class="ws-header-floating-wrap">
     <div class="ws-header-pill">
-        <!-- Left: Logo -->
+        <!-- Left: Crisp Mark + White Wordmark -->
         <div class="d-flex align-items-center gap-2">
             <button class="ws-mobile-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-5"></i>
             </button>
             <a href="/" class="ws-brand-link">
                 <span class="ws-brand-icon">
-                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="WareSoft Logo" width="26" height="26" style="display: block;">
+                    <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="28" height="28" rx="7" fill="#3B82F6" fill-opacity="0.18"/>
+                        <path d="M6.5 9.5L10.2 18.5L14 11.2L17.8 18.5L21.5 9.5" stroke="#FFFFFF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="14" cy="11.2" r="2" fill="#06B6D4"/>
+                        <circle cx="10.2" cy="18.5" r="1.4" fill="#3B82F6"/>
+                        <circle cx="17.8" cy="18.5" r="1.4" fill="#3B82F6"/>
+                    </svg>
                 </span>
                 <span class="ws-brand-text" style="letter-spacing: -0.02em;">{{ app_name }}</span>
             </a>
@@ -21,24 +27,24 @@
         <nav class="d-none d-lg-flex align-items-center gap-4">
             <div class="dropdown">
                 <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Products <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                    Products <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
                 <ul class="dropdown-menu ws-dropdown-menu">
-                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client &amp; Commercial</a></li>
-                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-kanban me-2"></i>Projects &amp; Sprint Kanban</a></li>
-                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-terminal me-2"></i>Engineering &amp; QA</a></li>
-                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2"></i>Cloud Ops &amp; Escrow</a></li>
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2 ws-text-blue"></i>Client &amp; Commercial</a></li>
+                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-kanban me-2 ws-text-cyan"></i>Projects &amp; Sprint Kanban</a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-terminal me-2 ws-text-ink"></i>Engineering &amp; QA</a></li>
+                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2 ws-text-blue"></i>Cloud Ops &amp; Escrow</a></li>
                 </ul>
             </div>
 
             <div class="dropdown">
                 <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Resources <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                    Resources <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
                 <ul class="dropdown-menu ws-dropdown-menu">
-                    <li><a class="dropdown-item" href="/#solutions"><i class="bi bi-layers me-2"></i>Architecture Overview</a></li>
-                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces me-2"></i>DevNexus API Explorer</a></li>
-                    <li><a class="dropdown-item" href="/operations?tab=releases"><i class="bi bi-tag me-2"></i>Release Changelogs</a></li>
+                    <li><a class="dropdown-item" href="/#solutions"><i class="bi bi-layers me-2 ws-text-blue"></i>Architecture Overview</a></li>
+                    <li><a class="dropdown-item" href="/#developers"><i class="bi bi-braces me-2 ws-text-cyan"></i>DevNexus API Explorer</a></li>
+                    <li><a class="dropdown-item" href="/operations?tab=releases"><i class="bi bi-tag me-2 ws-text-ink"></i>Release Changelogs</a></li>
                 </ul>
             </div>
 
@@ -46,12 +52,12 @@
 
             <div class="dropdown">
                 <button class="ws-pill-nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Company <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                    Company <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
                 <ul class="dropdown-menu ws-dropdown-menu">
-                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-check me-2"></i>Executive Command</a></li>
-                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-grid-1x2 me-2"></i>Workspaces Console</a></li>
-                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In / Portal</a></li>
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-check me-2 ws-text-blue"></i>Executive Command</a></li>
+                    <li><a class="dropdown-item" href="/projects"><i class="bi bi-grid-1x2 me-2 ws-text-cyan"></i>Workspaces Console</a></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2 ws-text-ink"></i>Sign In / Portal</a></li>
                 </ul>
             </div>
         </nav>
@@ -60,16 +66,16 @@
         <div class="d-flex align-items-center gap-3">
             <div class="dropdown d-none d-sm-block">
                 <button class="ws-region-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="regionSelectorBtn">
-                    <i class="bi bi-globe2" style="color: var(--ws-brand-blue); font-size: 13px;"></i>
+                    <i class="bi bi-globe2" style="color: #06B6D4; font-size: 13px;"></i>
                     <span id="activeRegionLabel">India</span>
-                    <i class="bi bi-chevron-down" style="font-size: 10px; color: var(--ws-text-muted);"></i>
+                    <i class="bi bi-chevron-down" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end ws-dropdown-menu">
-                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('India', 'ap-south-1')"><i class="bi bi-geo-alt me-2"></i>India (ap-south-1)</button></li>
-                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('Global', 'us-east-1')"><i class="bi bi-globe me-2"></i>Global (us-east-1)</button></li>
+                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('India', 'ap-south-1')"><i class="bi bi-geo-alt me-2 ws-text-blue"></i>India (ap-south-1)</button></li>
+                    <li><button class="dropdown-item" type="button" onclick="selectClusterRegion('Global', 'us-east-1')"><i class="bi bi-globe me-2 ws-text-cyan"></i>Global (us-east-1)</button></li>
                     <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
                     <li><a class="dropdown-item fw-semibold" href="/projects"><i class="bi bi-kanban me-2 ws-text-blue"></i>Open Console</a></li>
-                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-person me-2"></i>Sign In</a></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-person me-2 ws-text-ink"></i>Sign In</a></li>
                 </ul>
             </div>
 
@@ -81,7 +87,7 @@
 </header>
 
 {% else %}
-<!-- Dashboard Console Header with Cmd+K Command Search Bar -->
+<!-- Dashboard Console Header (#0B1020) with Cmd+K Command Search Bar -->
 <header class="ws-header">
     <div class="ws-header-inner content-container">
         <div class="ws-brand-cluster">
@@ -90,16 +96,22 @@
             </button>
             <a href="/" class="ws-brand-link">
                 <span class="ws-brand-icon">
-                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="WareSoft Logo" width="26" height="26" style="display: block;">
+                    <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="28" height="28" rx="7" fill="#3B82F6" fill-opacity="0.18"/>
+                        <path d="M6.5 9.5L10.2 18.5L14 11.2L17.8 18.5L21.5 9.5" stroke="#FFFFFF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="14" cy="11.2" r="2" fill="#06B6D4"/>
+                        <circle cx="10.2" cy="18.5" r="1.4" fill="#3B82F6"/>
+                        <circle cx="17.8" cy="18.5" r="1.4" fill="#3B82F6"/>
+                    </svg>
                 </span>
                 <span class="ws-brand-text">{{ app_name }}</span>
-                <span class="ws-text-muted small fw-normal d-none d-sm-inline">/ Console</span>
+                <span class="small fw-normal d-none d-sm-inline" style="color: #94A3B8;">/ Console</span>
             </a>
         </div>
 
         <div class="jp-cmd-wrap d-none d-md-block">
             <div class="jp-cmd-search">
-                <i class="bi bi-search ws-text-muted small"></i>
+                <i class="bi bi-search small" style="color: #94A3B8;"></i>
                 <input type="text" id="workspaceCmdInput" placeholder="Jump to workspace, Kanban, RFPs, or billing..." autocomplete="off">
                 <span class="jp-cmd-keycap">&#8984;K</span>
             </div>
@@ -134,31 +146,31 @@
         <div class="ws-header-actions">
             <a href="/account?tab=notifications" class="ws-icon-btn position-relative" title="Notifications">
                 <i class="bi bi-bell"></i>
-                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-white rounded-circle"></span>
+                <span class="position-absolute top-0 start-100 translate-middle p-1 rounded-circle" style="background-color: #06B6D4; border: 2px solid #0B1020;"></span>
             </a>
 
             <div class="dropdown">
                 <button class="ws-user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="ws-user-avatar">{{ current_user.avatar }}</span>
                     <span class="d-none d-xl-inline-block text-start" style="min-width: 0;">
-                        <span class="d-block text-truncate fw-semibold" style="max-width: 112px; font-size: 12px; color: var(--ws-brand-navy); line-height: 1.2;">{{ current_user.name }}</span>
-                        <span class="d-block text-truncate" style="max-width: 112px; font-size: 11px; color: var(--ws-text-muted); line-height: 1.2;">{{ current_user.role }}</span>
+                        <span class="d-block text-truncate fw-semibold" style="max-width: 112px; font-size: 12px; color: #FFFFFF; line-height: 1.2;">{{ current_user.name }}</span>
+                        <span class="d-block text-truncate" style="max-width: 112px; font-size: 11px; color: #94A3B8; line-height: 1.2;">{{ current_user.role }}</span>
                     </span>
-                    <i class="bi bi-chevron-down text-muted ms-1" style="font-size: 10px;"></i>
+                    <i class="bi bi-chevron-down ms-1" style="font-size: 10px; color: #94A3B8;"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end ws-dropdown-menu">
                     <li class="px-3 py-2 border-bottom" style="border-color: var(--ws-border-quiet) !important;">
                         <div class="small fw-semibold ws-text-ink">{{ current_user.name }}</div>
                         <div class="ws-text-muted" style="font-size: 11px;">{{ current_user.email }}</div>
                     </li>
-                    <li><a class="dropdown-item" href="/account"><i class="bi bi-person me-2"></i>Account &amp; Alerts</a></li>
-                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2"></i>Command &amp; Analytics</a></li>
-                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2"></i>Client &amp; Commercial</a></li>
-                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2"></i>Engineering &amp; QA</a></li>
-                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2"></i>Cloud Ops &amp; Billing</a></li>
+                    <li><a class="dropdown-item" href="/account"><i class="bi bi-person me-2 ws-text-blue"></i>Account &amp; Alerts</a></li>
+                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-shield-lock me-2 ws-text-cyan"></i>Command &amp; Analytics</a></li>
+                    <li><a class="dropdown-item" href="/client"><i class="bi bi-building me-2 ws-text-blue"></i>Client &amp; Commercial</a></li>
+                    <li><a class="dropdown-item" href="/developer"><i class="bi bi-code-slash me-2 ws-text-cyan"></i>Engineering &amp; QA</a></li>
+                    <li><a class="dropdown-item" href="/operations"><i class="bi bi-cloud-check me-2 ws-text-blue"></i>Cloud Ops &amp; Billing</a></li>
                     <li><hr class="dropdown-divider my-1" style="border-color: var(--ws-border-quiet);"></li>
-                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2"></i>Switch Account</a></li>
-                    <li><button class="dropdown-item text-danger" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</button></li>
+                    <li><a class="dropdown-item" href="/auth"><i class="bi bi-box-arrow-in-right me-2 ws-text-ink"></i>Switch Account</a></li>
+                    <li><button class="dropdown-item fw-medium" style="color: var(--ws-brand-navy);" onclick="WareSoftAPI.logout()"><i class="bi bi-box-arrow-right me-2 ws-text-blue"></i>Sign Out</button></li>
                 </ul>
             </div>
         </div>

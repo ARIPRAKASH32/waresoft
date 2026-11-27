@@ -1,42 +1,42 @@
 /**
- * WareSoft DevNexus Design System Tokens (Calm Juspay Blend Aesthetic)
- * Strict 4px Scale | Preserved Palette: Dark Navy #0B1020, Electric Blue #3B82F6, Cyan #06B6D4
- * Calm airy surfaces (#FFFFFF / #F8FAFC), quiet hairlines, restrained enterprise typography
+ * WareSoft DevNexus Design System Tokens (Unified #0B1020, #3B82F6, #06B6D4 Palette)
+ * Strict 4px Scale | Zero off-palette green/amber/red hues
+ * Dark Navy #0B1020 Floating Pill & Console Header + Light #F8FAFC / #FFFFFF Body
  */
 
 :root {
-    /* ─── Color Ramp: Calm Light Surfaces ─── */
-    --ws-bg-canvas:       #F8FAFC; /* Ultra-calm alabaster slate */
-    --ws-bg-surface-1:    #FFFFFF; /* Pure crisp white */
-    --ws-bg-surface-2:    #F3F6FA; /* Subtle tinted surface */
-    --ws-bg-surface-3:    #EAEEF5; /* Quiet hover step */
+    /* ─── Color Ramp: Light Body Surfaces & Dark Navy Anchors ─── */
+    --ws-bg-canvas:       #F8FAFC;
+    --ws-bg-surface-1:    #FFFFFF;
+    --ws-bg-surface-2:    #F3F6FA;
+    --ws-bg-surface-3:    #EAEEF5;
     --ws-bg-elevated:     #FFFFFF;
     --ws-bg-input:        #FFFFFF;
-    --ws-bg-navy:         #0B1020; /* Brand dark navy */
+    --ws-bg-navy:         #0B1020;
 
-    /* ─── Brand Accents (#0B1020, #3B82F6, #06B6D4) ─── */
+    /* ─── Strict Brand Accents (#0B1020, #3B82F6, #06B6D4) ─── */
     --ws-brand-navy:      #0B1020;
     --ws-brand-blue:      #3B82F6;
     --ws-brand-blue-hover:#2563EB;
     --ws-brand-blue-ink:  #1D4ED8;
-    --ws-brand-blue-soft: rgba(59, 130, 246, 0.08);
+    --ws-brand-blue-soft: rgba(59, 130, 246, 0.10);
 
     --ws-brand-cyan:      #06B6D4;
     --ws-brand-cyan-ink:  #0E7490;
-    --ws-brand-cyan-soft: rgba(6, 182, 212, 0.08);
+    --ws-brand-cyan-soft: rgba(6, 182, 212, 0.10);
 
-    /* ─── Semantic Signal Colors ─── */
-    --ws-signal-success:      #059669;
-    --ws-signal-success-soft: rgba(5, 150, 105, 0.08);
+    /* ─── Semantic Roles Mapped Strictly to Brand Palette ─── */
+    --ws-signal-success:      #0E7490; /* High-contrast Cyan ink */
+    --ws-signal-success-soft: rgba(6, 182, 212, 0.10);
 
-    --ws-signal-warning:      #D97706;
-    --ws-signal-warning-soft: rgba(217, 119, 6, 0.10);
+    --ws-signal-warning:      #1D4ED8; /* High-contrast Electric Blue ink */
+    --ws-signal-warning-soft: rgba(59, 130, 246, 0.10);
 
-    --ws-signal-danger:       #DC2626;
-    --ws-signal-danger-soft:  rgba(220, 38, 38, 0.08);
+    --ws-signal-danger:       #0B1020; /* High-contrast Dark Navy ink */
+    --ws-signal-danger-soft:  rgba(11, 16, 32, 0.08);
 
-    --ws-signal-info:         #0284C7;
-    --ws-signal-info-soft:    rgba(2, 132, 199, 0.08);
+    --ws-signal-info:         #3B82F6;
+    --ws-signal-info-soft:    rgba(59, 130, 246, 0.10);
 
     /* ─── Quiet Hairlines & Borders ─── */
     --ws-border-quiet:    #EAECEF;
@@ -50,7 +50,7 @@
     --ws-text-muted:      #64748B;
     --ws-text-inverse:    #FFFFFF;
 
-    /* ─── Font Families (Single Cohesive Family: Manrope + System Mono) ─── */
+    /* ─── Single Cohesive Font Family: Manrope + System Mono ─── */
     --ws-font-display:    'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     --ws-font-sans:       'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     --ws-font-mono:       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
